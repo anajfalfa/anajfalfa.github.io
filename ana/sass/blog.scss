@@ -1,0 +1,200 @@
+@use "variables" as *;
+
+html, body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  padding-top: clamp(60px, 20vh, 100px);
+  background: $backgroundContent;
+  flex-grow: 1;
+
+  a:not(.img-fullscreen-link) {
+    transition: filter 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+    box-shadow: inset 0 -2px $linkColorAlt;
+    color: $textColor;
+
+    &:hover {
+      filter: brightness(120%);
+    }
+  }
+
+}
+
+.post-list h1 {
+  margin-bottom: 2em;
+  font-size: 2.125rem;
+}
+
+.post .back {
+  font-size: 0.8rem;
+  transition: opacity .3s cubic-bezier(.25, 1, .5, 1);
+  opacity: 0.5;
+
+  margin-bottom: 2em;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+article {
+  &:not(:last-of-type) {
+    border-bottom: 1px solid #333;
+    padding-bottom: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  > header {
+    h1 {
+      margin: 0.1em 0;
+      font-size: 2.125rem;
+    }
+
+    h2 {
+      margin: 0.2em 0;
+      font-size: 1.5rem;
+    }
+
+    > span {
+      opacity: 0.7;
+    }
+  }
+
+  > div {
+    margin-top: 1rem;
+    text-align: left;
+
+    font-size: 1.125rem;
+
+    @at-root {
+      .post & {
+        margin-top: 5rem;
+        margin-bottom: 10rem;
+      }
+    }
+
+    > nav {
+      font-weight: 500;
+      opacity: 0.8;
+      font-size: 1rem;
+    }
+
+    figure {
+      text-align: center;
+
+      img {
+        max-width: 100%;
+      }
+
+      figcaption {
+        opacity: 0.7;
+        font-size: 0.8em;
+        font-style: italic;
+      }
+    }
+
+    > p > img {
+      margin: auto;
+      display: block;
+      max-width: 100%;
+    }
+  }
+}
+
+.paginator {
+  margin-top: 5rem;
+  opacity: 0.9;
+
+  font-weight: 500;
+}
+
+.table-of-contents, .preface {
+  margin-top: -2rem;
+  margin-bottom: 5rem;
+}
+
+blockquote {
+  opacity: 0.7;
+  border-left: 0.2rem solid $textColor;
+  padding: 0.25rem 0 0.25rem 1rem;
+  margin: 1rem 0;
+  font-size: 1rem;
+
+  p:first-child {
+    margin-top: 0;
+  }
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+}
+
+:not(pre) > code {
+  color: $textColor;
+  background-color: $inlineCodeBlockBackground;
+  padding: 0.25rem 0.5rem;
+  margin: 0;
+  font-size: 0.85em;
+  border-radius: 3px;
+}
+
+a > code {
+  text-decoration: underline;
+  text-decoration-color: $linkColorAlt;
+  text-decoration-thickness: 2px;
+}
+
+pre {
+  padding: 1rem;
+  overflow: auto;
+  border-radius: 0.5rem;
+
+  &[data-linenos] {
+    padding-left: 0.5rem;
+  }
+  table td {
+    padding: 0;
+  }
+  table td:nth-of-type(1) {
+    text-align: right;
+    user-select: none;
+    padding-right: 0.8em;
+    opacity: 0.7;
+  }
+  mark {
+    display: block;
+    color: inherit;
+    min-width: fit-content;
+    margin-left: -1rem;
+    padding-left: 1rem;
+    margin-right: -1rem;
+    padding-right: 1rem;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+}
+
+details {
+  display: block;
+  position: relative;
+  border-radius: 0.5rem;
+  margin: 1.6em 0;
+  padding: 1.6em;
+  border-left-width: 0rem;
+
+  background-color: $cardColor;
+
+  summary {
+    cursor: pointer;
+    outline: none;
+  }
+}
+
