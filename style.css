@@ -16,7 +16,8 @@ body {
     background-attachment: fixed;
     color: #333;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    /* Fixes footer being on the right */
     align-items: center;
     min-height: 100vh;
     margin: 0;
@@ -149,12 +150,14 @@ h1 {
 /* Tooltip Styles */
 .tooltip {
     visibility: hidden;
-    width: 120px;
+    width: max-content;
+    /* Auto width based on content */
+    min-width: 120px;
     background-color: #333;
     color: #fff;
     text-align: center;
     border-radius: 6px;
-    padding: 5px 0;
+    padding: 8px 12px;
     position: absolute;
     z-index: 1;
     bottom: -40px;
