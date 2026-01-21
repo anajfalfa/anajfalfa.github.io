@@ -451,26 +451,260 @@
                         sazonal de verão com bolsas para estudantes.</p>
                 </div>
             </div>
-        </section>
-
+            <!-- Mais itens da linha do tempo podem ser adicionados aqui -->
     </div>
 
     <footer>
-        <p>&copy; 2024 Ana Alfaiate. Feito com <span>&hearts;</span> e um pouco de café.</p>
+        <p>&copy; 2026 Ana Alfaiate | Todos os direitos reservados</p>
+        <p>Desenvolvido com <span style="color: red;">&hearts;</span> por Ana Alfaiate</p>
     </footer>
 
-    <script>
-        function unlockIdeas() {
-            const pw = prompt("Palavra-passe:");
-            if (pw === "42") {
-                const content = document.getElementById('ideas-content');
-                const lock = document.getElementById('ideas-lock');
+    <!-- Admin Controls -->
+    <div id="admin-controls" class="admin-controls hidden">
+        <button onclick="exportHTML()" class="btn-secondary" style="padding: 8px 12px; font-size: 0.9em;"
+            title="Exportar HTML"><i class="fas fa-code"></i></button>
+        <button onclick="clearChanges()" class="btn-danger" style="padding: 8px 12px; font-size: 0.9em;"
+            title="Limpar Alterações"><i class="fas fa-trash"></i></button>
+    </div>
 
+    <!-- Edit Modal -->
+    <div id="edit-modal" class="modal hidden">
+        <div class="modal-content glass">
+            <h3>Editar Item</h3>
+            <input type="text" id="edit-date" placeholder="Data de Conclusão (ex: Dez 2024)">
+            <textarea id="edit-notes" placeholder="Notas / Detalhes..."></textarea>
+            <div class="modal-buttons">
+                <button onclick="saveEdit()" class="btn-primary">Guardar</button>
+                <button onclick="closeModal()" class="btn-secondary">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Item Modal -->
+    <div id="add-modal" class="modal hidden">
+        <div class="modal-content glass">
+            <h3>Adicionar Novo Item</h3>
+            <input type="text" id="add-text" placeholder="Nome do Item (ex: Aprender a Voar)">
+            <input type="text" id="add-date" placeholder="Data de Conclusão (Opcional)">
+            <div class="modal-buttons">
+                <button onclick="saveNewItem()" class="btn-primary">Adicionar</button>
+                <button onclick="closeAddModal()" class="btn-secondary">Cancelar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // --- Lógica de Bloqueio ---
+        function unlockIdeas() {
+            const password = prompt("Introduza a palavra-passe secreta:");
+            if (password === "42") {
+                document.getElementById('ideas-lock').style.display = 'none';
+                const content = document.getElementById('ideas-content');
                 content.classList.remove('hidden', 'blur-content');
-                lock.classList.add('hidden');
+                content.classList.add('visible');
+
+                // Ativar Modo Admin
+                enableAdminMode();
             } else {
-                alert("Palavra-passe errada!");
+                alert("Acesso Negado.");
             }
+        }
+
+        // --- Lógica do Sistema Admin ---
+        let currentEditingItem = null;
+        let currentAddCategory = null;
+
+        function enableAdminMode() {
+            document.body.classList.add('admin-mode');
+            document.getElementById('admin-controls').classList.remove('hidden');
+
+            // Adicionar botões de edição a todos os itens da lista
+            document.querySelectorAll('.list-category li').forEach((li) => {
+                if (!li.querySelector('.edit-btn')) {
+                    const btn = document.createElement('i');
+                    btn.className = 'fas fa-pencil-alt edit-btn';
+                    btn.onclick = (e) => openEditModal(e, li);
+                    li.appendChild(btn);
+
+                    if (!li.querySelector('.item-details')) {
+                        const details = document.createElement('div');
+                        details.className = 'item-details';
+                        li.appendChild(details);
+                    }
+                }
+            });
+
+            // Adicionar botões "Adicionar Item" às categorias
+            document.querySelectorAll('.list-category').forEach((cat) => {
+                if (!cat.querySelector('.add-btn-container')) {
+                    const container = document.createElement('div');
+                    container.className = 'add-btn-container';
+                    container.style.marginTop = '10px';
+                    container.style.textAlign = 'center';
+
+                    const btn = document.createElement('button');
+                    btn.className = 'btn-secondary';
+                    btn.innerHTML = '<i class="fas fa-plus"></i> Adicionar Item';
+                    btn.style.fontSize = '0.8em';
+                    btn.style.padding = '5px 10px';
+                    btn.onclick = () => openAddModal(cat);
+
+                    container.appendChild(btn);
+                    cat.appendChild(container);
+                }
+            });
+
+            // Restaurar dados do LocalStorage
+            loadChanges();
+        }
+
+        function openEditModal(e, li) {
+            e.stopPropagation();
+            currentEditingItem = li;
+
+            const details = li.querySelector('.item-details');
+            const date = details.getAttribute('data-date') || '';
+            const notes = details.getAttribute('data-notes') || '';
+
+            document.getElementById('edit-date').value = date;
+            document.getElementById('edit-notes').value = notes;
+
+            document.getElementById('edit-modal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('edit-modal').classList.add('hidden');
+            currentEditingItem = null;
+        }
+
+        function openAddModal(category) {
+            currentAddCategory = category;
+            document.getElementById('add-text').value = '';
+            document.getElementById('add-date').value = '';
+            document.getElementById('add-modal').classList.remove('hidden');
+        }
+
+        function closeAddModal() {
+            document.getElementById('add-modal').classList.add('hidden');
+            currentAddCategory = null;
+        }
+
+        function saveEdit() {
+            if (!currentEditingItem) return;
+
+            const date = document.getElementById('edit-date').value;
+            const notes = document.getElementById('edit-notes').value;
+
+            const details = currentEditingItem.querySelector('.item-details');
+            details.setAttribute('data-date', date);
+            details.setAttribute('data-notes', notes);
+
+            // Update visible display
+            updateItemDisplay(currentEditingItem, date, notes);
+
+            saveChanges();
+            closeModal();
+        }
+
+        function saveNewItem() {
+            if (!currentAddCategory) return;
+
+            const text = document.getElementById('add-text').value;
+            const date = document.getElementById('add-date').value;
+
+            if (!text) return;
+
+            const ul = currentAddCategory.querySelector('ul');
+            const li = document.createElement('li');
+            li.innerHTML = `<i class="far fa-square"></i> ${text}`;
+
+            const details = document.createElement('div');
+            details.className = 'item-details';
+            details.setAttribute('data-date', date);
+            li.appendChild(details);
+
+            const btn = document.createElement('i');
+            btn.className = 'fas fa-pencil-alt edit-btn';
+            btn.onclick = (e) => openEditModal(e, li);
+            li.appendChild(btn);
+
+            if (date) {
+                updateItemDisplay(li, date, '');
+            }
+
+            ul.appendChild(li);
+
+            saveChanges();
+            closeAddModal();
+        }
+
+        function updateItemDisplay(li, date, notes) {
+            let details = li.querySelector('.item-details');
+            let content = '';
+            if (date) content += `<span class="item-date">${date}</span>`;
+            if (notes) content += `<p class="item-note">${notes}</p>`;
+            details.innerHTML = content;
+        }
+
+        function exportHTML() {
+            // First, remove admin UI elements temporarily for clean export
+            const adminMode = document.body.classList.contains('admin-mode');
+            document.body.classList.remove('admin-mode');
+
+            // Clone the list to clean it
+            const listClone = document.getElementById('list-grid').cloneNode(true);
+            listClone.querySelectorAll('.edit-btn, .add-btn-container').forEach(el => el.remove());
+
+            const html = listClone.innerHTML;
+            console.log("Clean list HTML:", html);
+
+            // Create a blob and download
+            const blob = new Blob([html], { type: 'text/html' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'list-export.txt';
+            a.click();
+
+            // Restore admin mode
+            if (adminMode) document.body.classList.add('admin-mode');
+
+            alert("HTML da lista copiado! Substitua o conteúdo da seção 'list-grid' no seu ficheiro .html com este código.");
+        }
+
+        function clearChanges() {
+            if (confirm("Isto irá apagar todas as alterações guardadas no browser. Continuar?")) {
+                localStorage.removeItem('impossibleListHTML_PT');
+                location.reload();
+            }
+        }
+
+        function saveChanges() {
+            const listHTML = document.getElementById('list-grid').innerHTML;
+            localStorage.setItem('impossibleListHTML_PT', listHTML);
+        }
+
+        function loadChanges() {
+            const saved = localStorage.getItem('impossibleListHTML_PT');
+            if (saved) {
+                document.getElementById('list-grid').innerHTML = saved;
+                attachListeners();
+            }
+        }
+
+        function attachListeners() {
+            document.querySelectorAll('.list-category li').forEach((li) => {
+                const btn = li.querySelector('.edit-btn');
+                if (btn) {
+                    btn.onclick = (e) => openEditModal(e, li);
+                }
+            });
+
+            document.querySelectorAll('.add-btn-container button').forEach(btn => {
+                const cat = btn.closest('.list-category');
+                btn.onclick = () => openAddModal(cat);
+            });
         }
     </script>
 </body>
