@@ -74,19 +74,26 @@
             <h2>My Portfolio</h2>
             <div class="portfolio-grid">
                 <div class="portfolio-item">
-                    <img src="img/nebm.jpg" alt="NEBM Website">
-                    <h3>NEBM Website</h3>
-                    <p>Collaborator (2022-2023) & Coordinator (2023-2024)</p>
-                    <p>Redesigned the website using <strong>HTML, CSS, JS</strong> and managed the
-                        <strong>PostgreSQL</strong> database for member resources.
-                    </p>
+                    <a href="https://nebm.tecnico.ulisboa.pt/" target="_blank"
+                        style="text-decoration: none; color: inherit; display: block;">
+                        <img src="img/nebm.jpg" alt="NEBM Website">
+                        <h3>NEBM Website</h3>
+                        <p>Collaborator (2022-2023) & Coordinator (2023-2024)</p>
+                        <p>Redesigned the website using <strong>HTML, CSS, JS</strong> and managed the
+                            <strong>PostgreSQL</strong> database for member resources.
+                        </p>
+                    </a>
                 </div>
                 <div class="portfolio-item">
-                    <img src="img/job2be.jpeg" alt="Job2Be Website">
-                    <h3>JOB2BE 2024 Website </h3>
-                    <p>Collaborator (2023-2024)</p>
-                    <p>Front-end development and <strong>PostgreSQL</strong> point system implementation for the Job2Be
-                        platform.</p>
+                    <a href="https://job2be.tecnico.ulisboa.pt/" target="_blank"
+                        style="text-decoration: none; color: inherit; display: block;">
+                        <img src="img/job2be.jpeg" alt="Job2Be Website">
+                        <h3>JOB2BE 2024 Website </h3>
+                        <p>Collaborator (2023-2024)</p>
+                        <p>Front-end development and <strong>PostgreSQL</strong> point system implementation for the
+                            Job2Be
+                            platform.</p>
+                    </a>
                 </div>
             </div>
         </section>
@@ -101,6 +108,7 @@
                     <ul>
                         <li><i class="far fa-square"></i> Attend an Athens Edition - intensive Week</li>
                         <li><i class="far fa-square"></i> Be a Teaching Assistant</li>
+                        <li><i class="far fa-square"></i> Be co-author of a paper</li>
                         <li><i class="far fa-square"></i> Publish a paper</li>
                         <li><i class="far fa-square"></i> Attend a conference</li>
                         <li><i class="far fa-square"></i> Do a Master's Thesis</li>
@@ -433,8 +441,10 @@
 
     <!-- Admin Controls -->
     <div id="admin-controls" class="admin-controls hidden">
-        <button onclick="exportHTML()" class="btn-secondary"><i class="fas fa-code"></i> Export HTML</button>
-        <button onclick="clearChanges()" class="btn-danger"><i class="fas fa-trash"></i> Reset Changes</button>
+        <button onclick="exportHTML()" class="btn-secondary" style="padding: 8px 12px; font-size: 0.9em;"
+            title="Export HTML"><i class="fas fa-code"></i></button>
+        <button onclick="clearChanges()" class="btn-danger" style="padding: 8px 12px; font-size: 0.9em;"
+            title="Reset Changes"><i class="fas fa-trash"></i></button>
     </div>
 
     <!-- Edit Modal -->
