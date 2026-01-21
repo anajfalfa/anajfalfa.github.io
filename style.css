@@ -509,14 +509,13 @@ footer span {
 
 .timeline-element-content {
     width: 45%;
-    padding: 50px 25px 25px 25px;
-    /* Increased top padding to avoid icon contact */
+    padding: 60px 25px 25px 25px;
+    /* Increased top padding significantly */
     background-color: white;
     border-radius: 12px;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
     position: relative;
     border-top: 4px solid #a3c7e4;
-    /* Stripe on top */
 }
 
 /* Left/Right Logic */
@@ -532,9 +531,9 @@ footer span {
 
 /* Icon Logic */
 .timeline-element-icon {
-    width: 60px;
-    /* Slightly larger for better logo visibility */
-    height: 60px;
+    width: 65px;
+    /* Slightly larger */
+    height: 65px;
     background-color: #fff;
     border: none;
     color: #555;
@@ -545,11 +544,13 @@ footer span {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    top: -40px;
-    /* Moved up more to avoid text contact */
+    top: -55px;
+    /* Moved up significantly to clear text */
     z-index: 10;
-    box-shadow: 0 0 0 5px #f5f7fa;
-    /* Fake border to separate from line */
+    box-shadow: 0 0 0 6px #f5f7fa;
+    /* Separator shadow */
+    overflow: hidden;
+    /* Ensure logos don't spill out */
 }
 
 .timeline-element-date {
