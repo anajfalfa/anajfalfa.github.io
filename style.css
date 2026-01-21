@@ -11,7 +11,7 @@ html {
 
 body {
     font-family: 'Poppins', sans-serif;
-     /* Premium Gradient Background */
+    /* Premium Gradient Background */
     background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
     background-attachment: fixed;
     color: #333;
@@ -22,11 +22,14 @@ body {
     margin: 0;
     line-height: 1.6;
     padding: 0;
-    overflow-y: auto; /* Garante que o scroll seja permitido */
-    padding-bottom: 60px; /* Espaço suficiente para o footer */
+    overflow-y: auto;
+    /* Garante que o scroll seja permitido */
+    padding-bottom: 60px;
+    /* Espaço suficiente para o footer */
     padding-top: 60px;
 
 }
+
 /* Header */
 header {
     text-align: center;
@@ -67,7 +70,7 @@ header {
     object-fit: cover;
     margin-bottom: 20px;
     border: 4px solid white;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
 }
 
@@ -105,7 +108,7 @@ h1 {
     justify-content: center;
     gap: 15px;
     margin-top: 30px;
-    flex-wrap: wrap; 
+    flex-wrap: wrap;
 }
 
 .social-link {
@@ -120,7 +123,7 @@ h1 {
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     border: none;
     position: relative;
@@ -134,7 +137,13 @@ h1 {
     background-color: #333;
     color: white;
     transform: translateY(-5px);
-    box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.ist-icon {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
 }
 
 /* Tooltip Styles */
@@ -179,14 +188,15 @@ h1 {
     text-align: center;
     padding: 20px;
     margin: 0 auto;
-    padding-bottom: 80px; 
+    padding-bottom: 80px;
     padding-top: 20px;
 }
 
 /* Section Styling */
 section {
     margin-bottom: 80px;
-    padding-top: 60px; /* Anchor offset */
+    padding-top: 60px;
+    /* Anchor offset */
     margin-top: -60px;
 }
 
@@ -223,15 +233,16 @@ h2::after {
 .portfolio-item {
     background: white;
     border-radius: 12px;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.08); /* Softer shadow */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+    /* Softer shadow */
     overflow: hidden;
     transition: all 0.3s ease;
-    border: 1px solid rgba(0,0,0,0.05);
+    border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .portfolio-item:hover {
     transform: translateY(-8px);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.12);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
 }
 
 .portfolio-item img {
@@ -265,12 +276,13 @@ h2::after {
     background: white;
     padding: 25px;
     border-radius: 12px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
 }
 
 .list-category h3 {
     margin-bottom: 15px;
-    color: #3f51b5; /* Accent color */
+    color: #3f51b5;
+    /* Accent color */
     border-bottom: 2px solid #eee;
     padding-bottom: 10px;
 }
@@ -298,19 +310,22 @@ h2::after {
 }
 
 .list-category li.done i {
-    color: #4caf50; /* Green for done */
+    color: #4caf50;
+    /* Green for done */
 }
 
 /* CV Section */
 .cv-container {
-    background: white; /* Fallback */
-    background: rgba(255, 255, 255, 0.7); /* Glass-like */
+    background: white;
+    /* Fallback */
+    background: rgba(255, 255, 255, 0.7);
+    /* Glass-like */
     backdrop-filter: blur(10px);
     max-width: 700px;
     margin: 0 auto;
     border-radius: 20px;
     padding: 40px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
 }
 
 .cv-buttons {
@@ -325,7 +340,7 @@ h2::after {
     background: #fff;
     padding: 40px;
     border-radius: 15px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
     max-width: 500px;
     margin: 0 auto;
 }
@@ -347,19 +362,27 @@ h2::after {
 }
 
 .visible {
-    display: grid; 
+    display: grid;
     gap: 20px;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     animation: fadeIn 1s;
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* Buttons */
-.btn-primary, .btn-secondary {
+.btn-primary,
+.btn-secondary {
     padding: 12px 25px;
     border-radius: 30px;
     text-decoration: none;
@@ -397,14 +420,15 @@ h2::after {
 /* Navbar */
 .navbar {
     width: 100%;
-    background: rgba(255, 255, 255, 0.95); /* Light navbar */
+    background: rgba(255, 255, 255, 0.95);
+    /* Light navbar */
     position: fixed;
     top: 0;
     left: 0;
     padding: 15px 0;
     text-align: center;
     z-index: 1000;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
     backdrop-filter: blur(5px);
 }
 
@@ -444,7 +468,7 @@ footer {
 }
 
 footer span {
-    color: #e57373; 
+    color: #e57373;
 }
 
 
@@ -457,7 +481,7 @@ footer span {
     display: flex;
     flex-direction: column;
 }
-  
+
 .timeline::after {
     content: '';
     position: absolute;
@@ -468,7 +492,7 @@ footer span {
     left: 50%;
     margin-left: -2px;
 }
-  
+
 .timeline-element {
     display: flex;
     justify-content: center;
@@ -476,15 +500,16 @@ footer span {
     margin-bottom: 50px;
     width: 100%;
 }
-  
+
 .timeline-element-content {
     width: 45%;
     padding: 25px;
     background-color: white;
     border-radius: 12px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
     position: relative;
-    border-top: 4px solid #a3c7e4; /* Stripe on top */
+    border-top: 4px solid #a3c7e4;
+    /* Stripe on top */
 }
 
 /* Left/Right Logic */
@@ -497,7 +522,7 @@ footer span {
     margin-left: auto;
     text-align: left;
 }
-  
+
 /* Icon Logic */
 .timeline-element-icon {
     width: 50px;
@@ -514,9 +539,10 @@ footer span {
     transform: translateX(-50%);
     top: 0;
     z-index: 10;
-    box-shadow: 0 0 0 5px #f5f7fa; /* Fake border to separate from line */
+    box-shadow: 0 0 0 5px #f5f7fa;
+    /* Fake border to separate from line */
 }
-  
+
 .timeline-element-date {
     position: absolute;
     top: 15px;
@@ -526,7 +552,7 @@ footer span {
 }
 
 .timeline-element-date.left {
-    right: 5%; 
+    right: 5%;
     text-align: right;
 }
 
@@ -535,33 +561,52 @@ footer span {
 */
 
 .timeline-element:nth-child(odd) .timeline-element-content {
-    margin-right: 55%; /* Push to left */
+    margin-right: 52%;
+    /* Push to left */
     text-align: right;
+    width: 48%;
 }
+
 .timeline-element:nth-child(odd) .timeline-element-date {
-    left: 55%;
+    left: 52%;
     text-align: left;
+    width: 48%;
 }
 
 .timeline-element:nth-child(even) .timeline-element-content {
-    margin-left: 55%; /* Push to right */
+    margin-left: 52%;
+    /* Push to right */
     text-align: left;
-}
-.timeline-element:nth-child(even) .timeline-element-date {
-    right: 55%;
-    text-align: right;
+    width: 48%;
 }
 
+.timeline-element:nth-child(even) .timeline-element-date {
+    right: 52%;
+    text-align: right;
+    width: 48%;
+}
+
+
+
+/* Fix for IST Icon Size */
+.ist-icon {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+    border-radius: 0;
+    /* Favicons usually don't need circle crop if transparent */
+}
 
 @media screen and (max-width: 768px) {
     .timeline::after {
         left: 20px;
     }
-    
+
     .timeline-element {
         flex-direction: column;
         align-items: flex-start;
-        padding-left: 50px; /* Space for line */
+        padding-left: 50px;
+        /* Space for line */
     }
 
     .timeline-element:nth-child(odd) .timeline-element-content,
@@ -576,7 +621,7 @@ footer span {
         left: 20px;
     }
 
-    .timeline-element-date, 
+    .timeline-element-date,
     .timeline-element:nth-child(odd) .timeline-element-date,
     .timeline-element:nth-child(even) .timeline-element-date {
         position: relative;
