@@ -586,6 +586,35 @@
             closeModal();
         }
 
+        function exportHTML() {
+            // Clone the list to clean it up
+            const listClone = document.getElementById('list').cloneNode(true);
+
+            // Remove Admin Buttons
+            listClone.querySelectorAll('.edit-btn').forEach(el => el.remove());
+            listClone.querySelectorAll('.add-btn-container').forEach(el => el.remove());
+
+            // Generate HTML
+            const html = listClone.innerHTML; // Just the content of the list section
+
+            // Note: If you want to replace the WHOLE section, use outerHTML, 
+            // but make sure to strip the id="list" duplication if pasting inside id="list".
+            // The user instruction "Paste it into index.html" usually implies replacing the inner content 
+            // OR replacing the whole <section>. 
+            // Let's stick to innerHTML for safer pasting inside the container, 
+            // OR outerHTML if they replace the section.
+            // Given my previous instruction "Paste it into index.html to save", 
+            // I'll assume they might replace the <section>. 
+            // Let's provide the inner content of the grid? 
+            // Let's stick to outerHTML but cleaned.
+
+            const outer = listClone.outerHTML;
+
+            navigator.clipboard.writeText(outer).then(() => {
+                alert('Cleaned HTML copied! Replaces the <section id="list">...</section> block.');
+            });
+        }
+
         function saveChanges() {
             const listHTML = document.getElementById('list').innerHTML;
             localStorage.setItem('impossibleListHTML', listHTML);
