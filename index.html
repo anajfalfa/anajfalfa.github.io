@@ -1,52 +1,299 @@
-<html>
+<!DOCTYPE html>
+<html lang="pt">
 
 <head>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous"
-    referrerpolicy="no-referrer" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Página pessoal de Ana Alfaiate">
+    <title> Ana Alfaiate - Página Pessoal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
 </head>
 
 <body>
-  <main class="container">
-    <article>
-      <section class="foto-social">
-        <div class="foto">
-          <img src="img/ana.jpg" alt="Minha foto" title="Ana Alfaiate" style="width: 60%">
+    <!-- Barra de Atalhos -->
+    <div class="navbar">
+        <a href="#home">Home</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#list">Impossible List</a>
+        <a href="#cv">CV</a>
+        <a href="#ideas">Ideas</a>
+    </div>
+
+    <div class="container">
+        <!-- Foto e informações pessoais -->
+        <div class="profile-section">
+            <img src="img/Ana-Alfaiate.jpeg" alt="Ana Alfaiate" class="profile-img">
+            <h1>Ana Alfaiate</h1>
+            <p class="course"> MEIC & LEBiom</p>
+            <p class="bio">MSc Student in Computer Science and Engineering @ Técnico Lisboa </p>
         </div>
-        <ul class="social">
-          <li>
-            <a href="https://www.linkedin.com/in/ana-alfaiate/" target="_blank">
-              <span class="fab fa-linkedin-in"></span>
-            </a>
-          <li>
 
-          <!-- <li>
-            <a href="https://www.youtube.com/channel/UCbHVnLCcssoRS9VJeiPl-iA" target="_blank">
-              <span class="fab fa-youtube"></span>
+        <!-- Links para redes sociais -->
+        <div class="social-links">
+            <a href="https://github.com/anajfalfa" target="_blank" class="social-link" title="anajfalfa"><i
+                    class="fab fa-github"></i> <span class="tooltip" tip-position="bottom">anajfalfa</span>
             </a>
-          <li> -->
+            <a href="https://www.linkedin.com/in/ana-alfaiate/" target="_blank" class="social-link"
+                title="ana-alfaiate"> <i class="fab fa-linkedin"></i> <span class="tooltip"
+                    tip-position="bottom">ana-alfaiate</span></a>
+            <a href="https://discord.com/users/690233975670964313" class="social-link discord-info"
+                title="ana.alfaiate#1460" onclick="alert('ana.alfaiate#1460');">
+                <i class="fab fa-discord"></i> <span class="tooltip" tip-position="bottom">ana.alfaiate#1460</span></a>
+            <a href="https://steamcommunity.com/profiles/76561198403587892/" target="_blank" class="social-link"
+                title="alfaks3">
+                <i class="fab fa-steam"></i> <span class="tooltip" tip-position="bottom">alfaks3</span> </a>
+            <a href="https://www.instagram.com/ana.alfaiate.01/" target="_blank" class="social-link"
+                title="ana.alfaiate.01">
+                <i class="fab fa-instagram"></i> <span class="tooltip" tip-position="bottom">ana.alfaiate.01</span> </a>
+            <a href="mailto:anajfalfaiate@gmail.com" target="_blank" class="social-link"
+                title="anajfalfaiate@gmail.com">
+                <i class="fab fa-google"></i> <span class="tooltip" tip-position="bottom">anajfalfaiate@gmail.com</span>
+            </a>
+            <a href="mailto:ana.alfaiate@tecnico.ulisboa.pt" target="_blank" class="social-link"
+                title="ana.alfaiate@tecnico.ulisboa.pt">
+                <i class="fas fa-envelope"></i> <span class="tooltip"
+                    tip-position="bottom">ana.alfaiate@tecnico.ulisboa.pt</span> </a>
+            <a href="https://fenix.tecnico.ulisboa.pt/homepage/ist1102903" class=" social-link" title="ist1102903"> <img
+                    src="img/IST_favicon.ico" alt="IST Técnico" class="ist-icon"> <span class="tooltip"
+                    tip-position="bottom">ist1102903</span> </a>
+        </div>
+        <!-- Main Div -->
+        <div class="main-container">
+            <p>
+                Welcome to my personal space on the web!
+                Here you can find my impossible list and a little more about me.
+            </p>
+        </div>
+        <!-- Portfolio Section -->
+        <section id="portfolio" class="portfolio-section">
+            <h2>My Portfolio</h2>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <img src="img/favicon.ico" alt="Project 1">
+                    <h3>NEBM Website</h3>
+                    <p>Collaborator (2022-2023) & Coordinator (2023-2024)</p>
+                    <p>As a collaborator and later as a coordinator in the IT section of <strong>NEBM (Núcleo de
+                            Estudantes de Engenharia Biomédica)</strong>, I contributed to the redesign of the
+                        association's website using <strong>HTML</strong>, <strong>CSS</strong>, and
+                        <strong>JavaScript</strong> for the front-end, improving the visual layout and user experience.
+                        I also worked with PostgreSQL to manage the database of members and resources, adapting the
+                        system to support the new pedagogical model and adding new features to enhance the functionality
+                        of the platform.
+                    </p>
+                </div>
+                <div class="portfolio-item">
+                    <img src="img/favicon.ico" alt="Project 2">
+                    <h3>JOB2BE 2024 Website </h3>
+                    <p>Collaborator (2023-2024)</p>
+                    <p>I contributed to the development of <strong>Job2Be </strong>’s website, utilizing
+                        <strong>HTML</strong>, <strong>CSS</strong>, and <strong>JavaScript</strong> for the front-end.
+                        Additionally, I developed a <strong>PostgreSQL</strong>-based point system to track tasks and
+                        determine a winner for prizes, streamlining the process and enhancing user interaction with the
+                        platform.
+                    </p>
+                </div>
+                <div class="portfolio-item">
+                    <img src="img/favicon.ico" alt="Project 3">
+                    <h3>Project 3</h3>
+                    <p>A brief description of the project goes here.</p>
+                </div>
+            </div>
+        </section>
 
-          <!-- <li>
-            <a href="https://www.facebook.com/ana.alfaiate.01/" target="_blank">
-              <span class="fab fa-facebook"></span>
-            </a>
-          <li> -->
+        <!-- Impossible List Section -->
+        <section id="list" class="list-section">
+            <h2>Impossible List</h2>
+            <p class="section-subtitle">My life goals and achievements.</p>
+            <div class="list-grid">
+                <div class="list-category">
+                    <h3>Travel</h3>
+                    <ul>
+                        <li class="done"><i class="fas fa-check-square"></i> Visit London</li>
+                        <li class="done"><i class="fas fa-check-square"></i> Visit Paris</li>
+                        <li><i class="far fa-square"></i> Visit Japan</li>
+                        <li><i class="far fa-square"></i> See the Northern Lights</li>
+                    </ul>
+                </div>
+                <div class="list-category">
+                    <h3>Professional</h3>
+                    <ul>
+                        <li class="done"><i class="fas fa-check-square"></i> Organize a Hackathon</li>
+                        <li><i class="far fa-square"></i> Give a TEDx Talk</li>
+                        <li><i class="far fa-square"></i> Publish a paper</li>
+                    </ul>
+                </div>
+                <div class="list-category">
+                    <h3>Skills</h3>
+                    <ul>
+                        <li><i class="far fa-square"></i> Learn to play Guitar</li>
+                        <li class="done"><i class="fas fa-check-square"></i> Get Driving License</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
 
-          <!-- <li>
-            <a href="https://twitter.com/AnaAlfaiate3" target="_blank">
-              <span class="fab fa-twitter"></span>
-            </a>
-          <li> -->
-        </ul>
-      </section>
-      <section class="texto">
-        <h1> Ana Alfaiate </h1>
-        <p> LEBiom: Licenciatura em Engenharia Biomédica </p>
-        <p> Instituto Superior Técnico </p>
-        <p> Contacta-me!! </p>
-      </section>
-    </article>
-  </main>
+        <!-- CV Section -->
+        <section id="cv" class="cv-section">
+            <h2>Curriculum Vitae</h2>
+            <div class="cv-container glass">
+                <div class="cv-content">
+                    <h3>Ana Alfaiate</h3>
+                    <p><strong>MSc Student in Computer Science and Engineering</strong></p>
+                    <p>Dedicated student with experience in web development, team coordination, and student advocacy.
+                    </p>
+                    <div class="cv-buttons">
+                        <a href="cv/AnaAlfaiate_CV_English.pdf" download class="btn-primary"><i
+                                class="fas fa-download"></i> Download CV</a>
+                        <a href="#about" class="btn-secondary">View Details</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Restricted Ideas Section -->
+        <section id="ideas" class="ideas-section">
+            <h2>My Ideas</h2>
+            <p class="section-subtitle">Restricted access area.</p>
+
+            <div id="ideas-lock" class="ideas-lock">
+                <i class="fas fa-lock fa-3x"></i>
+                <p>This section is password protected.</p>
+                <button onclick="unlockIdeas()" class="btn-primary">Unlock Access</button>
+            </div>
+
+            <div id="ideas-content" class="ideas-content hidden blur-content">
+                <div class="idea-card glass">
+                    <h3>🚀 The Next Big Thing</h3>
+                    <p>A revolutionary app that connects students with...</p>
+                </div>
+                <div class="idea-card glass">
+                    <h3>🤖 AI Assistant Concept</h3>
+                    <p>Using local LLMs to assist in...</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Scripts -->
+        <script>
+            function unlockIdeas() {
+                const password = prompt("Enter the secret password:");
+                // Simple hash check (not secure, just a deterrent) - Password is '42'
+                if (password === "42") {
+                    document.getElementById('ideas-lock').style.display = 'none';
+                    const content = document.getElementById('ideas-content');
+                    content.classList.remove('hidden', 'blur-content');
+                    content.classList.add('visible');
+                } else {
+                    alert("Access Denied.");
+                }
+            }
+        </script>
+
+    </div>
+    <h3>Timeline</h3>
+
+    <div class="timeline">
+        <!-- Evento 1 -->
+        <div class="timeline-element">
+
+            <div class="timeline-element-content left">
+                <span class="timeline-element-icon left" style="background-color: #009de0; color: #fff;">
+                    <i class="fas fa-user-check"></i>
+                </span>
+                <h4>TreeTree2</h4>
+                <h5>Instructor @ Alpha Program</h5>
+                <p>TreeTree2 is a non-profit that helps young children up to 12th grade to go beyond school and learn
+                    new and interesting topics! ALPHA is an extracurricular program designed for 6th, 7th, and 8th-grade
+                    students to explore science and engineering. It offers an opportunity to deepen their knowledge in
+                    subjects like Science and Society, Mathematics, Physics, Biology, and Computing, all within an
+                    integrated approach. Students will engage with peers and be guided by a team passionate about
+                    science and learning, providing a unique environment to foster curiosity and expand their
+                    understanding of various scientific fields.</p>
+            </div>
+            <span class="timeline-element-date left">October 2024</span>
+
+        </div>
+
+        <!-- Evento 2 -->
+        <div class="timeline-element">
+            <span class="timeline-element-date right">October 2024</span>
+
+            <div class="timeline-element-content right">
+                <span class="timeline-element-icon right" style="background-color: #004791; color: #fff;">
+                    <i class="fas fa-university"></i>
+                </span>
+                <h4>Tecnico Ambassador</h4>
+                <h5>Guided by NAPE - Núcleo de Apoio ao Estudante</h5>
+                <p>The Técnico Ambassadors are students from the 1st and 2nd cycles, as well as integrated cycles, from
+                    both campuses. They have been enrolled in a Técnico program for at least one year and are fluent in
+                    Portuguese. They volunteer with NAPE (Student Support Office) in various promotional and outreach
+                    activities, helping new students integrate into the academic community.</p>
+            </div>
+        </div>
+
+        <!-- Evento 3 -->
+        <div class="timeline-element">
+            <div class="timeline-element-content left">
+                <span class="timeline-element-icon left" style="background-color: #dea584; color: #000;">
+                    <i class="fas fa-store"></i>
+                </span>
+                <h4>Livraria e Papelaria Espaço</h4>
+                <h5>E-commerce website for a small business</h5>
+                <p>I designed and developed an e-commerce website using Next.js and Strapi for a bookstore in my area.
+                </p>
+            </div>
+            <span class="timeline-element-date left">April 2020</span>
+
+        </div>
+
+        <!-- Evento 4 -->
+        <div class="timeline-element">
+            <span class="timeline-element-date right">December 2019</span>
+            <div class="timeline-element-content right">
+                <span class="timeline-element-icon right" style="background-color: #fff; color: #000;">
+                    <i class="fas fa-gamepad"></i>
+                </span>
+                <h4>Battleships</h4>
+                <h5>An online multiplayer game you can play right now!</h5>
+                <p>I developed a multiplayer battleships game for my class, which is now open source and available to
+                    play online.</p>
+            </div>
+        </div>
+
+        <!-- Evento 5 -->
+        <div class="timeline-element">
+
+            <div class="timeline-element-content left">
+                <span class="timeline-element-icon left" style="background-color: #008ff8; color: #fff;">
+                    <i class="fas fa-plug"></i>
+                </span>
+                <h4>Triton Web Interface</h4>
+                <h5>My first consumer-facing React app</h5>
+                <p>I introduced a web interface for configuring the Triton plugin for Minecraft, using React and modern
+                    web technologies.</p>
+            </div>
+            <span class="timeline-element-date left">January 2019</span>
+
+        </div>
+
+        <!-- Continuar com os outros eventos, alternando entre esquerda e direita -->
+    </div>
+
+
+    <!-- Mais itens da timeline podem ser adicionados aqui -->
+    </div>
+
+
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Ana Alfaiate | Todos os direitos reservados</p>
+        <p>Desenvolvido com <span style="color: red;">&hearts;</span> por Ana Alfaiate</p>
+    </footer>
 </body>
+
 
 </html>

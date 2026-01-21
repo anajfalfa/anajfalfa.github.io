@@ -1,0 +1,590 @@
+/* Resetando margens e paddings */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+     /* Premium Gradient Background */
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    background-attachment: fixed;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    line-height: 1.6;
+    padding: 0;
+    overflow-y: auto; /* Garante que o scroll seja permitido */
+    padding-bottom: 60px; /* Espaço suficiente para o footer */
+    padding-top: 60px;
+
+}
+/* Header */
+header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+
+/* Container principal */
+.container {
+    text-align: center;
+    max-width: 900px;
+    width: 100%;
+    padding: 20px;
+}
+
+/* Glassmorphism Utility */
+.glass {
+    background: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    padding: 20px;
+    margin: 20px 0;
+}
+
+/* Seção do perfil */
+.profile-section {
+    margin-bottom: 40px;
+    margin-top: 50px;
+}
+
+.profile-img {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
+    border: 4px solid white;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.profile-img:hover {
+    transform: scale(1.05);
+}
+
+h1 {
+    font-size: 2.8em;
+    color: #2c3e50;
+    margin-bottom: 5px;
+    font-weight: 700;
+}
+
+.course {
+    font-size: 1.3em;
+    color: #555;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+.bio {
+    font-size: 1.1em;
+    color: #666;
+    line-height: 1.6;
+    margin-top: 10px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Links sociais */
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 30px;
+    flex-wrap: wrap; 
+}
+
+.social-link {
+    font-size: 1.1em;
+    color: #333;
+    text-decoration: none;
+    background: white;
+    padding: 12px;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: none;
+    position: relative;
+}
+
+.social-link i {
+    font-size: 1.4em;
+}
+
+.social-link:hover {
+    background-color: #333;
+    color: white;
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+}
+
+/* Tooltip Styles */
+.tooltip {
+    visibility: hidden;
+    width: 120px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    transition: opacity 0.3s;
+    font-size: 0.8rem;
+    pointer-events: none;
+}
+
+.tooltip::after {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent #333 transparent;
+}
+
+.social-link:hover .tooltip {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Main Div */
+.main-container {
+    max-width: 1100px;
+    text-align: center;
+    padding: 20px;
+    margin: 0 auto;
+    padding-bottom: 80px; 
+    padding-top: 20px;
+}
+
+/* Section Styling */
+section {
+    margin-bottom: 80px;
+    padding-top: 60px; /* Anchor offset */
+    margin-top: -60px;
+}
+
+h2 {
+    font-size: 2.2em;
+    margin-bottom: 30px;
+    color: #2c3e50;
+    position: relative;
+    display: inline-block;
+}
+
+h2::after {
+    content: '';
+    display: block;
+    width: 50%;
+    height: 3px;
+    background: #a3c7e4;
+    margin: 10px auto 0;
+    border-radius: 2px;
+}
+
+.section-subtitle {
+    color: #777;
+    margin-bottom: 40px;
+}
+
+/* Portfolio Section */
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.portfolio-item {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.08); /* Softer shadow */
+    overflow: hidden;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
+.portfolio-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.12);
+}
+
+.portfolio-item img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-bottom: 1px solid #eee;
+}
+
+.portfolio-item h3 {
+    margin: 15px 0 5px;
+    font-size: 1.4em;
+    padding: 0 15px;
+}
+
+.portfolio-item p {
+    padding: 0 15px 15px;
+    font-size: 0.95em;
+    color: #666;
+}
+
+/* Impossible List */
+.list-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    text-align: left;
+}
+
+.list-category {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.list-category h3 {
+    margin-bottom: 15px;
+    color: #3f51b5; /* Accent color */
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+}
+
+.list-category ul {
+    list-style: none;
+}
+
+.list-category li {
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1em;
+}
+
+.list-category li.done {
+    text-decoration: line-through;
+    color: #888;
+}
+
+.list-category li i {
+    color: #a3c7e4;
+    min-width: 20px;
+}
+
+.list-category li.done i {
+    color: #4caf50; /* Green for done */
+}
+
+/* CV Section */
+.cv-container {
+    background: white; /* Fallback */
+    background: rgba(255, 255, 255, 0.7); /* Glass-like */
+    backdrop-filter: blur(10px);
+    max-width: 700px;
+    margin: 0 auto;
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+}
+
+.cv-buttons {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+/* Ideas Lock Section */
+.ideas-lock {
+    background: #fff;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.ideas-lock i {
+    color: #f44336;
+    margin-bottom: 20px;
+}
+
+.blur-content {
+    filter: blur(8px);
+    pointer-events: none;
+    user-select: none;
+    opacity: 0.3;
+}
+
+.hidden {
+    display: none;
+}
+
+.visible {
+    display: grid; 
+    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    animation: fadeIn 1s;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Buttons */
+.btn-primary, .btn-secondary {
+    padding: 12px 25px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: none;
+    font-size: 1em;
+    display: inline-block;
+}
+
+.btn-primary {
+    background-color: #333;
+    color: white;
+    box-shadow: 0 4px 10px rgba(51, 51, 51, 0.3);
+}
+
+.btn-primary:hover {
+    background-color: #555;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(51, 51, 51, 0.4);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: #333;
+    border: 2px solid #333;
+}
+
+.btn-secondary:hover {
+    background-color: #333;
+    color: white;
+}
+
+/* Navbar */
+.navbar {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.95); /* Light navbar */
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 15px 0;
+    text-align: center;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    backdrop-filter: blur(5px);
+}
+
+.navbar a {
+    color: #333;
+    font-size: 1em;
+    margin: 0 20px;
+    text-decoration: none;
+    font-weight: 600;
+    position: relative;
+    padding-bottom: 5px;
+}
+
+.navbar a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #a3c7e4;
+    transition: width 0.3s;
+}
+
+.navbar a:hover::after {
+    width: 100%;
+}
+
+/* Footer */
+footer {
+    background-color: #263238;
+    color: #aaa;
+    text-align: center;
+    padding: 30px 0;
+    margin-top: 50px;
+    font-size: 0.9em;
+}
+
+footer span {
+    color: #e57373; 
+}
+
+
+/* Timeline Styles (Preserving your logic but modernizing) */
+.timeline {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 0;
+    display: flex;
+    flex-direction: column;
+}
+  
+.timeline::after {
+    content: '';
+    position: absolute;
+    width: 4px;
+    background-color: #e0e0e0;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -2px;
+}
+  
+.timeline-element {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    margin-bottom: 50px;
+    width: 100%;
+}
+  
+.timeline-element-content {
+    width: 45%;
+    padding: 25px;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    position: relative;
+    border-top: 4px solid #a3c7e4; /* Stripe on top */
+}
+
+/* Left/Right Logic */
+.timeline-element-content.left {
+    margin-right: auto;
+    text-align: right;
+}
+
+.timeline-element-content.right {
+    margin-left: auto;
+    text-align: left;
+}
+  
+/* Icon Logic */
+.timeline-element-icon {
+    width: 50px;
+    height: 50px;
+    background-color: #fff;
+    border: 4px solid #a3c7e4;
+    color: #555;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 0;
+    z-index: 10;
+    box-shadow: 0 0 0 5px #f5f7fa; /* Fake border to separate from line */
+}
+  
+.timeline-element-date {
+    position: absolute;
+    top: 15px;
+    font-weight: 600;
+    color: #777;
+    width: 45%;
+}
+
+.timeline-element-date.left {
+    right: 5%; 
+    text-align: right;
+}
+
+/* Fix for your original left/right logic which was a bit mingled.
+   I'm simplifying: Content is always on one side, Date on the other.
+*/
+
+.timeline-element:nth-child(odd) .timeline-element-content {
+    margin-right: 55%; /* Push to left */
+    text-align: right;
+}
+.timeline-element:nth-child(odd) .timeline-element-date {
+    left: 55%;
+    text-align: left;
+}
+
+.timeline-element:nth-child(even) .timeline-element-content {
+    margin-left: 55%; /* Push to right */
+    text-align: left;
+}
+.timeline-element:nth-child(even) .timeline-element-date {
+    right: 55%;
+    text-align: right;
+}
+
+
+@media screen and (max-width: 768px) {
+    .timeline::after {
+        left: 20px;
+    }
+    
+    .timeline-element {
+        flex-direction: column;
+        align-items: flex-start;
+        padding-left: 50px; /* Space for line */
+    }
+
+    .timeline-element:nth-child(odd) .timeline-element-content,
+    .timeline-element:nth-child(even) .timeline-element-content {
+        width: 100%;
+        margin: 0;
+        text-align: left;
+        margin-bottom: 10px;
+    }
+
+    .timeline-element-icon {
+        left: 20px;
+    }
+
+    .timeline-element-date, 
+    .timeline-element:nth-child(odd) .timeline-element-date,
+    .timeline-element:nth-child(even) .timeline-element-date {
+        position: relative;
+        left: 0;
+        right: 0;
+        text-align: left;
+        display: block;
+        margin-bottom: 10px;
+        width: 100%;
+    }
+}
