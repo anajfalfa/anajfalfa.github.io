@@ -509,8 +509,8 @@ footer span {
 
 .timeline-element-content {
     width: 45%;
-    padding: 40px 25px 25px 25px;
-    /* Increased top padding */
+    padding: 50px 25px 25px 25px;
+    /* Increased top padding to avoid icon contact */
     background-color: white;
     border-radius: 12px;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
@@ -545,8 +545,8 @@ footer span {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    top: -30px;
-    /* Move UP to avoid text overlap */
+    top: -40px;
+    /* Moved up more to avoid text contact */
     z-index: 10;
     box-shadow: 0 0 0 5px #f5f7fa;
     /* Fake border to separate from line */
