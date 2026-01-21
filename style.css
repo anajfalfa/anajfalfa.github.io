@@ -603,6 +603,15 @@ footer span {
     /* Favicons usually don't need circle crop if transparent */
 }
 
+/* Timeline Logo Image Support */
+.timeline-element-logo-img {
+    width: 70%;
+    height: 70%;
+    object-fit: contain;
+    border-radius: 0;
+    /* Logos usually rectangular/shaped */
+}
+
 @media screen and (max-width: 768px) {
     .timeline::after {
         left: 20px;
