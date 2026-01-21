@@ -1,69 +1,270 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ana Alfaiate - CV</title>
+    <meta name="description" content="CV de Ana Alfaiate">
+    <title>CV - Ana Alfaiate</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
     <style>
-        body {
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            height: 100vh;
-            background: #f5f7fa;
-            overflow: hidden;
+        .cv-view-container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            backdrop-filter: blur(8.5px);
+            -webkit-backdrop-filter: blur(8.5px);
         }
 
-        .header {
-            padding: 15px 20px;
-            background: white;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 10;
+        .cv-header {
+            text-align: center;
+            margin-bottom: 40px;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 20px;
         }
 
-        .header a {
-            text-decoration: none;
-            color: #333;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            transition: color 0.3s;
+        .cv-header h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
         }
 
-        .header a:hover {
+        .cv-header p {
+            color: #666;
+            font-size: 1.1em;
+        }
+
+        .cv-section-block {
+            margin-bottom: 30px;
+        }
+
+        .cv-section-title {
             color: #009de0;
+            font-size: 1.4em;
+            border-bottom: 2px solid #009de0;
+            padding-bottom: 5px;
+            margin-bottom: 20px;
+            display: inline-block;
         }
 
-        .cv-viewer {
-            flex: 1;
-            width: 100%;
-            border: none;
+        .cv-item {
+            margin-bottom: 20px;
+            padding-left: 20px;
+            border-left: 3px solid #eee;
+            transition: border-left-color 0.3s;
+        }
+
+        .cv-item:hover {
+            border-left-color: #009de0;
+        }
+
+        .cv-item h4 {
+            margin: 0 0 5px 0;
+            color: #333;
+        }
+
+        .cv-item h5 {
+            margin: 0 0 5px 0;
+            color: #666;
+            font-weight: normal;
+        }
+
+        .cv-item .date {
+            font-size: 0.9em;
+            color: #888;
+            font-style: italic;
+        }
+
+        .cv-item ul {
+            margin: 5px 0 0 20px;
+            color: #555;
+        }
+
+        .cv-skills-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skill-tag {
+            background: #eef2f5;
+            padding: 5px 15px;
+            border-radius: 15px;
+            font-size: 0.9em;
+            color: #444;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #fff;
+            text-decoration: none;
+            background: #333;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        .back-btn:hover {
+            background: #555;
+        }
+
+        .download-fab {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #009de0;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            text-decoration: none;
+            transition: transform 0.3s;
+        }
+
+        .download-fab:hover {
+            transform: scale(1.1);
         }
     </style>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
 </head>
 
 <body>
-    <div class="header">
-        <a href="index.html#cv"><i class="fas fa-arrow-left"></i> Back to Portfolio</a>
-        <a href="cv/AnaAlfaiate_CV_English.pdf" download class="btn-primary"
-            style="padding: 8px 15px; font-size: 0.9em; border-radius: 5px;">
-            <i class="fas fa-download"></i> Download PDF
-        </a>
+    <div class="container">
+        <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Back to Portfolio</a>
+
+        <div class="cv-view-container">
+            <div class="cv-header">
+                <h1>Ana Alfaiate</h1>
+                <p>MSc Student in Computer Science and Engineering @ Técnico Lisboa</p>
+                <div class="social-links" style="justify-content: center; margin-top: 15px;">
+                    <a href="https://www.linkedin.com/in/ana-alfaiate/" target="_blank"
+                        style="color: #0077b5; font-size: 1.5em; margin: 0 10px;"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/anajfalfa" target="_blank"
+                        style="color: #333; font-size: 1.5em; margin: 0 10px;"><i class="fab fa-github"></i></a>
+                    <a href="mailto:anajfalfaiate@gmail.com"
+                        style="color: #ea4335; font-size: 1.5em; margin: 0 10px;"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+
+            <div class="cv-section-block">
+                <h3 class="cv-section-title">Education</h3>
+
+                <div class="cv-item">
+                    <h4>MSc in Computer Science and Engineering</h4>
+                    <h5>Instituto Superior Técnico</h5>
+                    <p class="date">Sep 2024 - Present</p>
+                    <ul>
+                        <li>Specialization in AI and Data Science.</li>
+                        <li>Relevant Coursework: Algorithms, Deep Learning, Natural Language Processing.</li>
+                    </ul>
+                </div>
+
+                <div class="cv-item">
+                    <h4>Erasmus+ Exchange Semester</h4>
+                    <h5>DTU - Technical University of Denmark</h5>
+                    <p class="date">Aug 2025 - Dec 2025</p>
+                    <ul>
+                        <li>Focus on Program Verification, Cybersecurity, and Logic.</li>
+                    </ul>
+                </div>
+
+                <div class="cv-item">
+                    <h4>BSc in Biomedical Engineering</h4>
+                    <h5>Instituto Superior Técnico</h5>
+                    <p class="date">Sep 2021 - Jul 2024</p>
+                    <ul>
+                        <li>Final Grade: 18.47 / 20</li>
+                        <li>Academic Excellence Diplomas (2021/2022, 2022/2023, 2023/2024).</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="cv-section-block">
+                <h3 class="cv-section-title">Experience</h3>
+
+                <div class="cv-item">
+                    <h4>Research Intern (MSc)</h4>
+                    <h5>INESC-ID | ARSR</h5>
+                    <p class="date">Aug 2025 - Present</p>
+                    <p>Topic: Logical Model Inference with SAT/ASP.</p>
+                </div>
+
+                <div class="cv-item">
+                    <h4>President & IT Coordinator</h4>
+                    <h5>NEBM - Núcleo de Engenharia Biomédica</h5>
+                    <p class="date">Sep 2022 - Jul 2025</p>
+                    <ul>
+                        <li>President (2024-2025).</li>
+                        <li>IT Coordinator (2023-2024): Led website reform using HTML, CSS, JS.</li>
+                    </ul>
+                </div>
+
+                <div class="cv-item">
+                    <h4>Ambassador & Mentor</h4>
+                    <h5>NAPE - IST</h5>
+                    <p class="date">Oct 2024 - Jun 2025</p>
+                    <p>Supported new students and represented Técnico in outreach activities.</p>
+                </div>
+
+                <div class="cv-item">
+                    <h4>Instructor</h4>
+                    <h5>TreeTree2 | Alpha Program</h5>
+                    <p class="date">Oct 2024 - Apr 2025</p>
+                    <p>Teaching science and engineering topics to 6th-8th grade students.</p>
+                </div>
+
+                <div class="cv-item">
+                    <h4>Research Intern</h4>
+                    <h5>LaSEEB</h5>
+                    <p class="date">Feb 2024 - Jul 2024</p>
+                    <p>Project: "Automatic Segmentation of Knee Cartilage in MRI". Final Grade: 19.</p>
+                </div>
+            </div>
+
+            <div class="cv-section-block">
+                <h3 class="cv-section-title">Skills</h3>
+                <div class="cv-skills-grid">
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">Java</span>
+                    <span class="skill-tag">C++</span>
+                    <span class="skill-tag">HTML/CSS/JS</span>
+                    <span class="skill-tag">SQL</span>
+                    <span class="skill-tag">PostgreSQL</span>
+                    <span class="skill-tag">Git</span>
+                    <span class="skill-tag">LaTeX</span>
+                    <span class="skill-tag">Docker</span>
+                    <span class="skill-tag">Machine Learning</span>
+                    <span class="skill-tag">Deep Learning</span>
+                </div>
+            </div>
+
+            <div class="cv-section-block">
+                <h3 class="cv-section-title">Languages</h3>
+                <div class="cv-skills-grid">
+                    <span class="skill-tag">Portuguese (Native)</span>
+                    <span class="skill-tag">English (Fluent)</span>
+                    <span class="skill-tag">French (Basic)</span>
+                    <span class="skill-tag">Danish (Basic)</span>
+                </div>
+            </div>
+
+        </div>
+
     </div>
 
-    <iframe src="cv/AnaAlfaiate_CV_English.pdf" class="cv-viewer" title="CV Viewer">
-        <p>Your browser does not support PDFs. <a href="cv/AnaAlfaiate_CV_English.pdf">Download the PDF</a>.</p>
-    </iframe>
+    <a href="cv/AnaAlfaiate_CV_English.pdf" download class="download-fab" title="Download PDF">
+        <i class="fas fa-download"></i>
+    </a>
+
 </body>
 
 </html>

@@ -648,3 +648,102 @@ footer span {
         width: 100%;
     }
 }
+
+/* --- Admin System Styles --- */
+.admin-mode .list-category li:hover .edit-btn {
+    opacity: 1;
+}
+
+.edit-btn {
+    margin-left: 10px;
+    cursor: pointer;
+    color: #009de0;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.admin-controls {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255, 255, 255, 0.9);
+    padding: 15px;
+    border-radius: 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    display: flex;
+    gap: 10px;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+}
+
+.item-details {
+    margin-left: 25px;
+    font-size: 0.9em;
+    color: #666;
+}
+
+.item-date {
+    display: block;
+    font-weight: 600;
+    color: #009de0;
+    font-size: 0.85em;
+    margin-top: 2px;
+}
+
+.item-note {
+    margin: 2px 0 0 0;
+    font-style: italic;
+}
+
+/* Modal Styles */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+.modal.hidden {
+    display: none;
+}
+
+.modal-content {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 400px;
+}
+
+.modal-content input,
+.modal-content textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-family: inherit;
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.btn-danger {
+    background: #dc3545;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
