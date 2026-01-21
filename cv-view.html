@@ -134,6 +134,25 @@
         .download-fab:hover {
             transform: scale(1.1);
         }
+
+        .cv-item.with-logo {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .cv-logo {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+            border-radius: 5px;
+            /* Optional slight radius */
+            flex-shrink: 0;
+            background: white;
+            /* Ensure visibility on transparent backgrounds */
+            padding: 2px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
     </style>
 </head>
 
@@ -158,33 +177,42 @@
             <div class="cv-section-block">
                 <h3 class="cv-section-title">Education</h3>
 
-                <div class="cv-item">
-                    <h4>MSc in Computer Science and Engineering</h4>
-                    <h5>Instituto Superior Técnico</h5>
-                    <p class="date">Aug 2024 - Present</p>
-                    <ul>
-                        <li>Specialization in AI and Data Science.</li>
-                        <li>Relevant Coursework: Algorithms, Deep Learning, Natural Language Processing.</li>
-                    </ul>
+                <div class="cv-item with-logo">
+                    <img src="img/IST_Logo.png" alt="IST" class="cv-logo">
+                    <div class="cv-item-content">
+                        <h4>MSc in Computer Science and Engineering</h4>
+                        <h5>Instituto Superior Técnico</h5>
+                        <p class="date">Aug 2024 - Present</p>
+                        <ul>
+                            <li>Specialization in AI and Data Science.</li>
+                            <li>Relevant Coursework: Algorithms, Deep Learning, Natural Language Processing.</li>
+                        </ul>
+                    </div>
                 </div>
 
-                <div class="cv-item">
-                    <h4>Erasmus+ Exchange Semester</h4>
-                    <h5>DTU - Technical University of Denmark</h5>
-                    <p class="date">Aug 2025 - Dec 2025</p>
-                    <ul>
-                        <li>Focus on Program Verification, Cybersecurity, and Logic.</li>
-                    </ul>
+                <div class="cv-item with-logo">
+                    <img src="img/Danmarks_Tekniske_Universitet_(logo).svg.png" alt="DTU" class="cv-logo">
+                    <div class="cv-item-content">
+                        <h4>Exchange Student - Computer Science</h4>
+                        <h5>DTU - Technical University of Denmark</h5>
+                        <p class="date">Aug 2025 - Dec 2025</p>
+                        <ul>
+                            <li>Focus on Program Verification, Cybersecurity, and Logic.</li>
+                        </ul>
+                    </div>
                 </div>
 
-                <div class="cv-item">
-                    <h4>BSc in Biomedical Engineering</h4>
-                    <h5>Instituto Superior Técnico</h5>
-                    <p class="date">Sep 2021 - Jul 2024</p>
-                    <ul>
-                        <li>Final Grade: 18.47 / 20</li>
-                        <li>Academic Excellence Diplomas (2021/2022, 2022/2023, 2023/2024).</li>
-                    </ul>
+                <div class="cv-item with-logo">
+                    <img src="img/IST_Logo.png" alt="IST" class="cv-logo">
+                    <div class="cv-item-content">
+                        <h4>BSc in Biomedical Engineering</h4>
+                        <h5>Instituto Superior Técnico</h5>
+                        <p class="date">Sep 2021 - Jul 2024</p>
+                        <ul>
+                            <li>Final Grade: 18.47 / 20</li>
+                            <li>Academic Excellence Diplomas (2021/2022, 2022/2023, 2023/2024).</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
 
