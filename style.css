@@ -509,7 +509,8 @@ footer span {
 
 .timeline-element-content {
     width: 45%;
-    padding: 25px;
+    padding: 40px 25px 25px 25px;
+    /* Increased top padding */
     background-color: white;
     border-radius: 12px;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
@@ -531,8 +532,9 @@ footer span {
 
 /* Icon Logic */
 .timeline-element-icon {
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    /* Slightly larger for better logo visibility */
+    height: 60px;
     background-color: #fff;
     border: none;
     color: #555;
@@ -543,7 +545,8 @@ footer span {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    top: 0;
+    top: -30px;
+    /* Move UP to avoid text overlap */
     z-index: 10;
     box-shadow: 0 0 0 5px #f5f7fa;
     /* Fake border to separate from line */
