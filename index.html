@@ -436,6 +436,7 @@
         <div class="modal-content glass">
             <h3>Add New Item</h3>
             <input type="text" id="add-text" placeholder="Item Name (e.g. Learn to Fly)">
+            <input type="text" id="add-date" placeholder="Completion Date (Optional)">
             <div class="modal-buttons">
                 <button onclick="saveNewItem()" class="btn-primary">Add</button>
                 <button onclick="closeAddModal()" class="btn-secondary">Cancel</button>
@@ -531,6 +532,7 @@
         function openAddModal(category) {
             currentAddCategory = category;
             document.getElementById('add-text').value = '';
+            document.getElementById('add-date').value = '';
             document.getElementById('add-modal').classList.remove('hidden');
         }
 
@@ -542,11 +544,28 @@
         function saveNewItem() {
             if (!currentAddCategory) return;
             const text = document.getElementById('add-text').value;
+            const date = document.getElementById('add-date').value;
+
             if (!text) return;
 
             const ul = currentAddCategory.querySelector('ul');
             const li = document.createElement('li');
-            li.innerHTML = `<i class="far fa-square"></i> ${text} <i class="fas fa-pencil-alt edit-btn"></i><div class="item-details"></div>`;
+
+            // Build inner HTML similar to saveEdit
+            let detailsHTML = '';
+            if (date) {
+                detailsHTML = `<span class="item-date">Completed: ${date}</span>`;
+            }
+
+            // Determine icon and class
+            const isDone = !!date;
+            const iconClass = isDone ? 'fas fa-check-square' : 'far fa-square';
+            const liClass = isDone ? 'done' : '';
+
+            if (liClass) li.className = liClass;
+
+            li.innerHTML = `<i class="${iconClass}"></i> ${text} <i class="fas fa-pencil-alt edit-btn"></i>
+                            <div class="item-details" data-date="${date || ''}" data-notes="">${detailsHTML}</div>`;
 
             // Re-bind edit click for the new item
             li.querySelector('.edit-btn').onclick = (e) => openEditModal(e, li);
