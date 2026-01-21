@@ -462,6 +462,7 @@ h2::after {
 
 /* Footer */
 footer {
+    width: 100%;
     background-color: #263238;
     color: #aaa;
     text-align: center;
@@ -564,32 +565,30 @@ footer span {
 */
 
 .timeline-element:nth-child(odd) .timeline-element-content {
-    margin-right: 52%;
-    /* Push to left */
+    margin-right: 55%;
+    /* Push to left, creating gap */
     text-align: right;
-    width: 48%;
+    width: 45%;
 }
 
 .timeline-element:nth-child(odd) .timeline-element-date {
-    left: 52%;
+    left: 55%;
     text-align: left;
-    width: 48%;
+    width: 45%;
 }
 
 .timeline-element:nth-child(even) .timeline-element-content {
-    margin-left: 52%;
-    /* Push to right */
+    margin-left: 55%;
+    /* Push to right, creating gap */
     text-align: left;
-    width: 48%;
+    width: 45%;
 }
 
 .timeline-element:nth-child(even) .timeline-element-date {
-    right: 52%;
+    right: 55%;
     text-align: right;
-    width: 48%;
+    width: 45%;
 }
-
-
 
 /* Fix for IST Icon Size */
 .ist-icon {
