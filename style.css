@@ -25,8 +25,6 @@ body {
     padding: 0;
     overflow-y: auto;
     /* Garante que o scroll seja permitido */
-    padding-bottom: 60px;
-    /* Espaço suficiente para o footer */
     padding-top: 60px;
 
 }
