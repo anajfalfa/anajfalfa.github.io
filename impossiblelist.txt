@@ -5,6 +5,7 @@ tech
 Academic
 - Attend an Athens Edition - intensive Week
 - Be a Teaching Assistant
+- Be co-author of a paper []
 - Publish a paper
 - Attend a conference
 - Do a Master's Thesis
@@ -14,6 +15,7 @@ Academic
 - Assist a Course: Knowledge Representation and Reasoning, P3 @ IST
 - Assist a Course: Information Systems Project Management, P3 @ IST
 - Assist a Course: Information Visualization, P1 @ IST
+- Work at a Startup
 
 
 Health
