@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Fotografias de Ana Alfaiate">
+    <title>Ana Alfaiate - Fotografia</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+</head>
+
+<body class="photography-page">
+    <div class="navbar gallery-navbar">
+        <a href="index.html#home"><i class="fas fa-home"></i> Home</a>
+        <a href="index.html#portfolio">Portfolio</a>
+        <a href="index.html#list">Impossible List</a>
+        <a href="index.html#cv">CV</a>
+    </div>
+
+    <div class="container container-gallery">
+        <header class="gallery-header">
+            <h1>Photography</h1>
+            <p>Capturing moments and perspectives through my lens.</p>
+        </header>
+
+        <div class="gallery-grid" id="gallery">
+            <!-- Photos will be placed here -->
+            <div class="gallery-item" onclick="openLightbox(this)">
+                <img src="img/photo_nature_1.png" alt="Misty Forest at Sunrise">
+                <div class="gallery-caption">Misty Forest at Sunrise</div>
+            </div>
+            <div class="gallery-item" onclick="openLightbox(this)">
+                <img src="img/photo_architecture_1.png" alt="Modern Minimalist Architecture">
+                <div class="gallery-caption">Modern Minimalist Architecture</div>
+            </div>
+            <div class="gallery-item" onclick="openLightbox(this)">
+                <img src="img/photo_nature_2.png" alt="Dewdrop on Leaf">
+                <div class="gallery-caption">Macro: Dewdrop on Leaf</div>
+            </div>
+            <div class="gallery-item" onclick="openLightbox(this)">
+                <img src="img/photo_travel_1.png" alt="Ocean Sunset">
+                <div class="gallery-caption">Ocean Sunset</div>
+            </div>
+            <div class="gallery-item" onclick="openLightbox(this)">
+                <img src="img/photo_architecture_2.png" alt="Spiral Staircase">
+                <div class="gallery-caption">Geometric Spiral Staircase</div>
+            </div>
+            <div class="gallery-item" onclick="openLightbox(this)">
+                <img src="img/photo_nature_3.png" alt="Mountain Lake Reflection">
+                <div class="gallery-caption">Alpine Mountain Reflection</div>
+            </div>
+        </div>
+
+        <div class="gallery-footer">
+            <a href="index.html" class="btn-primary"><i class="fas fa-arrow-left"></i> Back to Home</a>
+        </div>
+    </div>
+
+    <!-- Simple Lightbox -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <span class="close-lightbox">&times;</span>
+        <img class="lightbox-content" id="lightbox-img">
+        <div id="lightbox-caption" class="lightbox-caption"></div>
+    </div>
+
+    <script>
+        function openLightbox(element) {
+            const img = element.querySelector('img');
+            const caption = element.querySelector('.gallery-caption').innerText;
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            const lightboxCaption = document.getElementById('lightbox-caption');
+
+            lightbox.style.display = "flex";
+            lightboxImg.src = img.src;
+            lightboxCaption.innerText = caption;
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = "none";
+        }
+    </script>
+</body>
+
+</html>
