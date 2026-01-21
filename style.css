@@ -44,6 +44,10 @@ header {
     max-width: 900px;
     width: 100%;
     padding: 20px;
+    flex: 1;
+    /* Pushes footer to the bottom */
+    display: flex;
+    flex-direction: column;
 }
 
 /* Glassmorphism Utility */
