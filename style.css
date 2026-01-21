@@ -435,16 +435,46 @@ h2::after {
     z-index: 1000;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
     backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .navbar a {
     color: #333;
     font-size: 1em;
-    margin: 0 20px;
+    margin: 0 15px;
     text-decoration: none;
     font-weight: 600;
     position: relative;
     padding-bottom: 5px;
+    transition: color 0.3s;
+}
+
+.navbar a:hover {
+    color: #009de0;
+}
+
+.lang-switcher {
+    display: flex;
+    gap: 10px;
+    margin-left: 20px;
+    border-left: 1px solid #ddd;
+    padding-left: 20px;
+}
+
+.lang-btn {
+    font-size: 0.85em;
+    font-weight: 700;
+    color: #aaa !important;
+    text-decoration: none;
+    padding: 2px 5px;
+    border-radius: 4px;
+}
+
+.lang-btn.active {
+    color: #009de0 !important;
+    background: rgba(0, 157, 224, 0.05);
 }
 
 .navbar a::after {
@@ -779,7 +809,26 @@ footer span {
     margin-bottom: 10px;
     background: linear-gradient(135deg, #333, #777);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
+}
+
+.ai-callout {
+    background: rgba(0, 157, 224, 0.1);
+    border-left: 4px solid #009de0;
+    padding: 15px;
+    margin: 20px auto;
+    max-width: 600px;
+    border-radius: 4px;
+    font-size: 0.9em;
+    color: #444;
+    display: inline-block;
+    text-align: left;
+}
+
+.ai-callout i {
+    color: #009de0;
+    margin-right: 10px;
 }
 
 .gallery-grid {

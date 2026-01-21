@@ -1,0 +1,267 @@
+<!-- force rebuild -->
+
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Página pessoal de Ana Alfaiate">
+    <title> Ana Alfaiate - Página Pessoal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+</head>
+
+<body>
+    <!-- Barra de Atalhos -->
+    <div class="navbar">
+        <a href="#home">Início</a>
+        <a href="#portfolio">Portfólio</a>
+        <a href="photography-pt.html">Fotografia</a>
+        <a href="#list">Impossible List</a>
+        <a href="#cv">Currículo</a>
+        <a href="#ideas">Ideias</a>
+        <div class="lang-switcher">
+            <a href="index.html" class="lang-btn">EN</a>
+            <a href="index-pt.html" class="lang-btn active">PT</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Foto e informações pessoais -->
+        <div class="profile-section" id="home">
+            <img src="img/Ana-Alfaiate.jpeg" alt="Ana Alfaiate" class="profile-img">
+            <h1>Ana Alfaiate</h1>
+            <p class="course"> MEIC & LEBiom</p>
+            <p class="bio">Estudante de Mestrado em Engenharia Informática e de Computadores @ Técnico Lisboa </p>
+        </div>
+
+        <!-- Links para redes sociais -->
+        <div class="social-links">
+            <a href="https://github.com/anajfalfa" target="_blank" class="social-link" title="anajfalfa"><i
+                    class="fab fa-github"></i> <span class="tooltip" tip-position="bottom">anajfalfa</span>
+            </a>
+            <a href="https://www.linkedin.com/in/ana-alfaiate/" target="_blank" class="social-link"
+                title="ana-alfaiate"> <i class="fab fa-linkedin"></i> <span class="tooltip"
+                    tip-position="bottom">ana-alfaiate</span></a>
+            <a href="https://discord.com/users/690233975670964313" class="social-link discord-info"
+                title="ana.alfaiate#1460" onclick="alert('ana.alfaiate#1460');">
+                <i class="fab fa-discord"></i> <span class="tooltip" tip-position="bottom">ana.alfaiate#1460</span></a>
+            <a href="https://steamcommunity.com/profiles/76561198403587892/" target="_blank" class="social-link"
+                title="alfaks3">
+                <i class="fab fa-steam"></i> <span class="tooltip" tip-position="bottom">alfaks3</span> </a>
+            <a href="https://www.instagram.com/ana.alfaiate.01/" target="_blank" class="social-link"
+                title="ana.alfaiate.01">
+                <i class="fab fa-instagram"></i> <span class="tooltip" tip-position="bottom">ana.alfaiate.01</span> </a>
+            <a href="mailto:anajfalfaiate@gmail.com" target="_blank" class="social-link"
+                title="anajfalfaiate@gmail.com">
+                <i class="fab fa-google"></i> <span class="tooltip" tip-position="bottom">anajfalfaiate@gmail.com</span>
+            </a>
+            <a href="mailto:ana.alfaiate@tecnico.ulisboa.pt" target="_blank" class="social-link"
+                title="ana.alfaiate@tecnico.ulisboa.pt">
+                <i class="fas fa-envelope"></i> <span class="tooltip"
+                    tip-position="bottom">ana.alfaiate@tecnico.ulisboa.pt</span> </a>
+            <a href="https://fenix.tecnico.ulisboa.pt/homepage/ist1102903" class=" social-link" title="ist1102903"> <img
+                    src="img/IST_favicon.ico" alt="IST Técnico" class="ist-icon"> <span class="tooltip"
+                    tip-position="bottom">ist1102903</span> </a>
+        </div>
+        <!-- Main Div -->
+        <div class="main-container">
+            <p>
+                Bem-vindo ao meu espaço pessoal na web!
+                Aqui podes encontrar a minha "impossible list" e um pouco mais sobre mim.
+            </p>
+        </div>
+        <!-- Portfolio Section -->
+        <section id="portfolio" class="portfolio-section">
+            <h2>O Meu Portfólio</h2>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <a href="https://nebm.tecnico.ulisboa.pt/" target="_blank"
+                        style="text-decoration: none; color: inherit; display: block;">
+                        <img src="img/nebm_screenshot.png" alt="Website do NEBM">
+                        <h3>Website do NEBM</h3>
+                        <p>Colaboradora (2022-2023) & Coordenadora (2023-2024)</p>
+                        <p>Redesenhei o website usando <strong>HTML, CSS, JS</strong> e geri a base de dados
+                            <strong>PostgreSQL</strong> para recursos dos membros.
+                        </p>
+                    </a>
+                </div>
+                <div class="portfolio-item">
+                    <a href="https://job2be.tecnico.ulisboa.pt/" target="_blank"
+                        style="text-decoration: none; color: inherit; display: block;">
+                        <img src="img/job2be_screenshot.png" alt="Website do Job2Be">
+                        <h3>Website do JOB2BE 2024</h3>
+                        <p>Colaboradora (2023-2024)</p>
+                        <p>Desenvolvimento front-end e implementação do sistema de pontos em <strong>PostgreSQL</strong>
+                            para a plataforma Job2Be.</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Impossible List Section -->
+        <section id="list" class="list-section">
+            <h2>Impossible List</h2>
+            <p class="section-subtitle">Os meus objetivos de vida e conquistas.</p>
+            <div class="list-grid">
+                <div class="list-category">
+                    <h3>Académico</h3>
+                    <ul>
+                        <li><i class="far fa-square"></i> <a href="https://register.athensnetwork.eu/" target="_blank"
+                                style="text-decoration: none; color: inherit;">Participar numa Edição Athens - Semana
+                                Intensiva</a></li>
+                        <li><i class="far fa-square"></i> Ser Professora Assistente (Monitora)</li>
+                        <li class="done"><i class="fas fa-check-square"></i> <a
+                                href="https://submissions.mirasmart.com/ISMRM2025/ViewSubmissionPublic.aspx?sei=6ffhKsQ4p"
+                                target="_blank" style="text-decoration: none; color: inherit;">Co-autora: Abstract ISMRM
+                                2025
+                                (Havai)</a></li>
+                        <li><i class="far fa-square"></i> Publicar um artigo científico</li>
+                        <li><i class="far fa-square"></i> Participar numa conferência</li>
+                        <li><i class="far fa-square"></i> Fazer uma Tese de Mestrado</li>
+                        <li><i class="far fa-square"></i> Fazer uma Tese de Doutoramento (?) @ ETH Zurich</li>
+                        <li><i class="far fa-square"></i> Fazer um Pós-doutoramento</li>
+
+                        <!-- Identidade Científica -->
+                        <li
+                            style="margin-top: 15px; font-weight: 600; border-bottom: 1px solid #eee; padding-bottom: 5px;">
+                            Identidade Científica</li>
+                        <li><i class="fab fa-orcid" style="color: #a6ce39;"></i> <a
+                                href="https://orcid.org/0009-0003-0951-8324" target="_blank"
+                                style="text-decoration: none; color: inherit;">ORCID: 0009-0003-0951-8324</a></li>
+                        <li><i class="fas fa-id-card" style="color: #333;"></i> <a
+                                href="https://www.cienciavitae.pt//pt/3011-3088-A2C4" target="_blank"
+                                style="text-decoration: none; color: inherit;">Ciência ID: 3011-3088-A2C4</a></li>
+                        <li><i class="fas fa-graduation-cap" style="color: #4285f4;"></i> <a
+                                href="https://scholar.google.com/citations?view_op=new_profile&hl=pt-PT" target="_blank"
+                                style="text-decoration: none; color: inherit;">Google Scholar</a></li>
+
+                        <li style="margin-top: 15px;"></li>
+                        <li><i class="far fa-square"></i> Apoio à Disciplina: Algoritmos Avançados, P3 @ IST</li>
+                        <li><i class="far fa-square"></i> Apoio à Disciplina: Representação do Conhecimento e
+                            Raciocínio, P3 @
+                            IST</li>
+                        <li><i class="far fa-square"></i> Apoio à Disciplina: Gestão de Projetos de Sistemas de
+                            Informação, P3 @
+                            IST</li>
+                        <li><i class="far fa-square"></i> Apoio à Disciplina: Visualização de Informação, P1 @ IST</li>
+                    </ul>
+                </div>
+
+                <div class="list-category">
+                    <h3>Pessoal</h3>
+                    <ul>
+                        <li class="done"><i class="fas fa-check-square"></i> Participar no Web Summit (2018, 2019, 2021,
+                            2022,
+                            2023, 2024)</li>
+                        <li class="done"><i class="fas fa-check-square"></i> Participar na JMJ Lisbon (2023)</li>
+                        <li class="done"><i class="fas fa-check-square"></i> Participar na Missão País (2022, 2023,
+                            2024)</li>
+                        <li class="done"><i class="fas fa-check-square"></i> Voluntariado Lisbon Games Week (2018)</li>
+                        <li><i class="far fa-square"></i> Participar num intercâmbio/trabalhar fora de Portugal</li>
+                        <li><i class="far fa-square"></i> Completar um IronMan</li>
+                        <li><i class="far fa-square"></i> Ver a aurora boreal</li>
+                        <li><i class="far fa-square"></i> Pilotar um avião/helicóptero</li>
+                        <li><i class="far fa-square"></i> Correr uma maratona</li>
+                        <li><i class="far fa-square"></i> Aprender a surfar (bem)</li>
+                        <li><i class="far fa-square"></i> Escrever um livro</li>
+                        <li><i class="far fa-square"></i> Dar uma palestra numa TED</li>
+                    </ul>
+                </div>
+
+                <div class="list-category">
+                    <h3>Voluntariado / Eventos</h3>
+                    <ul>
+                        <li class="done"><i class="fas fa-check-square"></i> Coordenar o Website do NEBM (2023-2024)
+                        </li>
+                        <li class="done"><i class="fas fa-check-square"></i> Presidente do NEBM (2024-2025)</li>
+                        <li class="done"><i class="fas fa-check-square"></i> Guia no Hello IST (2024)</li>
+                        <li class="done"><i class="fas fa-check-square"></i> Mentora no NAPE (2024-2025)</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Timeline Section -->
+        <section id="cv" class="cv-section">
+            <h2>Currículo & Percurso</h2>
+            <div class="timeline">
+                <div class="timeline-element">
+                    <div class="timeline-element-icon" style="box-shadow: 0 0 0 4px #009de0;">
+                        <img src="img/IST_Logo.png" alt="IST" class="timeline-element-logo-img">
+                    </div>
+                    <div class="timeline-element-content">
+                        <span class="timeline-element-date">Set 2021 - Presente</span>
+                        <h3>Instituto Superior Técnico</h3>
+                        <p>Licenciatura em Engenharia Biomédica e Mestrado em Engenharia Informática.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-element reverse">
+                    <div class="timeline-element-icon" style="box-shadow: 0 0 0 4px #ea4335;">
+                        <img src="img/INESC-ID-new-logo_version-01A.png" alt="INESC-ID"
+                            class="timeline-element-logo-img">
+                    </div>
+                    <div class="timeline-element-content">
+                        <span class="timeline-element-date">Out 2024 - Presente</span>
+                        <h3>INESC-ID | ARSR</h3>
+                        <p>Estagiária de Investigação focada em Lógica e Inteligência Artificial.</p>
+                    </div>
+                </div>
+
+                <!-- Link to CV View -->
+                <div style="text-align: center; margin-top: 40px;">
+                    <a href="cv-view-pt.html" class="btn-primary">Ver Currículo Detalhado</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ideas Section -->
+        <section id="ideas" class="ideas-section">
+            <h2>Projetos & Ideias</h2>
+            <div style="text-align: center; margin-bottom: 30px;">
+                <button id="unlock-ideas" class="btn-secondary" onclick="unlockIdeas()">Desbloquear Acesso</button>
+            </div>
+            <div id="ideas-content" style="display: none;">
+                <div class="ideas-grid">
+                    <div class="idea-card glass">
+                        <h3>🏸 Kit Personalizado de Frisbee</h3>
+                        <p>Design e produção de kits personalizados (Principal e Secundário) para uma equipa de Ultimate
+                            Frisbee.</p>
+                    </div>
+                    <div class="idea-card glass">
+                        <h3>📍 Apoio de Praia & Posto de Turismo</h3>
+                        <p>Ponto de apoio à praia servindo de posto de turismo em Ribamar (perto da <a
+                                href="https://maps.app.goo.gl/Nmd8MouDB6zgsVSe9" target="_blank"
+                                style="color: #009de0; text-decoration: underline;"><i
+                                    class="fas fa-map-marked-alt"></i>
+                                Fonte das Avencas</a>). Venda de globos de neve e disponibilização de panfletos.
+                            Operação sazonal com bolsas para estudantes.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Ana Alfaiate. Feito com <span>&hearts;</span> e um pouco de café.</p>
+    </footer>
+
+    <script>
+        function unlockIdeas() {
+            const pw = prompt("Password:");
+            if (pw === "42") {
+                document.getElementById('ideas-content').style.display = "block";
+                document.getElementById('unlock-ideas').style.display = "none";
+            } else {
+                alert("Errado!");
+            }
+        }
+    </script>
+</body>
+
+</html>
