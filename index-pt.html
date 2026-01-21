@@ -111,7 +111,7 @@
                     <h3>Académico</h3>
                     <ul>
                         <li><i class="far fa-square"></i> <a href="https://register.athensnetwork.eu/" target="_blank"
-                                style="text-decoration: none; color: inherit;">Assistir a uma Edição Athens - Semana
+                                style="text-decoration: none; color: inherit;">Participar numa Edição Athens - Semana
                                 Intensiva</a></li>
                         <li><i class="far fa-square"></i> Ser Professora Assistente (Monitora)</li>
                         <li class="done"><i class="fas fa-check-square"></i> <a
@@ -461,12 +461,15 @@
 
     <script>
         function unlockIdeas() {
-            const pw = prompt("Password:");
+            const pw = prompt("Palavra-passe:");
             if (pw === "42") {
-                document.getElementById('ideas-content').style.display = "block";
-                document.getElementById('unlock-ideas').style.display = "none";
+                const content = document.getElementById('ideas-content');
+                const lock = document.getElementById('ideas-lock');
+
+                content.classList.remove('hidden', 'blur-content');
+                lock.classList.add('hidden');
             } else {
-                alert("Errado!");
+                alert("Palavra-passe errada!");
             }
         }
     </script>
