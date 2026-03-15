@@ -10,6 +10,15 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-XXXXXXXXXX');
+    </script>
 </head>
 
 <body class="impossiblelist-page">
@@ -21,6 +30,7 @@
             <a href="list-pt.html">Impossible List</a>
             <a href="index-pt.html#cv">Currículo</a>
             <div class="lang-switcher">
+            <span id="role-indicator" style="margin-right: 15px; font-size: 0.8em; opacity: 0.7; color: white;"></span>
                 <a href="list.html" class="lang-btn">EN</a>
                 <a href="list-pt.html" class="lang-btn active">PT</a>
             </div>
@@ -196,6 +206,7 @@
         </section>
     </section>
 
+    <script src="js/roles.js"></script>
 </body>
 
 </html>

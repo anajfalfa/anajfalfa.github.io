@@ -1,0 +1,400 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="section">
+    <div class="container">
+        <div class="columns is-centered">
+            <div class="column is-10">
+                <div class="content mb-6 flex justify-between items-start">
+                    <div>
+                        <h1 class="title is-1 has-text-white font-black uppercase tracking-widest mb-1">O Meu Grafo</h1>
+                        <p class="subtitle is-6 text-muted">Rede de contactos e conversas</p>
+                    </div>
+                </div>
+
+                <div id="graph-container" class="graph-canvas-wrapper glass">
+                    <svg id="graph-svg" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid meet">
+                        <!-- Edges will be injected here -->
+                        <g id="edges-group"></g>
+                        <!-- Nodes will be injected here -->
+                        <g id="nodes-group"></g>
+                    </svg>
+
+                    <!-- User Detail Panel -->
+                    <div id="node-details" class="node-panel hidden">
+                        <div class="node-avatar">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+                                <circle cx="12" cy="7" r="4" />
+                            </svg>
+                        </div>
+                        <div class="node-info">
+                            <h4 id="node-name" class="font-bold text-white mb-0"></h4>
+                            <p id="node-type" class="text-xs text-muted capitalize mb-0"></p>
+                        </div>
+                        <div class="node-actions">
+                            <button class="action-btn chat-btn">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                                </svg>
+                            </button>
+                            <button class="action-btn close-btn" onclick="closeDetails()">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M18 6 6 18" />
+                                    <path d="m6 6 12 12" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Legend -->
+                    <div class="graph-legend">
+                        <div class="legend-item">
+                            <div class="dot" style="background: #3b82f6;"></div>
+                            <span>Friend</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="dot" style="background: #10b981;"></div>
+                            <span>Work</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="dot" style="background: #f43f5e;"></div>
+                            <span>Family</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="dot" style="background: #8b5cf6;"></div>
+                            <span>Mentor</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .graph-canvas-wrapper {
+        position: relative;
+        width: 100%;
+        height: 600px;
+        background: rgba(15, 23, 42, 0.5);
+        border-radius: 1.5rem;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        overflow: hidden;
+    }
+
+    .glass {
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+    }
+
+    #graph-svg {
+        width: 100%;
+        height: 100%;
+        cursor: grab;
+    }
+
+    #graph-svg:active {
+        cursor: grabbing;
+    }
+
+    .node-circle {
+        cursor: pointer;
+        transition: stroke-width 0.2s ease;
+    }
+
+    .node-circle:hover {
+        stroke-width: 4;
+    }
+
+    .node-text {
+        pointer-events: none;
+        user-select: none;
+        font-family: inherit;
+    }
+
+    .edge-line {
+        stroke: rgba(255, 255, 255, 0.1);
+        stroke-width: 1;
+    }
+
+    .node-panel {
+        position: absolute;
+        bottom: 1.5rem;
+        left: 1.5rem;
+        right: 1.5rem;
+        padding: 1rem;
+        background: rgba(30, 41, 59, 0.9);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        transform: translateY(0);
+        opacity: 1;
+        z-index: 20;
+    }
+
+    .node-panel.hidden {
+        transform: translateY(100px);
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    .node-avatar {
+        width: 3rem;
+        height: 3rem;
+        border-radius: 0.75rem;
+        background: rgba(255, 255, 255, 0.05);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #60a5fa;
+    }
+
+    .node-info {
+        flex: 1;
+    }
+
+    .node-actions {
+        display: flex;
+        gap: 0.5rem;
+    }
+
+    .action-btn {
+        padding: 0.5rem;
+        border-radius: 0.5rem;
+        border: none;
+        cursor: pointer;
+        transition: background 0.2s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .chat-btn {
+        background: rgba(59, 130, 246, 0.2);
+        color: #60a5fa;
+    }
+
+    .chat-btn:hover {
+        background: rgba(59, 130, 246, 0.3);
+    }
+
+    .close-btn {
+        background: rgba(255, 255, 255, 0.05);
+        color: rgba(255, 255, 255, 0.6);
+    }
+
+    .close-btn:hover {
+        background: rgba(255, 255, 255, 0.1);
+        color: #fff;
+    }
+
+    .graph-legend {
+        position: absolute;
+        bottom: 1.5rem;
+        left: 1.5rem;
+        display: flex;
+        gap: 1rem;
+        pointer-events: none;
+    }
+
+    @media (max-width: 640px) {
+        .graph-legend {
+            display: none;
+        }
+    }
+
+    .legend-item {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .legend-item span {
+        font-size: 10px;
+        text-transform: uppercase;
+        font-weight: 700;
+        color: rgba(255, 255, 255, 0.6);
+        letter-spacing: -0.025em;
+    }
+
+    .dot {
+        width: 0.5rem;
+        height: 0.5rem;
+        border-radius: 50%;
+    }
+
+    .font-black {
+        font-weight: 900;
+    }
+
+    .text-muted {
+        color: rgba(255, 255, 255, 0.6);
+    }
+
+    .flex {
+        display: flex;
+    }
+
+    .justify-between {
+        justify-content: space-between;
+    }
+
+    .items-start {
+        align-items: flex-start;
+    }
+</style>
+
+<script>
+    const nodes = [
+        { id: 'ana', name: 'Ana', type: 'mentor', x: 400, y: 300 },
+        { id: 'maria', name: 'Maria', type: 'friend', x: 200, y: 150 },
+        { id: 'joao', name: 'João', type: 'friend', x: 600, y: 150 },
+        { id: 'silva', name: 'Prof. Silva', type: 'work', x: 200, y: 450 },
+        { id: 'santos', name: 'Inv. Santos', type: 'work', x: 600, y: 450 },
+        { id: 'rita', name: 'Rita', type: 'family', x: 400, y: 100 },
+    ];
+
+    const edges = [
+        { source: 'ana', target: 'maria' },
+        { source: 'ana', target: 'joao' },
+        { source: 'ana', target: 'silva' },
+        { source: 'ana', target: 'santos' },
+        { source: 'ana', target: 'rita' },
+        { source: 'maria', target: 'rita' },
+        { source: 'joao', target: 'maria' },
+    ];
+
+    const colors = {
+        friend: '#3b82f6',
+        work: '#10b981',
+        family: '#f43f5e',
+        mentor: '#8b5cf6'
+    };
+
+    function renderGraph() {
+        const svg = document.getElementById('graph-svg');
+        const edgesGroup = document.getElementById('edges-group');
+        const nodesGroup = document.getElementById('nodes-group');
+
+        // Draw edges
+        edges.forEach(edge => {
+            const s = nodes.find(n => n.id === edge.source);
+            const t = nodes.find(n => n.id === edge.target);
+            if (!s || !t) return;
+
+            const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+            line.setAttribute('x1', s.x);
+            line.setAttribute('y1', s.y);
+            line.setAttribute('x2', t.x);
+            line.setAttribute('y2', t.y);
+            line.setAttribute('class', 'edge-line');
+            edgesGroup.appendChild(line);
+        });
+
+        // Draw nodes
+        nodes.forEach(node => {
+            const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+            g.setAttribute('transform', `translate(${node.x},${node.y})`);
+            g.setAttribute('class', 'node-group');
+            g.onclick = () => showDetails(node);
+
+            const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+            circle.setAttribute('r', '20');
+            circle.setAttribute('fill', '#0f172a');
+            circle.setAttribute('stroke', colors[node.type]);
+            circle.setAttribute('stroke-width', '2');
+            circle.setAttribute('class', 'node-circle');
+
+            const nameText = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+            nameText.textContent = node.name;
+            nameText.setAttribute('y', '35');
+            nameText.setAttribute('text-anchor', 'middle');
+            nameText.setAttribute('fill', 'white');
+            nameText.setAttribute('font-size', '10');
+            nameText.setAttribute('class', 'node-text opacity-70');
+
+            const initialText = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+            initialText.textContent = node.name[0];
+            initialText.setAttribute('y', '4');
+            initialText.setAttribute('text-anchor', 'middle');
+            initialText.setAttribute('fill', colors[node.type]);
+            initialText.setAttribute('font-size', '12');
+            initialText.setAttribute('font-weight', 'bold');
+            initialText.setAttribute('class', 'node-text');
+
+            g.appendChild(circle);
+            g.appendChild(nameText);
+            g.appendChild(initialText);
+            nodesGroup.appendChild(g);
+
+            // Dragging logic
+            let isDragging = false;
+            g.onmousedown = (e) => {
+                isDragging = true;
+                const startX = e.clientX;
+                const startY = e.clientY;
+                const initialX = node.x;
+                const initialY = node.y;
+
+                window.onmousemove = (me) => {
+                    if (!isDragging) return;
+                    const dx = me.clientX - startX;
+                    const dy = me.clientY - startY;
+                    node.x = initialX + dx;
+                    node.y = initialY + dy;
+                    updateGraph();
+                };
+
+                window.onmouseup = () => {
+                    isDragging = false;
+                    window.onmousemove = null;
+                };
+            };
+        });
+    }
+
+    function updateGraph() {
+        const nodesGroup = document.getElementById('nodes-group');
+        const edgesGroup = document.getElementById('edges-group');
+
+        nodes.forEach((node, i) => {
+            const g = nodesGroup.children[i];
+            g.setAttribute('transform', `translate(${node.x},${node.y})`);
+        });
+
+        edges.forEach((edge, i) => {
+            const line = edgesGroup.children[i];
+            const s = nodes.find(n => n.id === edge.source);
+            const t = nodes.find(n => n.id === edge.target);
+            line.setAttribute('x1', s.x);
+            line.setAttribute('y1', s.y);
+            line.setAttribute('x2', t.x);
+            line.setAttribute('y2', t.y);
+        });
+    }
+
+    function showDetails(node) {
+        const panel = document.getElementById('node-details');
+        document.getElementById('node-name').textContent = node.name;
+        document.getElementById('node-type').textContent = node.type;
+        panel.classList.remove('hidden');
+    }
+
+    function closeDetails() {
+        document.getElementById('node-details').classList.add('hidden');
+    }
+
+    window.onload = renderGraph;
+</script>
+{% endblock content %}

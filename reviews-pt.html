@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Críticas Académicas - Ana Alfaiate">
+    <title>Críticas - Ana Alfaiate</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+    <style>
+        .reviews-container {
+            max-width: 900px;
+            width: 100%;
+        }
+
+        .review-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 25px;
+            border-left: 5px solid #f39c12;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .review-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.15);
+        }
+
+        .review-card.positive {
+            border-left-color: #27ae60;
+        }
+
+        .review-card.neutral {
+            border-left-color: #3498db;
+        }
+
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 15px;
+        }
+
+        .reviewer-info h3 {
+            margin: 0 0 5px 0;
+            color: #2c3e50;
+            font-size: 1.3em;
+        }
+
+        .reviewer-role {
+            color: #7f8c8d;
+            font-size: 0.9em;
+            margin: 0;
+        }
+
+        .stars {
+            color: #f39c12;
+            font-size: 1.2em;
+            letter-spacing: 2px;
+        }
+
+        .review-date {
+            color: #95a5a6;
+            font-size: 0.85em;
+            display: block;
+            margin-top: 15px;
+        }
+
+        .review-body {
+            color: #555;
+            line-height: 1.8;
+            margin: 20px 0;
+            font-size: 0.95em;
+        }
+
+        .highlights {
+            background: rgba(52, 152, 219, 0.1);
+            border-left: 3px solid #3498db;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+
+        .highlights h4 {
+            margin: 0 0 10px 0;
+            color: #2c3e50;
+            font-size: 0.9em;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .highlights ul {
+            margin: 0;
+            padding-left: 20px;
+            list-style-type: none;
+        }
+
+        .highlights li {
+            color: #555;
+            margin: 5px 0;
+            position: relative;
+            padding-left: 15px;
+            font-size: 0.9em;
+        }
+
+        .highlights li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: #3498db;
+            font-weight: bold;
+        }
+
+        .section-title {
+            font-size: 2em;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            text-align: center;
+            position: relative;
+            padding-bottom: 20px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, #f39c12, #e67e22);
+            border-radius: 2px;
+        }
+
+        .verdict {
+            background: linear-gradient(135deg, rgba(39, 174, 96, 0.1), rgba(52, 152, 219, 0.1));
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            font-style: italic;
+            color: #34495e;
+            border-radius: 8px;
+        }
+
+        .verdict strong {
+            color: #2c3e50;
+        }
+    </style>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-XXXXXXXXXX');
+    </script>
+</head>
+
+<body>
+    <!-- Barra de Atalhos -->
+    <div class="navbar">
+        <a href="index-pt.html">Home</a>
+        <a href="index-pt.html#portfolio">Portfolio</a>
+        <a href="photography-pt.html">Fotografias</a>
+        <a href="index-pt.html#cv">CV</a>
+        <a href="blog-pt.html">Blog</a>
+        <a href="research-pt.html">Pesquisa</a>
+        <a href="podcasts-pt.html">Podcasts</a>
+        <a href="reviews-pt.html" style="color: #f39c12; font-weight: 600;">Críticas</a>
+        <a href="tutoring-pt.html">Explicações</a>
+        <a href="portfolio-pt.html">Linha do Tempo</a>
+        <a href="ribamar-pt.html">Ribamar</a>
+        <div class="lang-switcher">
+            <span id="role-indicator" style="margin-right: 15px; font-size: 0.8em; opacity: 0.7; color: white;"></span>
+            <a href="reviews.html" class="lang-btn">EN</a>
+            <a href="reviews-pt.html" class="lang-btn active">PT</a>
+        </div>
+    </div>
+
+    <div class="container reviews-container">
+        <div class="profile-section">
+            <h1 style="margin-top: 0;">⭐ Críticas Académicas</h1>
+            <p style="color: #7f8c8d; font-style: italic;">Feedback honesto sobre Professores e Experiências</p>
+        </div>
+
+        <!-- Review 1 -->
+        <div class="review-card positive">
+            <div class="review-header">
+                <div class="reviewer-info">
+                    <h3>Prof. Xavier Franch</h3>
+                    <p class="reviewer-role">Engenharia de Software & Requirements Engineering</p>
+                </div>
+                <div class="stars">★★★★★</div>
+            </div>
+            <span class="review-date">Experiência: UPC Barcelona, 2024-2025</span>
+
+            <div class="review-body">
+                Prof. Franch combina rigor académico com acessibilidade notável. As suas aulas sobre Engenharia de Requisitos foram transformadoras, apresentando frameworks complexos de forma estruturada e prática. O seu entusiasmo pela pesquisa é contagiante e inspira os alunos a pensarem criticamente sobre problemas reais na indústria.
+            </div>
+
+            <div class="highlights">
+                <h4>Pontos Fortes</h4>
+                <ul>
+                    <li>Explica conceitos complexos com clareza e paciência</li>
+                    <li>Conecta teoria a casos de uso industriais reais</li>
+                    <li>Apoia aktivamente a investigação dos alunos com feedback construtivo</li>
+                    <li>Acessível para dúvidas e discussões sobre carreira</li>
+                </ul>
+            </div>
+
+            <div class="verdict">
+                <strong>Voto:</strong> Professor excepcional que estimula pensamento crítico e preparação profissional. Recomendado altamente para qualquer aluno interessado em Engenharia de Software.
+            </div>
+        </div>
+
+        <!-- Review 2 -->
+        <div class="review-card neutral">
+            <div class="review-header">
+                <div class="reviewer-info">
+                    <h3>Prof. João Neves</h3>
+                    <p class="reviewer-role">Lógica Computacional & Programação em Prolog</p>
+                </div>
+                <div class="stars">★★★☆☆</div>
+            </div>
+            <span class="review-date">Experiência: IST Lisboa, 2023-2024</span>
+
+            <div class="review-body">
+                Prof. Neves conhece profundamente Programação em Lógica e Prolog. Contudo, as suas aulas podem ser densas e desafiadoras para quem não tem background em lógica formal. O ritmo é rápido e nem sempre há tempo para conceitos consolidarem-se antes de avançar para tópicos subsequentes. O feedback em trabalhos é valioso, mas poderia ser mais frequente.
+            </div>
+
+            <div class="highlights">
+                <h4>Pontos Fortes</h4>
+                <ul>
+                    <li>Especialista genuíno em programação lógica</li>
+                    <li>Desafia os alunos a pensarem diferentemente</li>
+                    <li>Feedback de qualidade quando fornecido</li>
+                    <li>Aulas bem estruturadas e preparadas</li>
+                </ul>
+            </div>
+
+            <div class="highlights" style="background: rgba(230, 126, 34, 0.1); border-left-color: #e67e22;">
+                <h4>Áreas para Melhoria</h4>
+                <ul>
+                    <li>Poderia incluir mais exemplos práticos e gradualmente construir conceitos</li>
+                    <li>Sessões de dúvidas mais frequentes e prévias aos testes</li>
+                    <li>Avaliação contínua em vez de apenas exames finais</li>
+                </ul>
+            </div>
+
+            <div class="verdict">
+                <strong>Voto:</strong> Bom professor para alunos dedicados que gostam de desafios intelectuais. Requerer esforço extra, mas a aprendizagem é profunda.
+            </div>
+        </div>
+
+        <!-- Review 3 -->
+        <div class="review-card positive">
+            <div class="review-header">
+                <div class="reviewer-info">
+                    <h3>Dra. Gabriela Ferreira</h3>
+                    <p class="reviewer-role">Mentoria de Investigação & Biologia Computacional</p>
+                </div>
+                <div class="stars">★★★★★</div>
+            </div>
+            <span class="review-date">Experiência: Mentoria em Investigação, 2024-Presente</span>
+
+            <div class="review-body">
+                Dra. Ferreira é uma mentora excepcional que combina conhecimento técnico profundo com genuína preocupação pelo desenvolvimento profissional dos seus alunos. As suas sessões orientam através de problemas complexos sem dar soluções prontas, promovendo pensamento crítico. Responde a emails rapidamente e está sempre disponível para questões urgentes.
+            </div>
+
+            <div class="highlights">
+                <h4>Pontos Fortes</h4>
+                <ul>
+                    <li>Orienta investigação com perguntas que promovem descoberta independente</li>
+                    <li>Suporte constante e apresentações regulares com feedback</li>
+                    <li>Incentiva publicação e participação em conferências</li>
+                    <li>Demonstra interesse genuíno no percurso académico e carreira de cada aluno</li>
+                </ul>
+            </div>
+
+            <div class="verdict">
+                <strong>Voto:</strong> Mentora inspiradora e dedicada. Qualquer estudante tem sorte em trabalhar sob sua orientação. Particularmente recomendada para investigação em Biologia Computacional e Sistemas Complexos.
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 40px; padding: 20px; background: rgba(243, 156, 18, 0.1); border-radius: 10px;">
+            <p style="color: #555; margin: 0;">
+                <i class="fas fa-lightbulb"></i> Estas críticas refletem minh experiência pessoal e são oferecidas na esperança de ajudar futuros alunos a tomar decisões informadas. Todos os professores têm pontos fortes únicos! <br>
+            </p>
+        </div>
+
+        <div style="text-align: center; margin-top: 40px;">
+            <a href="index-pt.html" style="color: #f39c12; text-decoration: none; display: inline-flex; align-items: center; gap: 5px;">
+                <i class="fas fa-arrow-left"></i> Voltar ao Home
+            </a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer style="width: 100%; text-align: center; padding: 30px 20px; color: #95a5a6; margin-top: auto; border-top: 1px solid rgba(0,0,0,0.1);">
+        <p>&copy; 2024-2026 Ana Alfaiate. Todos os direitos reservados. | <a href="https://github.com/anajfalfa" target="_blank" style="color: #f39c12; text-decoration: none;">GitHub</a></p>
+    </footer>
+    <script src="js/roles.js"></script>
+</body>
+
+</html>

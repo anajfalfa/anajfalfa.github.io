@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Painel de Administração - Ana Alfaiate">
+    <title>Admin - Ana Alfaiate</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .admin-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            min-height: 90vh;
+        }
+
+        .sidebar {
+            background: #2c3e50;
+            color: white;
+            padding: 30px 20px;
+            overflow-y: auto;
+        }
+
+        .sidebar h2 {
+            font-size: 1.5em;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .sidebar-menu {
+            list-style: none;
+        }
+
+        .sidebar-menu li {
+            margin-bottom: 15px;
+        }
+
+        .sidebar-menu a {
+            color: #ecf0f1;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 15px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .sidebar-menu a:hover,
+        .sidebar-menu a.active {
+            background: #667eea;
+            color: white;
+            padding-left: 20px;
+        }
+
+        .main-content {
+            padding: 40px;
+            overflow-y: auto;
+        }
+
+        .section {
+            display: none;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 30px;
+            font-size: 2em;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            color: #2c3e50;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 1.05em;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="number"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ecf0f1;
+            border-radius: 8px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1em;
+            transition: border-color 0.3s ease;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="number"]:focus,
+        textarea:focus,
+        select:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1em;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn-secondary {
+            background: #ecf0f1;
+            color: #2c3e50;
+            margin-left: 10px;
+        }
+
+        .btn-secondary:hover {
+            background: #bdc3c7;
+        }
+
+        .btn-delete {
+            background: #e74c3c;
+            color: white;
+        }
+
+        .btn-delete:hover {
+            background: #c0392b;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .item-list {
+            display: grid;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .item-card {
+            background: #f8f9fa;
+            border: 1px solid #ecf0f1;
+            border-radius: 8px;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+        }
+
+        .item-info h3 {
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+
+        .item-info p {
+            color: #7f8c8d;
+            font-size: 0.9em;
+            margin: 5px 0;
+        }
+
+        .item-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .item-actions button {
+            padding: 8px 15px;
+            font-size: 0.85em;
+        }
+
+        .success-message {
+            background: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        .success-message.show {
+            display: block;
+        }
+
+        .back-link {
+            display: inline-block;
+            color: #667eea;
+            text-decoration: none;
+            margin-bottom: 20px;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: #764ba2;
+        }
+
+        @media (max-width: 768px) {
+            .admin-container {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                display: grid;
+                grid-template-columns: auto 1fr;
+                align-items: start;
+                gap: 20px;
+                padding: 20px;
+            }
+
+            .sidebar h2 {
+                margin-bottom: 0;
+            }
+
+            .sidebar-menu {
+                display: flex;
+                gap: 10px;
+                flex-wrap: wrap;
+            }
+
+            .sidebar-menu li {
+                margin-bottom: 0;
+            }
+
+            .sidebar-menu a {
+                padding: 8px 12px;
+                font-size: 0.9em;
+            }
+
+            .main-content {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 1.5em;
+            }
+        }
+
+        .instructions {
+            background: rgba(52, 152, 219, 0.1);
+            border-left: 4px solid #3498db;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            color: #555;
+        }
+
+        .instructions strong {
+            color: #2c3e50;
+        }
+
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+            color: #e74c3c;
+        }
+    </style>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-XXXXXXXXXX');
+    </script>
+</head>
+
+<body>
+    <div class="admin-container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <h2><i class="fas fa-cog"></i> Admin</h2>
+            <ul class="sidebar-menu">
+                <li>
+                    <a class="menu-link active" data-section="blog">
+                        <i class="fas fa-pencil"></i> Blog
+                    </a>
+                </li>
+                <li>
+                    <a class="menu-link" data-section="research">
+                        <i class="fas fa-book"></i> Pesquisa
+                    </a>
+                </li>
+                <li>
+                    <a class="menu-link" data-section="podcast">
+                        <i class="fas fa-podcast"></i> Podcasts
+                    </a>
+                </li>
+                <li>
+                    <a class="menu-link" data-section="review">
+                        <i class="fas fa-star"></i> Críticas
+                    </a>
+                </li>
+                <li>
+                    <a class="menu-link" data-section="pages">
+                        <i class="fas fa-file"></i> Páginas
+                    </a>
+                </li>
+                <li>
+                    <a class="menu-link" data-section="export">
+                        <i class="fas fa-download"></i> Exportar/Backup
+                    </a>
+                </li>
+                <li style="margin-top: 20px; padding-top: 20px; border-top: 1px solid #555;">
+                    <a href="index-pt.html" style="color: #ecf0f1;">
+                        <i class="fas fa-arrow-left"></i> Voltar ao Site
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Blog Section -->
+            <div id="blog" class="section active">
+                <h1><i class="fas fa-pencil"></i> Gerir Blog</h1>
+
+                <div class="instructions">
+                    <strong>💡 Como usar:</strong><br>
+                    Preencha o formulário abaixo para adicionar novos posts ao seu blog. Os dados são guardados localmente.<br>
+                    Clique em "Ver no Site" para ver o post publicado (será refrescado na próxima recarga).
+                </div>
+
+                <div class="success-message" id="blogSuccess">
+                    <i class="fas fa-check-circle"></i> Post guardado com sucesso!
+                </div>
+
+                <form id="blogForm">
+                    <div class="form-group">
+                        <label for="postTitle">Título do Post <span style="color: #e74c3c;">*</span></label>
+                        <input type="text" id="postTitle" placeholder="Ex: Minha primeira semana em Lisboa" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="postDate">Data <span style="color: #e74c3c;">*</span></label>
+                        <input type="text" id="postDate" placeholder="Ex: 15 de Março de 2026" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="postExcerpt">Resumo / Excerpt <span style="color: #e74c3c;">*</span></label>
+                        <textarea id="postExcerpt" placeholder="Uma linha curta resumindo o post..." required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="postContent">Conteúdo Completo <span style="color: #e74c3c;">*</span></label>
+                        <textarea id="postContent" placeholder="Escreva o conteúdo do seu post aqui..." required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="postTags">Tags (separadas por vírgula)</label>
+                        <input type="text" id="postTags" placeholder="Ex: viagem, reflexão, lisboa">
+                    </div>
+
+                    <div class="btn-group">
+                        <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Guardar Post</button>
+                        <button type="reset" class="btn btn-secondary"><i class="fas fa-redo"></i> Limpar</button>
+                    </div>
+                </form>
+
+                <h2 style="margin-top: 40px; color: #2c3e50;">Posts Guardados</h2>
+                <div id="blogList" class="item-list"></div>
+            </div>
+
+            <!-- Research Section -->
+            <div id="research" class="section">
+                <h1><i class="fas fa-book"></i> Gerir Pesquisa</h1>
+
+                <div class="instructions">
+                    <strong>💡 Dica:</strong> Adicione novos tópicos de pesquisa que apareçerão na página de Research.
+                </div>
+
+                <form id="researchForm">
+                    <div class="form-group">
+                        <label for="topicName">Nome do Tópico <span style="color: #e74c3c;">*</span></label>
+                        <input type="text" id="topicName" placeholder="Ex: Machine Learning" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="topicType">Tipo <span style="color: #e74c3c;">*</span></label>
+                        <select id="topicType" required>
+                            <option value="">-- Selecione --</option>
+                            <option value="primary">Primário</option>
+                            <option value="secondary">Secundário</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="topicDescription">Descrição</label>
+                        <textarea id="topicDescription" placeholder="Descreva por que este tópico interessa..."></textarea>
+                    </div>
+
+                    <div class="btn-group">
+                        <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Guardar Tópico</button>
+                        <button type="reset" class="btn btn-secondary"><i class="fas fa-redo"></i> Limpar</button>
+                    </div>
+                </form>
+
+                <h2 style="margin-top: 40px; color: #2c3e50;">Tópicos Guardados</h2>
+                <div id="researchList" class="item-list"></div>
+            </div>
+
+            <!-- Podcast Section -->
+            <div id="podcast" class="section">
+                <h1><i class="fas fa-podcast"></i> Gerir Podcasts</h1>
+
+                <div class="instructions">
+                    <strong>💡 Dica:</strong> Atualize informações sobre seus podcasts (descrição, episódios, links, etc).
+                </div>
+
+                <form id="podcastForm">
+                    <div class="form-group">
+                        <label for="podcastName">Nome do Podcast <span style="color: #e74c3c;">*</span></label>
+                        <input type="text" id="podcastName" placeholder="Ex: Missão País" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="podcastDescription">Descrição <span style="color: #e74c3c;">*</span></label>
+                        <textarea id="podcastDescription" placeholder="Descreva do que o podcast fala..." required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="podcastFrequency">Frequência <span style="color: #e74c3c;">*</span></label>
+                        <input type="text" id="podcastFrequency" placeholder="Ex: Biweekly, Semanal, Mensal" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="podcastStatus">Status <span style="color: #e74c3c;">*</span></label>
+                        <select id="podcastStatus" required>
+                            <option value="">-- Selecione --</option>
+                            <option value="coming-soon">Em Breve</option>
+                            <option value="planned">Planeado</option>
+                            <option value="active">Ativo</option>
+                        </select>
+                    </div>
+
+                    <div class="btn-group">
+                        <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Guardar Podcast</button>
+                        <button type="reset" class="btn btn-secondary"><i class="fas fa-redo"></i> Limpar</button>
+                    </div>
+                </form>
+
+                <h2 style="margin-top: 40px; color: #2c3e50;">Podcasts Guardados</h2>
+                <div id="podcastList" class="item-list"></div>
+            </div>
+
+            <!-- Reviews Section -->
+            <div id="review" class="section">
+                <h1><i class="fas fa-star"></i> Gerir Críticas</h1>
+
+                <div class="instructions">
+                    <strong>💡 Dica:</strong> Adicione novas críticas de professores ou experiências académicas.
+                </div>
+
+                <form id="reviewForm">
+                    <div class="form-group">
+                        <label for="reviewAuthor">Nome do Professor/Instituição <span style="color: #e74c3c;">*</span></label>
+                        <input type="text" id="reviewAuthor" placeholder="Ex: Prof. Xavier Franch" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="reviewRating">Classificação (1-5) <span style="color: #e74c3c;">*</span></label>
+                        <input type="number" id="reviewRating" min="1" max="5" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="reviewContent">Crítica <span style="color: #e74c3c;">*</span></label>
+                        <textarea id="reviewContent" placeholder="Escreva sua crítica honesta..." required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="reviewHighlights">Pontos Positivos</label>
+                        <textarea id="reviewHighlights" placeholder="Liste pontos positivos (um por linha)"></textarea>
+                    </div>
+
+                    <div class="btn-group">
+                        <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Guardar Crítica</button>
+                        <button type="reset" class="btn btn-secondary"><i class="fas fa-redo"></i> Limpar</button>
+                    </div>
+                </form>
+
+                <h2 style="margin-top: 40px; color: #2c3e50;">Críticas Guardadas</h2>
+                <div id="reviewList" class="item-list"></div>
+            </div>
+
+            <!-- Pages Section -->
+            <div id="pages" class="section">
+                <h1><i class="fas fa-file"></i> Gerir Páginas</h1>
+
+                <div class="instructions">
+                    <strong>💡 Sobre:</strong> Esta secção permite editar informações meta das páginas principais.<br>
+                    Para editar conteúdo completo, use as outras secções acima ou contacte o desenvolvedor.
+                </div>
+
+                <div style="margin-top: 30px;">
+                    <h3 style="color: #2c3e50; margin-bottom: 15px;">Páginas Disponíveis</h3>
+                    <div class="item-list" id="pagesList">
+                        <div class="item-card">
+                            <div style="flex: 1;">
+                                <h3>Home</h3>
+                                <p>Página inicial do site</p>
+                            </div>
+                            <button class="btn btn-primary"><i class="fas fa-edit"></i> Editar</button>
+                        </div>
+                        <div class="item-card">
+                            <div style="flex: 1;">
+                                <h3>Blog</h3>
+                                <p>Central de posts e artigos</p>
+                            </div>
+                            <button class="btn btn-secondary" onclick="document.querySelector('[data-section=\"blog\"]').click()"><i class="fas fa-arrow-right"></i> Ir para Blog</button>
+                        </div>
+                        <div class="item-card">
+                            <div style="flex: 1;">
+                                <h3>Pesquisa</h3>
+                                <p>Tópicos de investigação</p>
+                            </div>
+                            <button class="btn btn-secondary" onclick="document.querySelector('[data-section=\"research\"]').click()"><i class="fas fa-arrow-right"></i> Ir para Pesquisa</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Export Section -->
+            <div id="export" class="section">
+                <h1><i class="fas fa-download"></i> Exportar / Backup</h1>
+
+                <div class="instructions">
+                    <strong>💡 Dados guardados:</strong> Todo o conteúdo é guardado no seu navegador (localStorage).<br>
+                    Exporte os dados para fazer backup ou migrar para outro computador.
+                </div>
+
+                <div style="margin-top: 30px;">
+                    <h3 style="color: #2c3e50; margin-bottom: 20px;">Opções de Backup</h3>
+
+                    <div class="btn-group">
+                        <button class="btn btn-primary" onclick="exportData()">
+                            <i class="fas fa-download"></i> Descarregar Backup (JSON)
+                        </button>
+                        <button class="btn btn-secondary" onclick="document.getElementById('fileInput').click()">
+                            <i class="fas fa-upload"></i> Restaurar de Backup
+                        </button>
+                        <button class="btn btn-delete" onclick="if(confirm('Tem a certeza? Isto vai apagar todos os dados guardados!')) { clearAllData(); }">
+                            <i class="fas fa-trash"></i> Limpar Tudo
+                        </button>
+                    </div>
+
+                    <input type="file" id="fileInput" style="display: none;" accept=".json" onchange="importData(event)">
+
+                    <div style="margin-top: 30px; padding: 20px; background: #f8f9fa; border-radius: 8px;">
+                        <h4 style="color: #2c3e50; margin-bottom: 15px;">Estatísticas</h4>
+                        <p><strong>Posts de Blog:</strong> <span id="blogCount">0</span></p>
+                        <p><strong>Tópicos de Pesquisa:</strong> <span id="researchCount">0</span></p>
+                        <p><strong>Podcasts:</strong> <span id="podcastCount">0</span></p>
+                        <p><strong>Críticas:</strong> <span id="reviewCount">0</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Navigation
+        document.querySelectorAll('.menu-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const section = link.dataset.section;
+                
+                // Remove active from all
+                document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+                document.querySelectorAll('.menu-link').forEach(l => l.classList.remove('active'));
+                
+                // Add active to selected
+                document.getElementById(section).classList.add('active');
+                link.classList.add('active');
+            });
+        });
+
+        // Blog functionality
+        document.getElementById('blogForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const post = {
+                id: Date.now(),
+                title: document.getElementById('postTitle').value,
+                date: document.getElementById('postDate').value,
+                excerpt: document.getElementById('postExcerpt').value,
+                content: document.getElementById('postContent').value,
+                tags: document.getElementById('postTags').value.split(',').map(t => t.trim()).filter(t => t)
+            };
+            
+            let posts = JSON.parse(localStorage.getItem('blogPosts') || '[]');
+            posts.push(post);
+            localStorage.setItem('blogPosts', JSON.stringify(posts));
+            
+            document.getElementById('blogForm').reset();
+            showSuccess('blogSuccess');
+            renderBlogList();
+        });
+
+        function renderBlogList() {
+            const posts = JSON.parse(localStorage.getItem('blogPosts') || '[]');
+            const list = document.getElementById('blogList');
+            
+            if (posts.length === 0) {
+                list.innerHTML = '<p style="color: #7f8c8d; text-align: center; padding: 40px;">Nenhum post guardado ainda. Comece a escrever! ✍️</p>';
+                return;
+            }
+            
+            list.innerHTML = posts.map(post => `
+                <div class="item-card">
+                    <div style="flex: 1;">
+                        <h3>${post.title}</h3>
+                        <p><strong>Data:</strong> ${post.date}</p>
+                        <p><strong>Resumo:</strong> ${post.excerpt.substring(0, 100)}...</p>
+                        ${post.tags.length > 0 ? `<p><strong>Tags:</strong> ${post.tags.join(', ')}</p>` : ''}
+                    </div>
+                    <div class="item-actions">
+                        <button class="btn btn-secondary" onclick="editPost(${post.id})"><i class="fas fa-edit"></i> Editar</button>
+                        <button class="btn btn-delete" onclick="deletePost(${post.id})"><i class="fas fa-trash"></i> Apagar</button>
+                    </div>
+                </div>
+            `).join('');
+            
+            document.getElementById('blogCount').textContent = posts.length;
+        }
+
+        function deletePost(id) {
+            if (confirm('Tem a certeza que quer apagar este post?')) {
+                let posts = JSON.parse(localStorage.getItem('blogPosts') || '[]');
+                posts = posts.filter(p => p.id !== id);
+                localStorage.setItem('blogPosts', JSON.stringify(posts));
+                renderBlogList();
+            }
+        }
+
+        function showSuccess(elementId) {
+            const el = document.getElementById(elementId);
+            el.classList.add('show');
+            setTimeout(() => el.classList.remove('show'), 3000);
+        }
+
+        // Research functionality
+        document.getElementById('researchForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const topic = {
+                id: Date.now(),
+                name: document.getElementById('topicName').value,
+                type: document.getElementById('topicType').value,
+                description: document.getElementById('topicDescription').value
+            };
+            
+            let topics = JSON.parse(localStorage.getItem('researchTopics') || '[]');
+            topics.push(topic);
+            localStorage.setItem('researchTopics', JSON.stringify(topics));
+            
+            document.getElementById('researchForm').reset();
+            showSuccess('blogSuccess');
+            renderResearchList();
+        });
+
+        function renderResearchList() {
+            const topics = JSON.parse(localStorage.getItem('researchTopics') || '[]');
+            const list = document.getElementById('researchList');
+            
+            if (topics.length === 0) {
+                list.innerHTML = '<p style="color: #7f8c8d; text-align: center; padding: 40px;">Nenhum tópico guardado ainda. 🔬</p>';
+                return;
+            }
+            
+            list.innerHTML = topics.map(topic => `
+                <div class="item-card">
+                    <div style="flex: 1;">
+                        <h3>${topic.name}</h3>
+                        <p><strong>Tipo:</strong> ${topic.type === 'primary' ? 'Primário' : 'Secundário'}</p>
+                        ${topic.description ? `<p><strong>Descrição:</strong> ${topic.description}</p>` : ''}
+                    </div>
+                    <div class="item-actions">
+                        <button class="btn btn-delete" onclick="deleteTopic(${topic.id})"><i class="fas fa-trash"></i> Apagar</button>
+                    </div>
+                </div>
+            `).join('');
+            
+            document.getElementById('researchCount').textContent = topics.length;
+        }
+
+        function deleteTopic(id) {
+            if (confirm('Tem a certeza?')) {
+                let topics = JSON.parse(localStorage.getItem('researchTopics') || '[]');
+                topics = topics.filter(t => t.id !== id);
+                localStorage.setItem('researchTopics', JSON.stringify(topics));
+                renderResearchList();
+            }
+        }
+
+        // Podcast functionality
+        document.getElementById('podcastForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const podcast = {
+                id: Date.now(),
+                name: document.getElementById('podcastName').value,
+                description: document.getElementById('podcastDescription').value,
+                frequency: document.getElementById('podcastFrequency').value,
+                status: document.getElementById('podcastStatus').value
+            };
+            
+            let podcasts = JSON.parse(localStorage.getItem('podcasts') || '[]');
+            podcasts.push(podcast);
+            localStorage.setItem('podcasts', JSON.stringify(podcasts));
+            
+            document.getElementById('podcastForm').reset();
+            showSuccess('blogSuccess');
+            renderPodcastList();
+        });
+
+        function renderPodcastList() {
+            const podcasts = JSON.parse(localStorage.getItem('podcasts') || '[]');
+            const list = document.getElementById('podcastList');
+            
+            if (podcasts.length === 0) {
+                list.innerHTML = '<p style="color: #7f8c8d; text-align: center; padding: 40px;">Nenhum podcast guardado ainda. 🎙️</p>';
+                return;
+            }
+            
+            list.innerHTML = podcasts.map(podcast => `
+                <div class="item-card">
+                    <div style="flex: 1;">
+                        <h3>${podcast.name}</h3>
+                        <p><strong>Descrição:</strong> ${podcast.description}</p>
+                        <p><strong>Frequência:</strong> ${podcast.frequency}</p>
+                        <p><strong>Status:</strong> <span style="background: ${podcast.status === 'active' ? '#d4edda' : '#fff3cd'}; padding: 3px 8px; border-radius: 4px;">${podcast.status}</span></p>
+                    </div>
+                    <div class="item-actions">
+                        <button class="btn btn-delete" onclick="deletePodcast(${podcast.id})"><i class="fas fa-trash"></i> Apagar</button>
+                    </div>
+                </div>
+            `).join('');
+            
+            document.getElementById('podcastCount').textContent = podcasts.length;
+        }
+
+        function deletePodcast(id) {
+            if (confirm('Tem a certeza?')) {
+                let podcasts = JSON.parse(localStorage.getItem('podcasts') || '[]');
+                podcasts = podcasts.filter(p => p.id !== id);
+                localStorage.setItem('podcasts', JSON.stringify(podcasts));
+                renderPodcastList();
+            }
+        }
+
+        // Reviews functionality
+        document.getElementById('reviewForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const review = {
+                id: Date.now(),
+                author: document.getElementById('reviewAuthor').value,
+                rating: parseInt(document.getElementById('reviewRating').value),
+                content: document.getElementById('reviewContent').value,
+                highlights: document.getElementById('reviewHighlights').value.split('\n').filter(h => h.trim())
+            };
+            
+            let reviews = JSON.parse(localStorage.getItem('reviews') || '[]');
+            reviews.push(review);
+            localStorage.setItem('reviews', JSON.stringify(reviews));
+            
+            document.getElementById('reviewForm').reset();
+            showSuccess('blogSuccess');
+            renderReviewList();
+        });
+
+        function renderReviewList() {
+            const reviews = JSON.parse(localStorage.getItem('reviews') || '[]');
+            const list = document.getElementById('reviewList');
+            
+            if (reviews.length === 0) {
+                list.innerHTML = '<p style="color: #7f8c8d; text-align: center; padding: 40px;">Nenhuma crítica guardada ainda. ⭐</p>';
+                return;
+            }
+            
+            list.innerHTML = reviews.map(review => `
+                <div class="item-card">
+                    <div style="flex: 1;">
+                        <h3>${review.author}</h3>
+                        <p><strong>Classificação:</strong> ${'★'.repeat(review.rating)}${'☆'.repeat(5-review.rating)}</p>
+                        <p><strong>Crítica:</strong> ${review.content}</p>
+                        ${review.highlights.length > 0 ? `<p><strong>Pontos Positivos:</strong> ${review.highlights.join(', ')}</p>` : ''}
+                    </div>
+                    <div class="item-actions">
+                        <button class="btn btn-delete" onclick="deleteReview(${review.id})"><i class="fas fa-trash"></i> Apagar</button>
+                    </div>
+                </div>
+            `).join('');
+            
+            document.getElementById('reviewCount').textContent = reviews.length;
+        }
+
+        function deleteReview(id) {
+            if (confirm('Tem a certeza?')) {
+                let reviews = JSON.parse(localStorage.getItem('reviews') || '[]');
+                reviews = reviews.filter(r => r.id !== id);
+                localStorage.setItem('reviews', JSON.stringify(reviews));
+                renderReviewList();
+            }
+        }
+
+        // Export/Import
+        function exportData() {
+            const data = {
+                blogPosts: JSON.parse(localStorage.getItem('blogPosts') || '[]'),
+                researchTopics: JSON.parse(localStorage.getItem('researchTopics') || '[]'),
+                podcasts: JSON.parse(localStorage.getItem('podcasts') || '[]'),
+                reviews: JSON.parse(localStorage.getItem('reviews') || '[]'),
+                exportDate: new Date().toLocaleString()
+            };
+            
+            const dataStr = JSON.stringify(data, null, 2);
+            const dataBlob = new Blob([dataStr], { type: 'application/json' });
+            const url = URL.createObjectURL(dataBlob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = `backup-${new Date().toISOString().split('T')[0]}.json`;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(url);
+        }
+
+        function importData(event) {
+            const file = event.target.files[0];
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                try {
+                    const data = JSON.parse(e.target.result);
+                    localStorage.setItem('blogPosts', JSON.stringify(data.blogPosts || []));
+                    localStorage.setItem('researchTopics', JSON.stringify(data.researchTopics || []));
+                    localStorage.setItem('podcasts', JSON.stringify(data.podcasts || []));
+                    localStorage.setItem('reviews', JSON.stringify(data.reviews || []));
+                    
+                    alert('✅ Backup restaurado com sucesso!');
+                    renderAllLists();
+                } catch (error) {
+                    alert('❌ Erro ao restaurar backup. Ficheiro inválido.');
+                }
+            };
+            reader.readAsText(file);
+        }
+
+        function clearAllData() {
+            localStorage.clear();
+            alert('✅ Todos os dados foram apagados!');
+            renderAllLists();
+        }
+
+        function renderAllLists() {
+            renderBlogList();
+            renderResearchList();
+            renderPodcastList();
+            renderReviewList();
+        }
+
+        // Initial render
+        renderAllLists();
+    </script>
+    <script src="js/roles.js"></script>
+</body>
+
+</html>

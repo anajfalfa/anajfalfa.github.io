@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Podcasts - Ana Alfaiate">
+    <title>Podcasts - Ana Alfaiate</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+    <style>
+        .podcasts-container {
+            max-width: 900px;
+            width: 100%;
+        }
+
+        .podcast-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+            transition: all 0.3s ease;
+            border-top: 5px solid;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .podcast-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .podcast-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.2);
+        }
+
+        .podcast-card h3 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 1.5em;
+            position: relative;
+            z-index: 1;
+        }
+
+        .podcast-status {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8em;
+            font-weight: 600;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .status-coming {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .status-planned {
+            background: #e7d4f5;
+            color: #6c2b5c;
+        }
+
+        .podcast-description {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .podcast-topics {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .topic-pill {
+            background: #ecf0f1;
+            color: #34495e;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.85em;
+        }
+
+        .podcast-meta {
+            display: flex;
+            gap: 20px;
+            font-size: 0.9em;
+            color: #7f8c8d;
+            position: relative;
+            z-index: 1;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .meta-item i {
+            color: #3498db;
+        }
+
+        .section-title {
+            font-size: 2em;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            text-align: center;
+            position: relative;
+            padding-bottom: 20px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, #e74c3c, #c0392b);
+            border-radius: 2px;
+        }
+
+        .podcast-card.missao {
+            border-top-color: #e74c3c;
+        }
+
+        .podcast-card.padres {
+            border-top-color: #9b59b6;
+        }
+
+        .cta-link {
+            color: #e74c3c;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-link:hover {
+            gap: 12px;
+            color: #c0392b;
+        }
+
+        .cta-link i {
+            transition: transform 0.3s ease;
+        }
+
+        .cta-link:hover i {
+            transform: translateX(3px);
+        }
+
+        .coming-soon {
+            text-align: center;
+            color: #95a5a6;
+            padding: 60px 20px;
+            font-style: italic;
+        }
+
+        .coming-soon i {
+            font-size: 3em;
+            margin-bottom: 15px;
+            opacity: 0.5;
+        }
+    </style>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-XXXXXXXXXX');
+    </script>
+</head>
+
+<body>
+    <!-- Barra de Atalhos -->
+    <div class="navbar">
+        <a href="index.html">Home</a>
+        <a href="index.html#portfolio">Portfolio</a>
+        <a href="photography.html">Photography</a>
+        <a href="index.html#cv">CV</a>
+        <a href="blog.html">Blog</a>
+        <a href="research.html">Research</a>
+        <a href="podcasts.html" style="color: #e74c3c; font-weight: 600;">Podcasts</a>
+        <a href="reviews.html">Reviews</a>
+        <a href="tutoring.html">Tutoring</a>
+        <a href="portfolio.html">Portfolio Timeline</a>
+        <a href="ribamar.html">Ribamar</a>
+        <div class="lang-switcher">
+            <span id="role-indicator" style="margin-right: 15px; font-size: 0.8em; opacity: 0.7; color: white;"></span>
+            <a href="podcasts.html" class="lang-btn active">EN</a>
+            <a href="podcasts-pt.html" class="lang-btn">PT</a>
+        </div>
+    </div>
+
+    <div class="container podcasts-container">
+        <div class="profile-section">
+            <h1 style="margin-top: 0;">🎙️ Podcasts</h1>
+            <p style="color: #7f8c8d; font-style: italic;">Audio conversations on topics that matter</p>
+        </div>
+
+        <!-- Missão País Podcast -->
+        <div class="podcast-card missao">
+            <div class="podcast-status status-coming">
+                <i class="fas fa-calendar-days"></i> Coming Soon
+            </div>
+            <h3><i class="fas fa-globe"></i> Missão País</h3>
+            <p class="podcast-description">
+                A podcast exploring meaningful missions and projects across Portugal. Each episode features the journey before, during, and aftermath of impactful missions—from preparation through post-mission reflections and lessons learned.
+            </p>
+            <div class="podcast-topics">
+                <span class="topic-pill">Social Impact</span>
+                <span class="topic-pill">Missions</span>
+                <span class="topic-pill">Portugal</span>
+                <span class="topic-pill">Personal Growth</span>
+                <span class="topic-pill">Community</span>
+            </div>
+            <div class="podcast-meta">
+                <div class="meta-item">
+                    <i class="fas fa-microphone"></i>
+                    Interview Format
+                </div>
+                <div class="meta-item">
+                    <i class="fas fa-clock"></i>
+                    30-45 min episodes
+                </div>
+                <div class="meta-item">
+                    <i class="fas fa-calendar"></i>
+                    Biweekly
+                </div>
+            </div>
+            <p style="margin-top: 15px; color: #7f8c8d; font-size: 0.9em;">
+                <strong>Format:</strong> Semi-structured conversations with mission leaders and participants discussing their experiences, challenges, and transformations.
+            </p>
+            <a href="#" class="cta-link">
+                <i class="fas fa-bell"></i> Notify me when available
+            </a>
+        </div>
+
+        <!-- Padres Podcast -->
+        <div class="podcast-card padres">
+            <div class="podcast-status status-planned">
+                <i class="fas fa-hourglass-end"></i> Planned
+            </div>
+            <h3><i class="fas fa-cross"></i> Padres: Fé, Dúvidas e Doutrina</h3>
+            <p class="podcast-description">
+                An exploratory podcast examining the faith journey of priests in the Catholic Church. Through open dialogue, we discuss the path to priesthood, theological doubts, church doctrine, personal convictions, and how priests navigate their calling in contemporary times.
+            </p>
+            <div class="podcast-topics">
+                <span class="topic-pill">Religion</span>
+                <span class="topic-pill">Philosophy</span>
+                <span class="topic-pill">Church</span>
+                <span class="topic-pill">Faith</span>
+                <span class="topic-pill">Theology</span>
+            </div>
+            <div class="podcast-meta">
+                <div class="meta-item">
+                    <i class="fas fa-microphone"></i>
+                    In-depth Interviews
+                </div>
+                <div class="meta-item">
+                    <i class="fas fa-clock"></i>
+                    45-60 min episodes
+                </div>
+                <div class="meta-item">
+                    <i class="fas fa-calendar"></i>
+                    Monthly
+                </div>
+            </div>
+            <p style="margin-top: 15px; color: #7f8c8d; font-size: 0.9em;">
+                <strong>Approach:</strong> Respectful, thoughtful conversations aimed at understanding priesthood, spirituality, and doctrine beyond surface-level discussions.
+            </p>
+            <a href="#" class="cta-link">
+                <i class="fas fa-bell"></i> Notify me when available
+            </a>
+        </div>
+
+        <!-- Upcoming Section -->
+        <div class="coming-soon">
+            <p>
+                <i class="fas fa-headphones"></i>
+                <br>
+                More podcast ideas are in development. Stay tuned!
+            </p>
+        </div>
+
+        <div style="text-align: center; margin-top: 40px;">
+            <a href="index.html" style="color: #e74c3c; text-decoration: none; display: inline-flex; align-items: center; gap: 5px;">
+                <i class="fas fa-arrow-left"></i> Back to Home
+            </a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer style="width: 100%; text-align: center; padding: 30px 20px; color: #95a5a6; margin-top: auto; border-top: 1px solid rgba(0,0,0,0.1);">
+        <p>&copy; 2024-2026 Ana Alfaiate. All rights reserved. | <a href="https://github.com/anajfalfa" target="_blank" style="color: #e74c3c; text-decoration: none;">GitHub</a></p>
+    </footer>
+    <script src="js/roles.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Tópicos de Pesquisa - Ana Alfaiate">
+    <title>Pesquisa - Ana Alfaiate</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+    <style>
+        .research-container {
+            max-width: 900px;
+            width: 100%;
+        }
+
+        .research-section {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+        }
+
+        .research-section h2 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 1.6em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .research-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .research-topic {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .research-topic:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .research-topic h3 {
+            font-size: 1.1em;
+            margin: 0;
+            font-weight: 600;
+        }
+
+        .research-topic i {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            display: block;
+            opacity: 0.8;
+        }
+
+        .section-title {
+            font-size: 2em;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            text-align: center;
+            position: relative;
+            padding-bottom: 20px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+
+        .primary-topics {
+            border-left: 5px solid #667eea;
+        }
+
+        .secondary-topics {
+            border-left: 5px solid #f093fb;
+        }
+
+        .topic-description {
+            color: #555;
+            font-size: 0.9em;
+            margin-top: 15px;
+            line-height: 1.6;
+        }
+
+        .interest-badge {
+            display: inline-block;
+            background: #ecf0f1;
+            color: #34495e;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            margin-top: 15px;
+            margin-right: 5px;
+        }
+    </style>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-XXXXXXXXXX');
+    </script>
+</head>
+
+<body>
+    <!-- Barra de Atalhos -->
+    <div class="navbar">
+        <a href="index-pt.html">Home</a>
+        <a href="index-pt.html#portfolio">Portfolio</a>
+        <a href="photography-pt.html">Fotografias</a>
+        <a href="index-pt.html#cv">CV</a>
+        <a href="blog-pt.html">Blog</a>
+        <a href="research-pt.html" style="color: #667eea; font-weight: 600;">Pesquisa</a>
+        <a href="podcasts-pt.html">Podcasts</a>
+        <a href="reviews-pt.html">Críticas</a>
+        <a href="tutoring-pt.html">Explicações</a>
+        <a href="portfolio-pt.html">Linha do Tempo</a>
+        <a href="ribamar-pt.html">Ribamar</a>
+        <div class="lang-switcher">
+            <span id="role-indicator" style="margin-right: 15px; font-size: 0.8em; opacity: 0.7; color: white;"></span>
+            <a href="research.html" class="lang-btn">EN</a>
+            <a href="research-pt.html" class="lang-btn active">PT</a>
+        </div>
+    </div>
+
+    <div class="container research-container">
+        <div class="profile-section">
+            <h1 style="margin-top: 0;">🔬 Tópicos de Pesquisa</h1>
+            <p style="color: #7f8c8d; font-style: italic;">Áreas de Interesse e Expertise</p>
+        </div>
+
+        <!-- Primary Research Areas -->
+        <div class="research-section primary-topics">
+            <h2><i class="fas fa-star"></i> Interesses Primários de Pesquisa</h2>
+            <p class="topic-description">
+                Estas são as áreas centrais que impulsionam minha motivação e curiosidade de pesquisa.
+            </p>
+            <div class="research-grid">
+                <div class="research-topic">
+                    <i class="fas fa-brain"></i>
+                    <h3>Programação em Lógica</h3>
+                </div>
+                <div class="research-topic" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                    <i class="fas fa-leaf"></i>
+                    <h3>Biologia de Sistemas</h3>
+                </div>
+                <div class="research-topic" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                    <i class="fas fa-network-wired"></i>
+                    <h3>Redes Regulatórias</h3>
+                </div>
+                <div class="research-topic" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);">
+                    <i class="fas fa-code"></i>
+                    <h3>ASP</h3>
+                </div>
+                <div class="research-topic" style="background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);">
+                    <i class="fas fa-cube"></i>
+                    <h3>Resolvedores SMT</h3>
+                </div>
+                <div class="research-topic" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); color: #333;">
+                    <i class="fas fa-infinity" style="color: inherit;"></i>
+                    <h3>ILP</h3>
+                </div>
+            </div>
+        </div>
+
+        <!-- Secondary Research Areas -->
+        <div class="research-section secondary-topics">
+            <h2><i class="fas fa-compass"></i> Áreas Secundárias e Adjacentes</h2>
+            <p class="topic-description">
+                Campos complementares que se intersectam com meus interesses primários e fornecem perspectivas mais amplas.
+            </p>
+            <div class="research-grid">
+                <div class="research-topic" style="background: linear-gradient(135deg, #fbc2eb 0%, #a6c0fe 100%); color: #333;">
+                    <i class="fas fa-bolt" style="color: inherit;"></i>
+                    <h3>Resolução SAT</h3>
+                </div>
+                <div class="research-topic" style="background: linear-gradient(135deg, #ff9a56 0%, #ff6a88 100%);">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Otimização</h3>
+                </div>
+                <div class="research-topic" style="background: linear-gradient(135deg, #2e2e78 0%, #662d8c 100%);">
+                    <i class="fas fa-sitemap"></i>
+                    <h3>Teoria dos Autómatos</h3>
+                </div>
+                <div class="research-topic" style="background: linear-gradient(135deg, #eb3349 0%, #f45c43 100%);">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h3>Algoritmos</h3>
+                </div>
+                <div class="research-topic" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                    <i class="fas fa-database"></i>
+                    <h3>Estruturas de Dados</h3>
+                </div>
+                <div class="research-topic" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); color: #333;">
+                    <i class="fas fa-puzzle-piece" style="color: inherit;"></i>
+                    <h3>CSP</h3>
+                </div>
+                <div class="research-topic" style="background: linear-gradient(135deg, #f72585 0%, #7209b7 100%);">
+                    <i class="fas fa-shield-halved"></i>
+                    <h3>Cibersegurança</h3>
+                </div>
+                <div class="research-topic" style="background: linear-gradient(135deg, #560bad 0%, #3a0ca3 100%);">
+                    <i class="fas fa-lock"></i>
+                    <h3>Criptografia</h3>
+                </div>
+            </div>
+        </div>
+
+        <!-- Interesses Fora de Engenharia -->
+        <div class="research-section" style="border-left: 5px solid #e74c3c;">
+            <h2><i class="fas fa-heart"></i> Interesses Complementares Fora de Engenharia</h2>
+            <p class="topic-description">
+                Para além da ciência da computação, sou apaixonada por saúde e ciências da visão. Estou a trabalhar para completar uma licenciatura nestes campos.
+            </p>
+            <div class="research-grid">
+                <div class="research-topic" style="background: linear-gradient(135deg, #ff6b6b 0%, #ee5a52 100%);">
+                    <i class="fas fa-eye"></i>
+                    <h3>Oftalmologia</h3>
+                </div>
+                <div class="research-topic" style="background: linear-gradient(135deg, #f06595 0%, #f15d61 100%);">
+                    <i class="fas fa-glasses"></i>
+                    <h3>Óptica</h3>
+                </div>
+            </div>
+        </div>
+
+        <!-- Why These Topics -->
+        <div class="research-section">
+            <h2><i class="fas fa-lightbulb"></i> Por que Estes Tópicos?</h2>
+            <p class="topic-description">
+                Meus interesses de pesquisa convergem na intersecção de <strong>métodos formais</strong>, <strong>lógica computacional</strong> e <strong>sistemas biológicos</strong>.
+                Sou fascinada por como abordagens computacionais podem desvendar a complexidade biológica, particularmente na compreensão de redes regulatórias de genes através de modelagem formal e satisfação de restrições.
+            </p>
+            <p class="topic-description">
+                A escolha de ferramentas—ASP, SMT, ILP—reflete minha crença em que <strong>abordagens declarativas</strong> oferecem elegância e clareza na expressão de problemas complexos.
+                Em vez de especificar como resolver um problema, especificamos o que a solução deve satisfazer, deixando o resolvedor encontrar a resposta.
+            </p>
+            <p class="topic-description" style="margin-top: 20px;">
+                Para além da computação, meu interesse em oftalmologia e óptica resulta de um profundo compromisso com inovação em saúde e compreensão da visão humana—conectando tecnologia com bem-estar humano.
+            </p>
+            <div style="text-align: center; margin-top: 20px;">
+                <span class="interest-badge"><i class="fas fa-check"></i> Computação Declarativa</span>
+                <span class="interest-badge"><i class="fas fa-check"></i> Pensamento Sistémico</span>
+                <span class="interest-badge"><i class="fas fa-check"></i> Trabalho Interdisciplinar</span>
+                <span class="interest-badge"><i class="fas fa-check"></i> Inovação em Saúde</span>
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 40px;">
+            <a href="index-pt.html" style="color: #667eea; text-decoration: none; display: inline-flex; align-items: center; gap: 5px;">
+                <i class="fas fa-arrow-left"></i> Voltar ao Home
+            </a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer style="width: 100%; text-align: center; padding: 30px 20px; color: #95a5a6; margin-top: auto; border-top: 1px solid rgba(0,0,0,0.1);">
+        <p>&copy; 2024-2026 Ana Alfaiate. Todos os direitos reservados. | <a href="https://github.com/anajfalfa" target="_blank" style="color: #667eea; text-decoration: none;">GitHub</a></p>
+    </footer>
+    <script src="js/roles.js"></script>
+</body>
+
+</html>

@@ -12,18 +12,27 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-XXXXXXXXXX');
+    </script>
 </head>
 
 <body>
     <!-- Barra de Atalhos -->
     <div class="navbar">
         <a href="#home">Início</a>
-        <a href="#portfolio">Portfólio</a>
         <a href="photography-pt.html">Fotografia</a>
         <a href="#list">Impossible List</a>
         <a href="#cv">Currículo</a>
         <a href="#ideas">Ideias</a>
         <div class="lang-switcher">
+            <span id="role-indicator" style="margin-right: 15px; font-size: 0.8em; opacity: 0.7; color: white;"></span>
             <a href="index.html" class="lang-btn">EN</a>
             <a href="index-pt.html" class="lang-btn active">PT</a>
         </div>
@@ -242,6 +251,32 @@
                     </div>
                 </div>
 
+                <!-- Missão País -->
+                <div class="timeline-element">
+                    <div class="timeline-element-content">
+                        <span class="timeline-element-icon" style="background-color: #fff;">
+                            <i class="fas fa-cross" style="color: #e67e22; font-size: 1.4em; line-height: 40px;"></i>
+                        </span>
+                        <h4>Missão País</h4>
+                        <h5>Missionária</h5>
+                        <p>Participação em missões universitárias de voluntariado em Portugal, apoiando comunidades isoladas através de trabalho social e companhia.</p>
+                    </div>
+                    <span class="timeline-element-date">Fevereiro 2025</span>
+                </div>
+
+                <!-- Web Summit & Games Week -->
+                <div class="timeline-element">
+                    <span class="timeline-element-date">Novembro 2023 & 2024</span>
+                    <div class="timeline-element-content">
+                        <span class="timeline-element-icon" style="background-color: #fff;">
+                            <i class="fas fa-handshake" style="color: #009de0; font-size: 1.4em; line-height: 40px;"></i>
+                        </span>
+                        <h4>Web Summit & Lisboa Games Week</h4>
+                        <h5>Voluntária</h5>
+                        <p>Apoio geral e assistência a participantes em grandes eventos de tecnologia e gaming em Lisboa.</p>
+                    </div>
+                </div>
+
                 <!-- Evento 7 -->
                 <div class="timeline-element">
                     <div class="timeline-element-content">
@@ -303,6 +338,91 @@
                                 Biomédica</a></h4>
                         <h5>Técnico Lisboa</h5>
                         <p>Graduada com média final de 18.47/20. Recebeu múltiplos Diplomas de Excelência Académica.</p>
+                    </div>
+                </div>
+
+
+                <!-- Escola Avançada de Matemática -->
+                <div class="timeline-element">
+                    <div class="timeline-element-content">
+                        <span class="timeline-element-icon" style="background-color: #fff;">
+                            <i class="fas fa-square-root-alt"
+                                style="color: #009de0; font-size: 1.4em; line-height: 40px;"></i>
+                        </span>
+                        <h4>Escola Avançada de Matemática</h4>
+                        <h5>Autora &amp; Instrutora</h5>
+                        <p>Criação e ensino de conteúdo de matemática avançada.</p>
+                    </div>
+                    <span class="timeline-element-date">Presente</span>
+                </div>
+
+                <!-- IST Diferencial -->
+                <div class="timeline-element">
+                    <div class="timeline-element-content">
+                        <span class="timeline-element-icon" style="background-color: #fff;">
+                            <img src="img/IST_favicon.ico" alt="IST Diferencial Logo" class="timeline-element-logo-img"
+                                style="width: 25px; height: 25px;">
+                        </span>
+                        <h4><a href="https://jornal.tecnico.ulisboa.pt" target="_blank"
+                                style="text-decoration: none; color: inherit;">IST Diferencial</a></h4>
+                        <h5>Escritora + Gest&atilde;o do Website &amp; Infraestrutura</h5>
+                        <p>Contribui para o Jornal Diferencial com foco em melhorias de infraestrutura e an&aacute;lise
+                            de visitantes.</p>
+                    </div>
+                    <span class="timeline-element-date">Mar 2026 - Presente</span>
+                </div>
+
+                <!-- Evento - TUNA -->
+                <div class="timeline-element">
+                    <div class="timeline-element-content">
+                        <span class="timeline-element-icon" style="background-color: #fff;">
+                            <img src="img/IST_favicon.ico" alt="TFIST Logo" class="timeline-element-logo-img"
+                                style="width: 25px; height: 25px;">
+                        </span>
+                        <h4>TFIST Tuna Feminina</h4>
+                        <h5>Proto | Canto & Percussão | Voz: Médio</h5>
+                        <p>Grupo musical feminino do IST. Álbuns: Julia Florista, Saudade, Mistérios do Mundo.</p>
+                    </div>
+                    <span class="timeline-element-date">Fev 2026 - Presente</span>
+                </div>
+
+                <!-- Evento - Escuteiros -->
+                <div class="timeline-element">
+                    <span class="timeline-element-date">2010 - Presente</span>
+                    <div class="timeline-element-content">
+                        <span class="timeline-element-icon" style="background-color: #fff;">
+                            <img src="img/agrupamento1066_website.jpg" alt="CNE Logo" class="timeline-element-logo-img">
+                        </span>
+                        <h4>Corpo Nacional de Escutas (CNE)</h4>
+                        <h5>Agrupamento 1066 Ribamar</h5>
+                        <p>Dirigente / Caminheira. Desenvolvimento de competências de trabalho em equipa, liderança e
+                            vida ao ar livre.</p>
+                    </div>
+                </div>
+
+                <!-- FISIOMAIS -->
+                <div class="timeline-element">
+                    <div class="timeline-element-content">
+                        <span class="timeline-element-icon" style="background-color: #fff;">
+                            <i class="fas fa-clinic-medical" style="color: #27ae60; font-size: 1.4em; line-height: 40px;"></i>
+                        </span>
+                        <h4>FISIOMAIS</h4>
+                        <h5>Rececionista</h5>
+                        <p>Atendimento ao público e apoio administrativo numa clínica de fisioterapia.</p>
+                    </div>
+                    <span class="timeline-element-date">2020 - 2021 (Verão)</span>
+                </div>
+
+                <!-- Karaté -->
+                <div class="timeline-element">
+                    <span class="timeline-element-date">2016 - 2021</span>
+                    <div class="timeline-element-content">
+                        <span class="timeline-element-icon" style="background-color: #fff;">
+                            <i class="fas fa-user-ninja" style="color: #c0392b; font-size: 1.4em; line-height: 40px;"></i>
+                        </span>
+                        <h4>AKS - Academia de Karate-do Shotokan</h4>
+                        <h5>Karaté Shotokan - 4º Kyu</h5>
+                        <p>Prática de artes marciais, desenvolvendo disciplina, foco e robustez física.</p>
                     </div>
                 </div>
             </div>
@@ -432,6 +552,26 @@
 
     <!-- Scripts -->
     <script>
+        // --- Role Filtering Logic ---
+        function applyRole() {
+            const role = sessionStorage.getItem('siteRole') || 'guest';
+            const indicator = document.getElementById('role-indicator');
+            if (indicator) {
+                indicator.textContent = `Role: ${role.charAt(0).toUpperCase() + role.slice(1)}`;
+            }
+
+            // Show/hide content based on role
+            if (role === 'ana') {
+                document.getElementById('ideas-lock').style.display = 'none';
+                const content = document.getElementById('ideas-content');
+                content.classList.remove('hidden', 'blur-content');
+                content.classList.add('visible');
+                enableAdminMode();
+            }
+        }
+
+        window.addEventListener('load', applyRole);
+
         // --- Lógica de Bloqueio ---
         function unlockIdeas() {
             const password = prompt("Introduza a palavra-passe secreta:");
@@ -644,6 +784,7 @@
             });
         }
     </script>
+    <script src="js/roles.js"></script>
 </body>
 
 </html>

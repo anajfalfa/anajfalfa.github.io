@@ -1,0 +1,163 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="section">
+    <div class="container overflow-hidden">
+        <div class="columns is-centered">
+            <div class="column is-6">
+                <div class="content has-text-centered mb-6">
+                    <h1 class="title is-1 has-text-white font-black tracking-tight">Quem é você?</h1>
+                    <p class="subtitle is-6 text-muted">Escolha o seu perfil para uma experiência personalizada.</p>
+                </div>
+
+                <div class="roles-grid">
+                    <button class="role-card group" onclick="selectRole('ana')">
+                        <div class="role-icon-wrapper bg-gradient-purple">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                        </div>
+                        <div class="role-content">
+                            <h3 class="role-title">Ana</h3>
+                        </div>
+                        <svg class="chevron" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+                        <div class="role-glow bg-gradient-purple"></div>
+                    </button>
+
+                    <button class="role-card group" onclick="selectRole('aluno')">
+                        <div class="role-icon-wrapper bg-gradient-blue">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+                        </div>
+                        <div class="role-content">
+                            <h3 class="role-title">Aluno</h3>
+                        </div>
+                        <svg class="chevron" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+                        <div class="role-glow bg-gradient-blue"></div>
+                    </button>
+
+                    <button class="role-card group" onclick="selectRole('professor')">
+                        <div class="role-icon-wrapper bg-gradient-green">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+                        </div>
+                        <div class="role-content">
+                            <h3 class="role-title">Professor</h3>
+                        </div>
+                        <svg class="chevron" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+                        <div class="role-glow bg-gradient-green"></div>
+                    </button>
+
+                    <button class="role-card group" onclick="selectRole('investigador')">
+                        <div class="role-icon-wrapper bg-gradient-red">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 18h8"/><path d="M3 22h18"/><path d="M14 22a7 7 0 1 0 0-14h-1"/><path d="M9 14h2"/><path d="M9 12a2 2 0 1 1-4 0V7a2 2 0 1 1 4 0v5Z"/></svg>
+                        </div>
+                        <div class="role-content">
+                            <h3 class="role-title">Investigador</h3>
+                        </div>
+                        <svg class="chevron" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+                        <div class="role-glow bg-gradient-red"></div>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .roles-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .role-card {
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: 1.25rem;
+        padding: 1.25rem;
+        border-radius: 1rem;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        transition: all 0.3s ease;
+        text-align: left;
+        cursor: pointer;
+        overflow: hidden;
+        width: 100%;
+        color: white;
+    }
+
+    .role-card:hover {
+        background: rgba(255, 255, 255, 0.1);
+        border-color: rgba(255, 255, 255, 0.2);
+        transform: translateY(-2px);
+    }
+
+    .role-card:active {
+        transform: scale(0.98);
+    }
+
+    .role-icon-wrapper {
+        width: 3rem;
+        height: 3rem;
+        border-radius: 0.75rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+    }
+
+    .bg-gradient-purple { background: linear-gradient(135deg, #a855f7, #4f46e5); }
+    .bg-gradient-blue { background: linear-gradient(135deg, #3b82f6, #0891b2); }
+    .bg-gradient-green { background: linear-gradient(135deg, #10b981, #0d9488); }
+    .bg-gradient-red { background: linear-gradient(135deg, #f59e0b, #dc2626); }
+
+    .role-content {
+        flex: 1;
+        z-index: 1;
+    }
+
+    .role-title {
+        font-weight: 700;
+        font-size: 1.125rem;
+        margin: 0;
+    }
+
+    .chevron {
+        color: rgba(255, 255, 255, 0.4);
+        transition: color 0.3s ease;
+        z-index: 1;
+    }
+
+    .role-card:hover .chevron {
+        color: #fff;
+    }
+
+    .role-glow {
+        position: absolute;
+        top: -1rem;
+        right: -1rem;
+        width: 6rem;
+        height: 6rem;
+        opacity: 0;
+        filter: blur(24px);
+        transition: opacity 0.3s ease;
+    }
+
+    .role-card:hover .role-glow {
+        opacity: 0.15;
+    }
+
+    .font-black { font-weight: 900; }
+    .tracking-tight { letter-spacing: -0.025em; }
+    .text-muted { color: rgba(255, 255, 255, 0.6); }
+</style>
+
+<script>
+    function selectRole(role) {
+        console.log('Selected role:', role);
+        localStorage.setItem('selectedRole', role);
+        // You can add redirection here if needed
+        // window.location.href = '/dashboard';
+    }
+</script>
+{% endblock content %}

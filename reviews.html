@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Reviews e Feedback Académico - Ana Alfaiate">
+    <title>Reviews - Ana Alfaiate</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+    <style>
+        .reviews-container {
+            max-width: 900px;
+            width: 100%;
+        }
+
+        .review-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+            transition: all 0.3s ease;
+            border-left: 5px solid #3498db;
+        }
+
+        .review-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.2);
+        }
+
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 15px;
+        }
+
+        .professor-info h3 {
+            color: #2c3e50;
+            margin: 0 0 5px 0;
+            font-size: 1.3em;
+        }
+
+        .professor-info p {
+            color: #7f8c8d;
+            margin: 0;
+            font-size: 0.95em;
+        }
+
+        .rating-stars {
+            display: flex;
+            gap: 3px;
+            font-size: 1.2em;
+        }
+
+        .star {
+            color: #f1c40f;
+        }
+
+        .star.empty {
+            color: #ecf0f1;
+        }
+
+        .review-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 15px;
+            font-size: 0.9em;
+            color: #7f8c8d;
+        }
+
+        .meta-badge {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .meta-badge i {
+            color: #3498db;
+        }
+
+        .review-text {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .highlights {
+            background: #ecf0f1;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+
+        .highlights h4 {
+            color: #2c3e50;
+            margin: 0 0 10px 0;
+            font-size: 0.95em;
+        }
+
+        .highlights ul {
+            margin: 0;
+            padding-left: 20px;
+            color: #555;
+        }
+
+        .highlights li {
+            margin: 5px 0;
+        }
+
+        .section-title {
+            font-size: 2em;
+            color: #2c3e50;
+            margin-bottom: 30px;
+            text-align: center;
+            position: relative;
+            padding-bottom: 20px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, #f39c12, #e67e22);
+            border-radius: 2px;
+        }
+
+        .review-card.positive {
+            border-left-color: #27ae60;
+        }
+
+        .review-card.neutral {
+            border-left-color: #f39c12;
+        }
+
+        .review-card.support {
+            border-left-color: #3498db;
+        }
+
+        .footer-note {
+            background: #ecf0f1;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 30px;
+            text-align: center;
+            color: #555;
+            font-size: 0.95em;
+            line-height: 1.6;
+        }
+
+        .footer-note strong {
+            color: #2c3e50;
+        }
+
+        /* ---- Professor Graph ---- */
+        .graph-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 24px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.08);
+        }
+
+        .graph-section h2 {
+            font-size: 1.1em;
+            color: #2c3e50;
+            margin-bottom: 4px;
+        }
+
+        .graph-section p.graph-hint {
+            font-size: 0.8em;
+            color: #95a5a6;
+            margin-bottom: 16px;
+        }
+
+        #prof-graph {
+            width: 100%;
+            height: 280px;
+            border-radius: 10px;
+            background: #f8f9fa;
+            overflow: hidden;
+            cursor: default;
+        }
+
+        .graph-legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 14px;
+            font-size: 0.8em;
+            color: #555;
+        }
+
+        .legend-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 4px;
+        }
+    </style>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-XXXXXXXXXX');
+    </script>
+</head>
+
+<body>
+    <!-- Barra de Atalhos -->
+    <div class="navbar">
+        <a href="index.html">Home</a>
+        <a href="index.html#portfolio">Portfolio</a>
+        <a href="photography.html">Photography</a>
+        <a href="index.html#cv">CV</a>
+        <a href="blog.html">Blog</a>
+        <a href="research.html">Research</a>
+        <a href="podcasts.html">Podcasts</a>
+        <a href="reviews.html" style="color: #f39c12; font-weight: 600;">Reviews</a>
+        <a href="tutoring.html">Tutoring</a>
+        <a href="portfolio.html">Portfolio Timeline</a>
+        <a href="ribamar.html">Ribamar</a>
+        <div class="lang-switcher">
+            <span id="role-indicator" style="margin-right: 15px; font-size: 0.8em; opacity: 0.7; color: white;"></span>
+            <a href="reviews.html" class="lang-btn active">EN</a>
+            <a href="reviews-pt.html" class="lang-btn">PT</a>
+        </div>
+    </div>
+
+    <div class="container reviews-container">
+        <div class="profile-section">
+            <h1 style="margin-top: 0;">⭐ Academic Reviews
+                <i class="fas fa-lock admin-lock" onclick="unlockAdmin()" title="Admin Login"
+                    style="font-size: 0.5em; vertical-align: middle;"></i>
+            </h1>
+            <p style="color: #7f8c8d; font-style: italic;">Honest feedback on courses, professors, and academic
+                experiences</p>
+        </div>
+
+        <!-- Admin Controls -->
+        <div id="admin-controls" class="admin-controls">
+            <button class="btn-primary" onclick="openAddReviewModal()"><i class="fas fa-plus"></i> Add Review</button>
+        </div>
+
+        <!-- Professor Graph -->
+        <div class="graph-section">
+            <h2>🕷️ Professor Network</h2>
+            <p class="graph-hint">Click a node to jump to the review</p>
+            <canvas id="prof-graph"></canvas>
+            <div class="graph-legend">
+                <span><span class="legend-dot" style="background:#27ae60;"></span> Positive</span>
+                <span><span class="legend-dot" style="background:#f39c12;"></span> Neutral</span>
+                <span><span class="legend-dot" style="background:#3498db;"></span> Supervisor / Support</span>
+            </div>
+        </div>
+
+        <div id="reviews-list">
+            <!-- Review Example 1 -->
+            <div class="review-card positive">
+                <div class="review-header">
+                    <div class="professor-info">
+                        <h3>Professor Xavier Franch</h3>
+                        <p>Software Engineering & Project Management</p>
+                    </div>
+                    <div class="rating-stars">
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                    </div>
+                </div>
+                <div class="review-meta">
+                    <div class="meta-badge">
+                        <i class="fas fa-book"></i>
+                        Software Engineering
+                    </div>
+                    <div class="meta-badge">
+                        <i class="fas fa-calendar"></i>
+                        Fall 2024
+                    </div>
+                    <div class="meta-badge">
+                        <i class="fas fa-graduation-cap"></i>
+                        Master's Program
+                    </div>
+                </div>
+                <div class="review-text">
+                    An exceptional educator with deep expertise in software engineering. His lectures are
+                    well-structured, engaging, and provide practical insights beyond textbook theory. The project-based
+                    approach ensures students grasp concepts through hands-on experience.
+                </div>
+                <div class="highlights">
+                    <h4><i class="fas fa-check"></i> What I appreciated</h4>
+                    <ul>
+                        <li>Clear communication and structured explanations</li>
+                        <li>Real-world examples and industry relevance</li>
+                        <li>Supportive and accessible during office hours</li>
+                        <li>Fair evaluation methods</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Review Example 2 -->
+            <div class="review-card neutral">
+                <div class="review-header">
+                    <div class="professor-info">
+                        <h3>Professor João Neves</h3>
+                        <p>Logic Programming & AI</p>
+                    </div>
+                    <div class="rating-stars">
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star empty">★</span>
+                        <span class="star empty">★</span>
+                    </div>
+                </div>
+                <div class="review-meta">
+                    <div class="meta-badge">
+                        <i class="fas fa-book"></i>
+                        Logic Programming
+                    </div>
+                    <div class="meta-badge">
+                        <i class="fas fa-calendar"></i>
+                        Spring 2024
+                    </div>
+                    <div class="meta-badge">
+                        <i class="fas fa-graduation-cap"></i>
+                        Master's Program
+                    </div>
+                </div>
+                <div class="review-text">
+                    Knowledgeable instructor with strong expertise in logic programming. The course material is
+                    challenging and intellectually stimulating. However, the pace can feel rushed, and supplementary
+                    explanations would benefit students new to the field.
+                </div>
+                <div class="highlights">
+                    <h4><i class="fas fa-lightbulb"></i> Strengths & Growth Areas</h4>
+                    <ul>
+                        <li><strong>Strengths:</strong> Deep technical knowledge, rigorous content, challenging problems
+                        </li>
+                        <li><strong>Growth Area:</strong> Could benefit from more scaffolding for beginners</li>
+                        <li><strong>Suggestion:</strong> Additional foundational material in early lectures</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Review Example 3 -->
+            <div class="review-card support">
+                <div class="review-header">
+                    <div class="professor-info">
+                        <h3>Dr. Gabriela Ferreira</h3>
+                        <p>Thesis Advisor - Systems Biology</p>
+                    </div>
+                    <div class="rating-stars">
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                    </div>
+                </div>
+                <div class="review-meta">
+                    <div class="meta-badge">
+                        <i class="fas fa-book"></i>
+                        Master's Thesis Supervision
+                    </div>
+                    <div class="meta-badge">
+                        <i class="fas fa-calendar"></i>
+                        2024-2026
+                    </div>
+                    <div class="meta-badge">
+                        <i class="fas fa-graduation-cap"></i>
+                        Research
+                    </div>
+                </div>
+                <div class="review-text">
+                    An outstanding thesis advisor who provides invaluable guidance while fostering independence. She
+                    encourages creative thinking, provides constructive feedback, and supports student development both
+                    academically and professionally. Her mentorship extends beyond the thesis itself.
+                </div>
+                <div class="highlights">
+                    <h4><i class="fas fa-heart"></i> Why she's an excellent mentor</h4>
+                    <ul>
+                        <li>Genuinely invested in student success and growth</li>
+                        <li>Provides detailed, actionable feedback on work</li>
+                        <li>Encourages independent thinking and problem-solving</li>
+                        <li>Open to trying new ideas and approaches</li>
+                        <li>Excellent at connecting students with relevant resources</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Disclaimer -->
+        <div class="footer-note">
+            <p>
+                <strong>About these reviews:</strong> These are honest, personal reflections on my academic experiences.
+                They represent my perspective and are intended to be constructive and fair. Reviews are based on my
+                interactions
+                and learning experiences, and other students may have different experiences.
+            </p>
+        </div>
+
+        <div style="text-align: center; margin-top: 40px;">
+            <a href="index.html"
+                style="color: #f39c12; text-decoration: none; display: inline-flex; align-items: center; gap: 5px;">
+                <i class="fas fa-arrow-left"></i> Back to Home
+            </a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer
+        style="width: 100%; text-align: center; padding: 30px 20px; color: #95a5a6; margin-top: auto; border-top: 1px solid rgba(0,0,0,0.1);">
+        <p>&copy; 2024-2026 Ana Alfaiate. All rights reserved. | <a href="https://github.com/anajfalfa" target="_blank"
+                style="color: #f39c12; text-decoration: none;">GitHub</a></p>
+    </footer>
+<!-- Add Review Modal -->
+<div id="add-review-modal" class="modal hidden"
+    style="position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);display:flex;justify-content:center;align-items:center;z-index:1000;">
+    <div
+        style="background:white;padding:30px;border-radius:15px;width:90%;max-width:500px;box-shadow:0 10px 40px rgba(0,0,0,0.2);">
+        <h3 style="margin-top:0;">Add Professor / Supervisor Review</h3>
+        <input type="text" id="review-name" placeholder="Name"
+            style="width:100%;padding:10px;margin-bottom:12px;border:1px solid #ddd;border-radius:5px;font-family:inherit;">
+        <input type="text" id="review-role" placeholder="Role / Course"
+            style="width:100%;padding:10px;margin-bottom:12px;border:1px solid #ddd;border-radius:5px;font-family:inherit;">
+        <select id="review-type"
+            style="width:100%;padding:10px;margin-bottom:12px;border:1px solid #ddd;border-radius:5px;font-family:inherit;">
+            <option value="positive">Positive (Green)</option>
+            <option value="neutral">Neutral (Orange)</option>
+            <option value="support">Supervisor / Support (Blue)</option>
+        </select>
+        <input type="number" id="review-stars" value="5" min="1" max="5"
+            style="width:100%;padding:10px;margin-bottom:12px;border:1px solid #ddd;border-radius:5px;font-family:inherit;">
+        <input type="text" id="review-meta1" placeholder="Date / University"
+            style="width:100%;padding:10px;margin-bottom:12px;border:1px solid #ddd;border-radius:5px;font-family:inherit;">
+        <textarea id="review-body" placeholder="Review text..." rows="4"
+            style="width:100%;padding:10px;margin-bottom:12px;border:1px solid #ddd;border-radius:5px;font-family:inherit;"></textarea>
+        <div style="display:flex;justify-content:flex-end;gap:10px;">
+            <button onclick="saveNewReview()" class="btn-primary">Add</button>
+            <button onclick="closeReviewModal()"
+                style="background:#ecf0f1;color:#333;border:none;padding:10px 20px;border-radius:8px;cursor:pointer;font-weight:600;">Cancel</button>
+        </div>
+    </div>
+</div>
+<style>
+    .modal.hidden {
+        display: none !important
+    }
+
+    .admin-controls {
+        display: none;
+        margin-bottom: 20px;
+        text-align: right
+    }
+
+    .admin-mode .admin-controls {
+        display: block
+    }
+
+    .admin-lock {
+        cursor: pointer;
+        opacity: .4;
+        transition: opacity .3s
+    }
+
+    .admin-lock:hover {
+        opacity: 1
+    }
+
+    .btn-primary {
+        background: linear-gradient(135deg, #f39c12, #e67e22);
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: 600
+    }
+</style>
+<script>
+    function unlockAdmin() {
+        var pw = prompt('Admin password:');
+        if (pw === '42' || pw === 'ana') { document.body.classList.add('admin-mode'); loadReviews(); }
+        else if (pw !== null) { alert('Access Denied.'); }
+    }
+    function openAddReviewModal() { document.getElementById('add-review-modal').classList.remove('hidden'); }
+    function closeReviewModal() { document.getElementById('add-review-modal').classList.add('hidden'); }
+    function saveNewReview() {
+        var name = document.getElementById('review-name').value;
+        var role = document.getElementById('review-role').value;
+        var type = document.getElementById('review-type').value;
+        var stars = parseInt(document.getElementById('review-stars').value) || 5;
+        var meta1 = document.getElementById('review-meta1').value;
+        var body = document.getElementById('review-body').value;
+        if (!name || !body) { alert('Name and review text required.'); return; }
+        var sh = '';
+        for (var i = 0; i < 5; i++) sh += '<span class="star ' + (i < stars ? '' : 'empty') + '">★</span>';
+        var html = '<div class="review-card ' + type + '"><div class="review-header"><div class="professor-info"><h3>' + name + '</h3><p>' + role + '</p></div><div class="rating-stars">' + sh + '</div></div><div class="review-meta"><div class="meta-badge"><i class="fas fa-calendar"></i> ' + meta1 + '</div></div><div class="review-text">' + body + '</div></div>';
+        var list = document.getElementById('reviews-list');
+        list.insertAdjacentHTML('afterbegin', html);
+        localStorage.setItem('savedReviews_EN', list.innerHTML);
+        closeReviewModal();
+        drawGraph();
+    }
+    function loadReviews() { var s = localStorage.getItem('savedReviews_EN'); if (s) document.getElementById('reviews-list').innerHTML = s; }
+    document.addEventListener('DOMContentLoaded', function () {
+        var s = localStorage.getItem('savedReviews_EN');
+        if (s) document.getElementById('reviews-list').innerHTML = s;
+        drawGraph();
+    });
+    function drawGraph() {
+        var canvas = document.getElementById('prof-graph');
+        if (!canvas) return;
+        var cards = document.querySelectorAll('#reviews-list .review-card');
+        var profs = [];
+        cards.forEach(function (card) {
+            var ne = card.querySelector('h3'); if (!ne) return;
+            var color = '#3498db';
+            if (card.classList.contains('positive')) color = '#27ae60';
+            if (card.classList.contains('neutral')) color = '#f39c12';
+            profs.push({ name: ne.textContent.trim(), color: color, card: card });
+        });
+        var W = canvas.parentElement.offsetWidth - 48, H = 260;
+        canvas.width = W; canvas.height = H;
+        var ctx = canvas.getContext('2d');
+        var cx = W / 2, cy = H / 2, rx = Math.min(W * .36, 280), ry = Math.min(H * .36, 90);
+        profs.forEach(function (p, i) {
+            var a = (2 * Math.PI * i / (profs.length || 1)) - Math.PI / 2;
+            p.x = cx + rx * Math.cos(a); p.y = cy + ry * Math.sin(a); p.r = 26;
+        });
+        ctx.clearRect(0, 0, W, H); ctx.fillStyle = '#f8f9fa'; ctx.fillRect(0, 0, W, H);
+        profs.forEach(function (p) {
+            ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(p.x, p.y);
+            ctx.strokeStyle = p.color + '44'; ctx.lineWidth = 1.5; ctx.stroke();
+        });
+        profs.forEach(function (p) {
+            ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, 2 * Math.PI);
+            ctx.fillStyle = p.color + '22'; ctx.fill();
+            ctx.strokeStyle = p.color; ctx.lineWidth = 2.5; ctx.stroke();
+            var words = p.name.split(/\s+/);
+            var initials = words.filter(function (w) { return /^[A-Z]/.test(w); }).map(function (w) { return w[0]; }).join('').slice(0, 2) || p.name[0];
+            ctx.fillStyle = p.color; ctx.font = 'bold 11px Poppins,sans-serif';
+            ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+            ctx.fillText(initials, p.x, p.y);
+            ctx.fillStyle = '#555'; ctx.font = '9px Poppins,sans-serif';
+            ctx.fillText(words[words.length - 1], p.x, p.y + p.r + 10);
+        });
+        ctx.beginPath(); ctx.arc(cx, cy, 20, 0, 2 * Math.PI); ctx.fillStyle = '#f39c12'; ctx.fill();
+        ctx.fillStyle = '#fff'; ctx.font = 'bold 9px Poppins,sans-serif';
+        ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText('Ana', cx, cy);
+        canvas.onclick = function (e) {
+            var rect = canvas.getBoundingClientRect();
+            var mx = e.clientX - rect.left, my = e.clientY - rect.top;
+            profs.forEach(function (p) {
+                var dx = mx - p.x, dy = my - p.y;
+                if (Math.sqrt(dx * dx + dy * dy) < p.r) {
+                    p.card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    var o = p.card.style.boxShadow;
+                    p.card.style.boxShadow = '0 0 0 4px ' + p.color + '88';
+                    setTimeout(function () { p.card.style.boxShadow = o; }, 1400);
+                }
+            });
+        };
+        canvas.onmousemove = function (e) {
+            var rect = canvas.getBoundingClientRect();
+            var mx = e.clientX - rect.left, my = e.clientY - rect.top;
+            var hover = profs.some(function (p) { return Math.sqrt((mx - p.x) * (mx - p.x) + (my - p.y) * (my - p.y)) < p.r; });
+            canvas.style.cursor = hover ? 'pointer' : 'default';
+        };
+    }
+    window.addEventListener('resize', drawGraph);
+</script>
+    <script src="js/roles.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Ana Alfaiate - Choose your role">
+    <title>Ana Alfaiate — Who are you?</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            color: #fff;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        /* Subtle animated particles */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background: radial-gradient(ellipse at 20% 50%, rgba(0, 157, 224, 0.08) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 20%, rgba(243, 156, 18, 0.06) 0%, transparent 60%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .role-page {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            max-width: 900px;
+            width: 100%;
+        }
+
+        .avatar {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid rgba(0, 157, 224, 0.6);
+            box-shadow: 0 0 30px rgba(0, 157, 224, 0.3);
+            margin-bottom: 16px;
+        }
+
+        h1 {
+            font-size: 2em;
+            font-weight: 700;
+            margin-bottom: 6px;
+            background: linear-gradient(90deg, #009de0, #f39c12);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            font-size: 0.95em;
+            color: rgba(255, 255, 255, 0.5);
+            margin-bottom: 48px;
+            font-weight: 300;
+            letter-spacing: 0.04em;
+        }
+
+        .roles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .role-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 18px;
+            padding: 30px 20px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: inherit;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .role-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 18px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .role-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(255, 255, 255, 0.25);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .role-card.ana-card {
+            border-color: rgba(243, 156, 18, 0.3);
+        }
+
+        .role-card.ana-card:hover {
+            border-color: rgba(243, 156, 18, 0.7);
+            box-shadow: 0 20px 40px rgba(243, 156, 18, 0.15);
+            background: rgba(243, 156, 18, 0.08);
+        }
+
+        .role-card.student-card:hover {
+            border-color: rgba(0, 157, 224, 0.7);
+            box-shadow: 0 20px 40px rgba(0, 157, 224, 0.15);
+            background: rgba(0, 157, 224, 0.08);
+        }
+
+        .role-card.professor-card:hover {
+            border-color: rgba(46, 213, 115, 0.7);
+            box-shadow: 0 20px 40px rgba(46, 213, 115, 0.15);
+            background: rgba(46, 213, 115, 0.08);
+        }
+
+        .role-card.researcher-card:hover {
+            border-color: rgba(156, 89, 243, 0.7);
+            box-shadow: 0 20px 40px rgba(156, 89, 243, 0.15);
+            background: rgba(156, 89, 243, 0.08);
+        }
+
+        .role-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6em;
+        }
+
+        .icon-ana {
+            background: rgba(243, 156, 18, 0.2);
+            color: #f39c12;
+        }
+
+        .icon-student {
+            background: rgba(0, 157, 224, 0.2);
+            color: #009de0;
+        }
+
+        .icon-prof {
+            background: rgba(46, 213, 115, 0.2);
+            color: #2ed573;
+        }
+
+        .icon-res {
+            background: rgba(156, 89, 243, 0.2);
+            color: #9c59f3;
+        }
+
+        .role-name {
+            font-size: 1.05em;
+            font-weight: 600;
+        }
+
+        .role-desc {
+            font-size: 0.78em;
+            color: rgba(255, 255, 255, 0.5);
+            line-height: 1.4;
+        }
+
+        .lock-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: rgba(243, 156, 18, 0.2);
+            border: 1px solid rgba(243, 156, 18, 0.4);
+            color: #f39c12;
+            padding: 2px 8px;
+            border-radius: 20px;
+            font-size: 0.65em;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .footer-note {
+            font-size: 0.78em;
+            color: rgba(255, 255, 255, 0.25);
+            margin-top: 20px;
+        }
+
+        /* Password Modal */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 999;
+            backdrop-filter: blur(4px);
+        }
+
+        .modal-overlay.hidden {
+            display: none;
+        }
+
+        .modal-box {
+            background: linear-gradient(145deg, #1a2a3a, #162030);
+            border: 1px solid rgba(243, 156, 18, 0.3);
+            border-radius: 20px;
+            padding: 40px 36px;
+            max-width: 380px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-box .lock-icon {
+            font-size: 2.5em;
+            color: #f39c12;
+            margin-bottom: 16px;
+        }
+
+        .modal-box h2 {
+            font-size: 1.3em;
+            margin-bottom: 8px;
+        }
+
+        .modal-box p {
+            font-size: 0.85em;
+            color: rgba(255, 255, 255, 0.5);
+            margin-bottom: 24px;
+        }
+
+        .modal-box input[type=password] {
+            width: 100%;
+            padding: 12px 16px;
+            border-radius: 10px;
+            border: 1px solid rgba(243, 156, 18, 0.3);
+            background: rgba(255, 255, 255, 0.07);
+            color: #fff;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1em;
+            margin-bottom: 16px;
+            outline: none;
+            transition: border-color 0.3s;
+            text-align: center;
+            letter-spacing: 3px;
+        }
+
+        .modal-box input[type=password]:focus {
+            border-color: #f39c12;
+        }
+
+        .modal-box input[type=password].shake {
+            animation: shake 0.4s;
+            border-color: #e74c3c;
+        }
+
+        @keyframes shake {
+
+            0%,
+            100% {
+                transform: translateX(0);
+            }
+
+            25% {
+                transform: translateX(-8px);
+            }
+
+            75% {
+                transform: translateX(8px);
+            }
+        }
+
+        .btn-enter {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 10px;
+            background: linear-gradient(135deg, #f39c12, #e67e22);
+            color: #fff;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-bottom: 12px;
+        }
+
+        .btn-enter:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(243, 156, 18, 0.35);
+        }
+
+        .btn-cancel {
+            background: none;
+            border: none;
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 0.85em;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            transition: color 0.2s;
+        }
+
+        .btn-cancel:hover {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        @media (max-width: 500px) {
+            .roles-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            h1 {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-XXXXXXXXXX');
+    </script>
+</head>
+
+<body>
+    <div class="role-page">
+        <img src="img/Ana-Alfaiate.jpeg" alt="Ana Alfaiate" class="avatar">
+        <h1>Ana Alfaiate</h1>
+        <p class="subtitle">Who are you? Pick your profile to get started.</p>
+
+        <div class="roles-grid">
+            <!-- Ana — password protected -->
+            <div class="role-card ana-card" onclick="openAnaModal()">
+                <span class="lock-badge"><i class="fas fa-lock"></i> Private</span>
+                <div class="role-icon icon-ana"><i class="fas fa-user-crown"></i></div>
+                <span class="role-name">Ana</span>
+                <span class="role-desc">Full access. Admin mode on all pages.</span>
+            </div>
+
+            <!-- Student -->
+            <a href="index.html?role=student" class="role-card student-card">
+                <div class="role-icon icon-student"><i class="fas fa-graduation-cap"></i></div>
+                <span class="role-name">Student</span>
+                <span class="role-desc">Academic info, tutoring, research projects.</span>
+            </a>
+
+            <!-- Professor -->
+            <a href="index.html?role=professor" class="role-card professor-card">
+                <div class="role-icon icon-prof"><i class="fas fa-chalkboard-teacher"></i></div>
+                <span class="role-name">Professor</span>
+                <span class="role-desc">Research experience, publications & skills.</span>
+            </a>
+
+            <!-- Researcher -->
+            <a href="index.html?role=researcher" class="role-card researcher-card">
+                <div class="role-icon icon-res"><i class="fas fa-flask"></i></div>
+                <span class="role-name">Researcher</span>
+                <span class="role-desc">Lab experience, datasets, publications.</span>
+            </a>
+        </div>
+
+        <p class="footer-note">You can always switch role later from the navigation bar.</p>
+    </div>
+
+    <!-- Password Modal for Ana -->
+    <div id="anaModal" class="modal-overlay hidden">
+        <div class="modal-box">
+            <div class="lock-icon"><i class="fas fa-lock"></i></div>
+            <h2>Private Access</h2>
+            <p>This profile is password protected. Enter the secret to continue as Ana.</p>
+            <input type="password" id="anaPassword" placeholder="••••••"
+                onkeydown="if(event.key==='Enter')checkAnaPassword()">
+            <button class="btn-enter" onclick="checkAnaPassword()"><i class="fas fa-key"></i> Enter</button>
+            <button class="btn-cancel" onclick="closeAnaModal()">Cancel</button>
+        </div>
+    </div>
+
+    <script>
+        // Store role in sessionStorage so pages can read it
+        function setRole(role) {
+            sessionStorage.setItem('siteRole', role);
+        }
+
+        function openAnaModal() {
+            document.getElementById('anaModal').classList.remove('hidden');
+            setTimeout(() => document.getElementById('anaPassword').focus(), 100);
+        }
+
+        function closeAnaModal() {
+            document.getElementById('anaModal').classList.add('hidden');
+            document.getElementById('anaPassword').value = '';
+        }
+
+        function checkAnaPassword() {
+            const input = document.getElementById('anaPassword');
+            const val = input.value.trim();
+            if (val === '42' || val === 'ana') {
+                setRole('ana');
+                // Go to main page in Ana mode
+                window.location.href = 'index.html?role=ana';
+            } else {
+                input.classList.add('shake');
+                input.value = '';
+                setTimeout(() => input.classList.remove('shake'), 500);
+            }
+        }
+
+        // Set role when clicking student/professor/researcher links
+        document.querySelectorAll('.role-card[href]').forEach(card => {
+            card.addEventListener('click', e => {
+                const url = new URL(card.href);
+                const role = url.searchParams.get('role');
+                if (role) setRole(role);
+            });
+        });
+
+        // ESC closes modal
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape') closeAnaModal();
+        });
+    </script>
+</body>
+
+</html>

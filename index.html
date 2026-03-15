@@ -12,18 +12,29 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-XXXXXXXXXX');
+    </script>
 </head>
 
 <body>
     <!-- Barra de Atalhos -->
     <div class="navbar">
         <a href="#home">Home</a>
-        <a href="#portfolio">Portfolio</a>
         <a href="photography.html">Photography</a>
         <a href="list.html">Impossible List</a>
         <a href="#cv">CV</a>
         <a href="#ideas">Ideas</a>
+        
         <div class="lang-switcher">
+            <span id="role-indicator" style="margin-right: 15px; font-size: 0.8em; opacity: 0.7; color: white;"></span>
             <a href="index.html" class="lang-btn active">EN</a>
             <a href="index-pt.html" class="lang-btn">PT</a>
         </div>
@@ -99,46 +110,6 @@
                 Here you can find my impossible list and a little more about me.
             </p>
         </div>
-        <!-- Portfolio Section -->
-        <section id="portfolio" class="portfolio-section">
-            <h2>My Portfolio</h2>
-            <div class="portfolio-grid">
-                <div class="portfolio-item">
-                    <a href="https://nebm.tecnico.ulisboa.pt/" target="_blank"
-                        style="text-decoration: none; color: inherit; display: block;">
-                        <img src="img/nebm_screenshot.png" alt="NEBM Website">
-                        <h3>NEBM Website</h3>
-                        <p>Collaborator (2022-2023) & Coordinator (2023-2024)</p>
-                        <p>Redesigned the website using <strong>HTML, CSS, JS</strong> and managed the
-                            <strong>PostgreSQL</strong> database for member resources.
-                        </p>
-                    </a>
-                </div>
-                <div class="portfolio-item">
-                    <a href="https://job2be.tecnico.ulisboa.pt/" target="_blank"
-                        style="text-decoration: none; color: inherit; display: block;">
-                        <img src="img/job2be_screenshot.png" alt="Job2Be Website">
-                        <h3>JOB2BE 2024 Website </h3>
-                        <p>Collaborator (2023-2024)</p>
-                        <p>Front-end development and <strong>PostgreSQL</strong> point system implementation for the
-                            Job2Be
-                            platform.</p>
-                    </a>
-                </div>
-                <div class="portfolio-item">
-                    <a href="https://agrupamento1066-ribamar.vercel.app/" target="_blank"
-                        style="text-decoration: none; color: inherit; display: block;">
-                        <img src="img/agrupamento1066_website.jpg" alt="Agrupamento 1066 Ribamar Website">
-                        <h3>Agrupamento 1066 Ribamar Website</h3>
-                        <p>Developer (2026-Present)</p>
-                        <p>Full-stack development of the official website and management system (Backoffice and Reserved
-                            Area), using <strong>Next.js</strong>, <strong>Prisma</strong> and <strong>SQLite</strong>.
-                        </p>
-                    </a>
-                </div>
-            </div>
-        </section>
-
         <!-- CV Section -->
         <section id="cv" class="cv-section">
             <h2>Curriculum Vitae</h2>
@@ -301,6 +272,12 @@
                         <h5>President of Fiscal Council & IT Coordinator & President</h5>
                         <p>President (Jul 2024 - Jul 2025). Previously IT Section Coordinator (2023-2024), leading the
                             website reform. Started as a collaborator in 2022.</p>
+                        <div class="subjects-grid" style="margin-top:10px;">
+                            <div class="subject-tag">HTML</div>
+                            <div class="subject-tag">CSS</div>
+                            <div class="subject-tag">JS</div>
+                            <div class="subject-tag">PostgreSQL</div>
+                        </div>
                     </div>
                 </div>
 
@@ -331,6 +308,32 @@
                         <h5>Instructor @ Alpha Program</h5>
                         <p>Instructor for the Alpha Program (6th-8th grade), teaching science and engineering topics.
                         </p>
+                    </div>
+                </div>
+
+                <!-- Missão País -->
+                <div class="timeline-element">
+                    <div class="timeline-element-content">
+                        <span class="timeline-element-icon" style="background-color: #fff;">
+                            <i class="fas fa-cross" style="color: #e67e22; font-size: 1.4em; line-height: 40px;"></i>
+                        </span>
+                        <h4>Missão País</h4>
+                        <h5>Missionary</h5>
+                        <p>Participated in University volunteering missions in Portugal, supporting isolated communities through social work and companionship.</p>
+                    </div>
+                    <span class="timeline-element-date">February 2025</span>
+                </div>
+
+                <!-- Web Summit & Games Week -->
+                <div class="timeline-element">
+                    <span class="timeline-element-date">November 2023 & 2024</span>
+                    <div class="timeline-element-content">
+                        <span class="timeline-element-icon" style="background-color: #fff;">
+                            <i class="fas fa-handshake" style="color: #009de0; font-size: 1.4em; line-height: 40px;"></i>
+                        </span>
+                        <h4>Web Summit & Lisboa Games Week</h4>
+                        <h5>Volunteer</h5>
+                        <p>General support and attendee assistance at major tech and gaming events in Lisbon.</p>
                     </div>
                 </div>
 
@@ -366,7 +369,30 @@
                         <h5>Collaborator (IT & Design)</h5>
                         <p>Worked in the IT department developing the website and systems, and previously in the Design
                             department.</p>
+                        <div class="subjects-grid" style="margin-top:10px;">
+                            <div class="subject-tag">PostgreSQL</div>
+                        </div>
                     </div>
+                </div>
+
+                <!-- Evento 11 - Agrupamento 1066 Ribamar -->
+                <div class="timeline-element">
+                    <div class="timeline-element-content">
+                        <span class="timeline-element-icon" style="background-color: #fff;">
+                            <img src="img/agrupamento1066_website.jpg" alt="CNE 1066 Logo"
+                                class="timeline-element-logo-img">
+                        </span>
+                        <h4><a href="https://agrupamento1066-ribamar.vercel.app/" target="_blank"
+                                style="text-decoration: none; color: inherit;">Agrupamento 1066 Ribamar Website</a></h4>
+                        <h5>Full-Stack Developer</h5>
+                        <p>Development of the official website and management system (Backoffice and Reserved Area).</p>
+                        <div class="subjects-grid" style="margin-top:10px;">
+                            <div class="subject-tag">Next.js</div>
+                            <div class="subject-tag">Prisma</div>
+                            <div class="subject-tag">SQLite</div>
+                        </div>
+                    </div>
+                    <span class="timeline-element-date">January 2026 - Present</span>
                 </div>
 
                 <!-- Evento 9 - Medicine -->
@@ -394,6 +420,89 @@
                                 Engineering</a></h4>
                         <h5>Técnico Lisboa</h5>
                         <p>Graduated with a final grade of 18.47/20. Received multiple Academic Excellence Diplomas.</p>
+                    </div>
+                </div>
+
+                <!-- Escola Avançada de Matemática -->
+                <div class="timeline-element">
+                    <div class="timeline-element-content">
+                        <span class="timeline-element-icon" style="background-color: #fff;">
+                            <i class="fas fa-square-root-alt"
+                                style="color: #009de0; font-size: 1.4em; line-height: 40px;"></i>
+                        </span>
+                        <h4>Escola Avançada de Matemática</h4>
+                        <h5>Author &amp; Instructor</h5>
+                        <p>Creating and teaching advanced mathematics content.</p>
+                    </div>
+                    <span class="timeline-element-date">Present</span>
+                </div>
+
+                <!-- IST Diferencial -->
+                <div class="timeline-element">
+                    <div class="timeline-element-content">
+                        <span class="timeline-element-icon" style="background-color: #fff;">
+                            <img src="img/IST_favicon.ico" alt="IST Diferencial Logo" class="timeline-element-logo-img"
+                                style="width: 25px; height: 25px;">
+                        </span>
+                        <h4><a href="https://jornal.tecnico.ulisboa.pt" target="_blank"
+                                style="text-decoration: none; color: inherit;">IST Diferencial</a></h4>
+                        <h5>Writer + Website Management &amp; Infrastructure</h5>
+                        <p>Contributing to Jornal Diferencial with focus on infrastructure improvements and visitor
+                            analytics, and also Sports PhD news.</p>
+                    </div>
+                    <span class="timeline-element-date">Mar 2026 - Present</span>
+                </div>
+
+                <!-- TFIST Tuna Feminina -->
+                <div class="timeline-element">
+                    <div class="timeline-element-content">
+                        <span class="timeline-element-icon" style="background-color: #fff;">
+                            <img src="img/IST_favicon.ico" alt="TFIST Logo" class="timeline-element-logo-img"
+                                style="width: 25px; height: 25px;">
+                        </span>
+                        <h4>TFIST Tuna Feminina</h4>
+                        <h5>Proto | Singing &amp; Percussion | Voice: M&eacute;dio</h5>
+                        <p>Women's musical group at IST. Albums: Julia Florista, Saudade, Mist&eacute;rios do Mundo.</p>
+                    </div>
+                    <span class="timeline-element-date">Feb 2026 - Present</span>
+                </div>
+
+                <!-- CNE Scouts -->
+                <div class="timeline-element">
+                    <span class="timeline-element-date">2010 - Present</span>
+                    <div class="timeline-element-content">
+                        <span class="timeline-element-icon" style="background-color: #fff;">
+                            <img src="img/agrupamento1066_website.jpg" alt="CNE Logo" class="timeline-element-logo-img">
+                        </span>
+                        <h4>Corpo Nacional de Escutas (CNE)</h4>
+                        <h5>Agrupamento 1066 Ribamar</h5>
+                        <p>Member and Leader. Developing skills in teamwork, leadership, and outdoor survival.</p>
+                    </div>
+                </div>
+
+                <!-- FISIOMAIS -->
+                <div class="timeline-element">
+                    <div class="timeline-element-content">
+                        <span class="timeline-element-icon" style="background-color: #fff;">
+                            <i class="fas fa-clinic-medical" style="color: #27ae60; font-size: 1.4em; line-height: 40px;"></i>
+                        </span>
+                        <h4>FISIOMAIS</h4>
+                        <h5>Receptionist</h5>
+                        <p>Customer service and administrative support at a physical therapy clinic.</p>
+                    </div>
+                    <span class="timeline-element-date">2020 - 2021 (Summer)</span>
+                </div>
+
+                <!-- Karate -->
+                <div class="timeline-element">
+                    <span class="timeline-element-date">2016 - 2021</span>
+                    <div class="timeline-element-content">
+                        <span class="timeline-element-icon" style="background-color: #fff;">
+                            <i class="fas fa-user-ninja" style="color: #c0392b; font-size: 1.4em; line-height: 40px;"></i>
+                        </span>
+                        <h4>AKS - Academia de Karate-do Shotokan</h4>
+                        <h5>Karaté Shotokan - 4º Kyu</h5>
+                        <p>Practice of martial arts, developing discipline, focus, and physical fitness.</p>
                     </div>
                 </div>
             </div>
@@ -445,6 +554,30 @@
 
     <!-- Scripts -->
     <script>
+        // --- Role Filtering Logic ---
+        function applyRole() {
+            const role = sessionStorage.getItem('siteRole') || 'guest';
+            const indicator = document.getElementById('role-indicator');
+            if (indicator) {
+                indicator.textContent = `Role: ${role.charAt(0).toUpperCase() + role.slice(1)}`;
+            }
+
+            // Show/hide content based on role
+            // Examples:
+            if (role === 'ana' || role === 'professor' || role === 'researcher') {
+                // Keep everything visible, maybe show research highlights
+            } else if (role === 'student') {
+                // Highlight educational content
+            }
+
+            // Enable Admin mode instantly if role is Ana
+            if (role === 'ana') {
+                enableAdminMode();
+            }
+        }
+
+        window.addEventListener('load', applyRole);
+
         // --- Existing Lock Logic ---
         function unlockIdeas() {
             const password = prompt("Enter the secret password:");
@@ -679,6 +812,7 @@
         // Revised enableAdminMode to call attachListeners
         // See updated code below replacement...
     </script>
+    <script src="js/roles.js"></script>
 </body>
 
 

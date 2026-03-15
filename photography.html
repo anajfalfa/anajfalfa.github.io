@@ -10,6 +10,15 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-XXXXXXXXXX');
+    </script>
 </head>
 
 <body class="photography-page">
@@ -19,6 +28,7 @@
         <a href="index.html#list">Impossible List</a>
         <a href="index.html#cv">CV</a>
         <div class="lang-switcher">
+            <span id="role-indicator" style="margin-right: 15px; font-size: 0.8em; opacity: 0.7; color: white;"></span>
             <a href="photography.html" class="lang-btn active">EN</a>
             <a href="photography-pt.html" class="lang-btn">PT</a>
         </div>
@@ -28,7 +38,20 @@
         <header class="gallery-header">
             <h1>Photography</h1>
             <p>Capturing moments and perspectives through my lens.</p>
-            <div class="ai-callout">
+            <p class="complementary-skills" style="margin-top: 10px; font-size: 0.9em; color: #7f8c8d;">
+                <strong>Complementary skills:</strong> Photography (digital and analogic), videography and editing (+
+                drone and action cameras)
+            </p>
+            <div class="course-badge"
+                style="margin-top: 15px; padding: 10px; background: rgba(0, 157, 224, 0.1); border-radius: 8px; display: inline-block;">
+                <i class="fas fa-camera-retro" style="color: #009de0; margin-right: 5px;"></i>
+                <a href="https://nucleodeartefotografica.pt/cursos/nivel1" target="_blank"
+                    style="text-decoration: none; color: #2c3e50; font-weight: 600;">
+                    Analog Photography Course Level I | NAF AEIST
+                </a>
+                <span style="font-size: 0.85em; color: #7f8c8d; margin-left: 10px;">(Starts March 9)</span>
+            </div>
+            <div class="ai-callout" style="margin-top: 20px;">
                 <i class="fas fa-robot"></i> <strong>Note:</strong> The first 6 images in this gallery are high-quality
                 AI-generated placeholders to demonstrate the layout.
             </div>
@@ -130,6 +153,7 @@
             document.getElementById('lightbox').style.display = "none";
         }
     </script>
+    <script src="js/roles.js"></script>
 </body>
 
 </html>
