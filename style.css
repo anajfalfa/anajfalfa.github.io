@@ -430,7 +430,7 @@ h2::after {
     position: fixed;
     top: 0;
     left: 0;
-    padding: 15px 0;
+    padding: 10px 20px;
     text-align: center;
     z-index: 1000;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
@@ -438,6 +438,8 @@ h2::after {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap; /* Allow wrapping for many links */
+    gap: 5px;
 }
 
 .navbar a {
