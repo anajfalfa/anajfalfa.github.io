@@ -45,10 +45,30 @@
 
 
         <h2>Impossible List</h2>
-        <p class="section-subtitle">My life goals and achievements.</p>
+        <p class="section-subtitle">My life goals and achievements. A list of things I thought I could never do.</p>
+
+        <!-- Progress Dashboard -->
+        <div class="list-dashboard glass">
+            <div class="dashboard-item">
+                <span class="dashboard-value" id="total-count">0</span>
+                <span class="dashboard-label">Total Goals</span>
+            </div>
+            <div class="dashboard-item">
+                <span class="dashboard-value" id="completed-count">0</span>
+                <span class="dashboard-label">Completed</span>
+            </div>
+            <div class="dashboard-item">
+                <span class="dashboard-value" id="progress-percent">0%</span>
+                <span class="dashboard-label">Success Rate</span>
+            </div>
+        </div>
+
         <div class="list-grid">
             <div class="list-category">
-                <h3>Academic</h3>
+                <h3><i class="fas fa-university"></i> Academic</h3>
+                <div class="category-progress">
+                    <div class="progress-bar" style="width: 15%;"></div>
+                </div>
                 <ul>
                     <li><i class="far fa-square"></i> <a href="https://register.athensnetwork.eu/" target="_blank"
                             style="text-decoration: none; color: inherit;">Attend an Athens Edition - intensive
@@ -105,14 +125,20 @@
                 </ul>
             </div>
             <div class="list-category">
-                <h3>Tech</h3>
+                <h3><i class="fas fa-code"></i> Tech</h3>
+                <div class="category-progress">
+                    <div class="progress-bar" style="width: 0%;"></div>
+                </div>
                 <ul>
                     <li><i class="far fa-square"></i> Develop an application</li>
                     <li><i class="far fa-square"></i> Develop an Overleaf template</li>
                 </ul>
             </div>
             <div class="list-category">
-                <h3>Health</h3>
+                <h3><i class="fas fa-heartbeat"></i> Health</h3>
+                <div class="category-progress">
+                    <div class="progress-bar" style="width: 33%;"></div>
+                </div>
                 <ul>
                     <li class="done"><i class="fas fa-check-square"></i> Ultimate Frisbee</li>
                     <li><i class="far fa-square"></i> Return to Tennis</li>
@@ -120,7 +146,10 @@
                 </ul>
             </div>
             <div class="list-category">
-                <h3>Events to Attend</h3>
+                <h3><i class="fas fa-ticket-alt"></i> Events</h3>
+                <div class="category-progress">
+                    <div class="progress-bar" style="width: 66%;"></div>
+                </div>
                 <ul>
                     <li class="done"><i class="fas fa-check-square"></i> Web Summit</li>
                     <li class="done"><i class="fas fa-check-square"></i> Lisbon Games Week</li>
@@ -128,7 +157,10 @@
                 </ul>
             </div>
             <div class="list-category">
-                <h3>Volunteering</h3>
+                <h3><i class="fas fa-hands-helping"></i> Volunteering</h3>
+                <div class="category-progress">
+                    <div class="progress-bar" style="width: 50%;"></div>
+                </div>
                 <ul>
                     <li class="done"><i class="fas fa-check-square"></i> JMJ 2023 Lisbon (Parish Volunteer, August
                         2023)</li>
@@ -152,7 +184,10 @@
                 </ul>
             </div>
             <div class="list-category">
-                <h3>Traveling</h3>
+                <h3><i class="fas fa-plane"></i> Traveling</h3>
+                <div class="category-progress">
+                    <div class="progress-bar" style="width: 57%;"></div>
+                </div>
                 <ul>
                     <li><i class="far fa-square"></i> Madeira, Portugal</li>
                     <li><i class="far fa-square"></i> Gerês, Portugal</li>
@@ -176,7 +211,10 @@
                 </ul>
             </div>
             <div class="list-category">
-                <h3>Scouts</h3>
+                <h3><i class="fas fa-campground"></i> Scouts</h3>
+                <div class="category-progress">
+                    <div class="progress-bar" style="width: 25%;"></div>
+                </div>
                 <ul>
                     <li><i class="far fa-square"></i> Volunteering at Santuário de Fátima</li>
                     <li><i class="far fa-square"></i> Volunteer at KISC, Switzerland</li>
@@ -193,7 +231,10 @@
                 </ul>
             </div>
             <div class="list-category">
-                <h3>Life Goals</h3>
+                <h3><i class="fas fa-star"></i> Life Goals</h3>
+                <div class="category-progress">
+                    <div class="progress-bar" style="width: 25%;"></div>
+                </div>
                 <ul>
                     <li class="done"><i class="fas fa-check-square"></i> Erasmus Experience</li>
                     <li><i class="far fa-square"></i> Own a house</li>
@@ -203,7 +244,10 @@
                 </ul>
             </div>
             <div class="list-category">
-                <h3>Sports</h3>
+                <h3><i class="fas fa-running"></i> Sports</h3>
+                <div class="category-progress">
+                    <div class="progress-bar" style="width: 100%;"></div>
+                </div>
                 <ul>
                     <li class="done"><i class="fas fa-check-square"></i> Karate (4th Kyu)</li>
                     <li class="done"><i class="fas fa-check-square"></i> Volleyball (IST Team)</li>
@@ -215,6 +259,18 @@
     </section>
 
     <script src="js/roles.js"></script>
+    <script>
+        // Real-time Dashboard Completion Logic
+        document.addEventListener('DOMContentLoaded', () => {
+            const items = document.querySelectorAll('.list-category li');
+            const total = items.length;
+            const completed = document.querySelectorAll('.list-category li.done').length;
+            
+            document.getElementById('total-count').textContent = total;
+            document.getElementById('completed-count').textContent = completed;
+            document.getElementById('progress-percent').textContent = Math.round((completed / total) * 100) + '%';
+        });
+    </script>
 </body>
 
 </html>

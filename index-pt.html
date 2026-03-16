@@ -21,6 +21,12 @@
 
       gtag('config', 'G-XXXXXXXXXX');
     </script>
+    <script>
+        // Verificar papel na entrada
+        if (!sessionStorage.getItem('siteRole')) {
+            window.location.href = 'role.html';
+        }
+    </script>
 </head>
 
 <body>

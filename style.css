@@ -319,6 +319,56 @@ h2::after {
     /* Green for done */
 }
 
+.list-category h3 i {
+    margin-right: 10px;
+    color: #a3c7e4;
+}
+
+.category-progress {
+    height: 6px;
+    background: #f0f0f0;
+    border-radius: 3px;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.category-progress .progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #a3c7e4, #3f51b5);
+    border-radius: 3px;
+    transition: width 1s ease-in-out;
+}
+
+.list-dashboard {
+    display: flex;
+    justify-content: space-around;
+    padding: 30px;
+    margin: 30px auto 50px;
+    max-width: 800px;
+    border-radius: 20px;
+}
+
+.dashboard-item {
+    text-align: center;
+}
+
+.dashboard-value {
+    display: block;
+    font-size: 2.2em;
+    font-weight: 700;
+    color: #3f51b5;
+    line-height: 1;
+}
+
+.dashboard-label {
+    font-size: 0.9em;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 5px;
+    display: block;
+}
+
 /* CV Section */
 .cv-container {
     background: white;

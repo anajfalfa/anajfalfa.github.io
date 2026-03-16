@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Blog Post - Research Explorations - Ana Alfaiate">
+    <title>Research Explorations: ASP and Optimization - Ana Alfaiate</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="../img/favicon.ico">
+    <style>
+        .post-container {
+            max-width: 800px;
+            width: 100%;
+            margin: 100px auto 50px;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+        }
+
+        .post-header {
+            margin-bottom: 30px;
+            border-bottom: 2px solid #ecf0f1;
+            padding-bottom: 20px;
+        }
+
+        .post-title {
+            font-size: 2.5em;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .post-meta {
+            display: flex;
+            gap: 20px;
+            color: #7f8c8d;
+            font-size: 0.9em;
+        }
+
+        .post-meta i {
+            color: #3498db;
+            margin-right: 5px;
+        }
+
+        .post-content {
+            color: #444;
+            line-height: 1.8;
+            font-size: 1.1em;
+        }
+
+        .post-content p {
+            margin-bottom: 20px;
+        }
+
+        .post-content h2 {
+            color: #2c3e50;
+            margin-top: 40px;
+            margin-bottom: 15px;
+        }
+
+        .post-tags {
+            margin-top: 40px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: #ecf0f1;
+            color: #34495e;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85em;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: #3498db;
+            text-decoration: none;
+            font-weight: 600;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .back-link:hover {
+            transform: translateX(-5px);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <div class="navbar">
+        <a href="../index.html">Home</a>
+        <a href="../index.html#portfolio">Portfolio</a>
+        <a href="../photography.html">Photography</a>
+        <a href="../cv-view.html">CV</a>
+        <a href="../blog.html">Blog</a>
+        <a href="../research.html">Research</a>
+        <a href="../podcasts.html">Podcasts</a>
+        <a href="../reviews.html">Reviews</a>
+        <a href="../tutoring.html">Tutoring</a>
+        <a href="../ribamar.html">Ribamar</a>
+        <a href="../list.html">Impossible List</a>
+    </div>
+
+    <div class="container">
+        <a href="../blog.html" class="back-link"><i class="fas fa-arrow-left"></i> Back to Blog</a>
+        
+        <article class="post-container">
+            <header class="post-header">
+                <h1 class="post-title">Research Explorations: ASP and Optimization</h1>
+                <div class="post-meta">
+                    <span><i class="fas fa-calendar"></i> February 28, 2026</span>
+                    <span><i class="fas fa-user"></i> Ana Alfaiate</span>
+                </div>
+            </header>
+
+            <div class="post-content">
+                <p>This week, I've been diving deep into Answer Set Programming (ASP) and its applications in optimization problems. The elegance of declarative programming never ceases to amaze me. ASP provides a powerful framework for modeling and solving complex combinatorial problems, where you describe *what* the problem is, rather than *how* to find the solution.</p>
+                
+                <h2>The Power of Declarative Logic</h2>
+                <p>In many optimization scenarios, traditional imperative algorithms can become incredibly complex and difficult to maintain. ASP allows us to represent constraints as logical rules. For example, when balancing roles in a project or scheduling tasks, we can define "hard constraints" (things that MUST be true) and "weak constraints" (things we'd LIKE to optimize).</p>
+
+                <p>One of the most interesting aspects I'm exploring is how to efficiently represent large-scale data within the Clingo solver. The grounding phase is often a bottleneck, and I'm looking into techniques like domain abstraction and symmetry breaking to speed up the process.</p>
+
+                <p>My current research specifically looks at how weighted constraints can be used to model user preferences in automated system design. It's a challenging but rewarding intersection of logic and user-centric engineering.</p>
+            </div>
+
+            <div class="post-tags">
+                <span class="tag">research</span>
+                <span class="tag">ASP</span>
+                <span class="tag">optimization</span>
+                <span class="tag">logic</span>
+            </div>
+        </article>
+    </div>
+
+    <footer style="width: 100%; text-align: center; padding: 30px 20px; color: #95a5a6; margin-top: 50px; border-top: 1px solid rgba(0,0,0,0.1);">
+        <p>&copy; 2024-2026 Ana Alfaiate. All rights reserved.</p>
+    </footer>
+    <script src="../js/roles.js"></script>
+</body>
+
+</html>

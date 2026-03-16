@@ -22,6 +22,12 @@
 
       gtag('config', 'G-XXXXXXXXXX');
     </script>
+    <script>
+        // Check for role on entry
+        if (!sessionStorage.getItem('siteRole')) {
+            window.location.href = 'role.html';
+        }
+    </script>
 </head>
 
 <body>

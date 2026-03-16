@@ -13,11 +13,11 @@
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
 
-      gtag('config', 'G-XXXXXXXXXX');
+        gtag('config', 'G-XXXXXXXXXX');
     </script>
 </head>
 
@@ -25,19 +25,20 @@
     <!-- Impossible List Section -->
     <section id="list" class="list-section">
         <div class="navbar gallery-navbar">
-        <a href="index-pt.html">Página Inicial</a>
-        <a href="index-pt.html#portfolio">Portfólio</a>
-        <a href="photography-pt.html">Fotografia</a>
-        <a href="cv-view-pt.html">CV</a>
-        <a href="blog-pt.html">Blog</a>
-        <a href="research-pt.html">Investigação</a>
-        <a href="podcasts-pt.html">Podcasts</a>
-        <a href="reviews-pt.html">Avaliações</a>
-        <a href="tutoring-pt.html">Explicações</a>
-        <a href="ribamar-pt.html">Ribamar</a>
-        <a href="list-pt.html">Impossible List</a>
-        <div class="lang-switcher">
-            <span id="role-indicator" style="margin-right: 15px; font-size: 0.8em; opacity: 0.7; color: white;"></span>
+            <a href="index-pt.html">Página Inicial</a>
+            <a href="index-pt.html#portfolio">Portfólio</a>
+            <a href="photography-pt.html">Fotografia</a>
+            <a href="cv-view-pt.html">CV</a>
+            <a href="blog-pt.html">Blog</a>
+            <a href="research-pt.html">Investigação</a>
+            <a href="podcasts-pt.html">Podcasts</a>
+            <a href="reviews-pt.html">Avaliações</a>
+            <a href="tutoring-pt.html">Explicações</a>
+            <a href="ribamar-pt.html">Ribamar</a>
+            <a href="list-pt.html">Impossible List</a>
+            <div class="lang-switcher">
+                <span id="role-indicator"
+                    style="margin-right: 15px; font-size: 0.8em; opacity: 0.7; color: white;"></span>
                 <a href="list.html" class="lang-btn">EN</a>
                 <a href="list-pt.html" class="lang-btn active">PT</a>
             </div>
@@ -47,11 +48,32 @@
 
         <!-- Impossible List Section -->
         <section id="list" class="list-section">
-            <h2>Impossible List</h2>
-            <p class="section-subtitle">Os meus objetivos de vida e conquistas.</p>
+            <h2>Impossible List (Lista do Impossível)</h2>
+            <p class="section-subtitle">Os meus objetivos de vida e conquistas. Uma lista de coisas que eu achava que
+                nunca conseguiria fazer.</p>
+
+            <!-- Painel de Progresso -->
+            <div class="list-dashboard glass">
+                <div class="dashboard-item">
+                    <span class="dashboard-value" id="total-count">0</span>
+                    <span class="dashboard-label">Total de Objetivos</span>
+                </div>
+                <div class="dashboard-item">
+                    <span class="dashboard-value" id="completed-count">0</span>
+                    <span class="dashboard-label">Concluídos</span>
+                </div>
+                <div class="dashboard-item">
+                    <span class="dashboard-value" id="progress-percent">0%</span>
+                    <span class="dashboard-label">Taxa de Sucesso</span>
+                </div>
+            </div>
+
             <div class="list-grid">
                 <div class="list-category">
-                    <h3>Académico</h3>
+                    <h3><i class="fas fa-university"></i> Académico</h3>
+                    <div class="category-progress">
+                        <div class="progress-bar" style="width: 15%;"></div>
+                    </div>
                     <ul>
                         <li><i class="far fa-square"></i> <a href="https://register.athensnetwork.eu/" target="_blank"
                                 style="text-decoration: none; color: inherit;">Participar numa Edição Athens - Semana
@@ -96,7 +118,10 @@
                 </div>
 
                 <div class="list-category">
-                    <h3>Tecnologia</h3>
+                    <h3><i class="fas fa-code"></i> Tecnologia</h3>
+                    <div class="category-progress">
+                        <div class="progress-bar" style="width: 0%;"></div>
+                    </div>
                     <ul>
                         <li><i class="far fa-square"></i> Desenvolver uma aplicação</li>
                         <li><i class="far fa-square"></i> Desenvolver um template Overleaf</li>
@@ -104,7 +129,10 @@
                 </div>
 
                 <div class="list-category">
-                    <h3>Saúde</h3>
+                    <h3><i class="fas fa-heartbeat"></i> Saúde</h3>
+                    <div class="category-progress">
+                        <div class="progress-bar" style="width: 33%;"></div>
+                    </div>
                     <ul>
                         <li class="done"><i class="fas fa-check-square"></i> Ultimate Frisbee</li>
                         <li><i class="far fa-square"></i> Voltar a jogar Ténis</li>
@@ -113,7 +141,10 @@
                 </div>
 
                 <div class="list-category">
-                    <h3>Eventos a Visitar</h3>
+                    <h3><i class="fas fa-ticket-alt"></i> Eventos</h3>
+                    <div class="category-progress">
+                        <div class="progress-bar" style="width: 66%;"></div>
+                    </div>
                     <ul>
                         <li class="done"><i class="fas fa-check-square"></i> Web Summit</li>
                         <li class="done"><i class="fas fa-check-square"></i> Lisbon Games Week</li>
@@ -122,7 +153,10 @@
                 </div>
 
                 <div class="list-category">
-                    <h3>Voluntariado</h3>
+                    <h3><i class="fas fa-hands-helping"></i> Voluntariado</h3>
+                    <div class="category-progress">
+                        <div class="progress-bar" style="width: 50%;"></div>
+                    </div>
                     <ul>
                         <li class="done"><i class="fas fa-check-square"></i> JMJ 2023 Lisboa (Voluntário de Paróquia,
                             Agosto 2023)</li>
@@ -172,7 +206,10 @@
                 </div>
 
                 <div class="list-category">
-                    <h3>Escutismo</h3>
+                    <h3><i class="fas fa-campground"></i> Escuteiros</h3>
+                    <div class="category-progress">
+                        <div class="progress-bar" style="width: 25%;"></div>
+                    </div>
                     <ul>
                         <li><i class="far fa-square"></i> Voluntariado no Santuário de Fátima</li>
                         <li><i class="far fa-square"></i> Voluntariado no KISC, Suíça</li>
@@ -190,7 +227,10 @@
                 </div>
 
                 <div class="list-category">
-                    <h3>Objetivos de Vida</h3>
+                    <h3><i class="fas fa-star"></i> Objetivos de Vida</h3>
+                    <div class="category-progress">
+                        <div class="progress-bar" style="width: 25%;"></div>
+                    </div>
                     <ul>
                         <li class="done"><i class="fas fa-check-square"></i> Experiência Erasmus</li>
                         <li><i class="far fa-square"></i> Ter uma casa própria</li>
@@ -201,7 +241,10 @@
                 </div>
 
                 <div class="list-category">
-                    <h3>Desporto</h3>
+                    <h3><i class="fas fa-running"></i> Desporto</h3>
+                    <div class="category-progress">
+                        <div class="progress-bar" style="width: 100%;"></div>
+                    </div>
                     <ul>
                         <li class="done"><i class="fas fa-check-square"></i> Karate (4º Kyu)</li>
                         <li class="done"><i class="fas fa-check-square"></i> Voleibol (Equipa do IST)</li>
@@ -214,6 +257,18 @@
     </section>
 
     <script src="js/roles.js"></script>
+    <script>
+        // Lógica de Conclusão do Painel em Tempo Real
+        document.addEventListener('DOMContentLoaded', () => {
+            const items = document.querySelectorAll('.list-category li');
+            const total = items.length;
+            const completed = document.querySelectorAll('.list-category li.done').length;
+
+            document.getElementById('total-count').textContent = total;
+            document.getElementById('completed-count').textContent = completed;
+            document.getElementById('progress-percent').textContent = Math.round((completed / total) * 100) + '%';
+        });
+    </script>
 </body>
 
 </html>
