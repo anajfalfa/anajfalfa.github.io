@@ -554,30 +554,6 @@
 
     <!-- Scripts -->
     <script>
-        // --- Role Filtering Logic ---
-        function applyRole() {
-            const role = sessionStorage.getItem('siteRole') || 'guest';
-            const indicator = document.getElementById('role-indicator');
-            if (indicator) {
-                indicator.textContent = `Role: ${role.charAt(0).toUpperCase() + role.slice(1)}`;
-            }
-
-            // Show/hide content based on role
-            // Examples:
-            if (role === 'ana' || role === 'professor' || role === 'researcher') {
-                // Keep everything visible, maybe show research highlights
-            } else if (role === 'student') {
-                // Highlight educational content
-            }
-
-            // Enable Admin mode instantly if role is Ana
-            if (role === 'ana') {
-                enableAdminMode();
-            }
-        }
-
-        window.addEventListener('load', applyRole);
-
         // --- Existing Lock Logic ---
         function unlockIdeas() {
             const password = prompt("Enter the secret password:");

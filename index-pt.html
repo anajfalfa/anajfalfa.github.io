@@ -552,26 +552,6 @@
 
     <!-- Scripts -->
     <script>
-        // --- Role Filtering Logic ---
-        function applyRole() {
-            const role = sessionStorage.getItem('siteRole') || 'guest';
-            const indicator = document.getElementById('role-indicator');
-            if (indicator) {
-                indicator.textContent = `Role: ${role.charAt(0).toUpperCase() + role.slice(1)}`;
-            }
-
-            // Show/hide content based on role
-            if (role === 'ana') {
-                document.getElementById('ideas-lock').style.display = 'none';
-                const content = document.getElementById('ideas-content');
-                content.classList.remove('hidden', 'blur-content');
-                content.classList.add('visible');
-                enableAdminMode();
-            }
-        }
-
-        window.addEventListener('load', applyRole);
-
         // --- Lógica de Bloqueio ---
         function unlockIdeas() {
             const password = prompt("Introduza a palavra-passe secreta:");
