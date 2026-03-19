@@ -668,7 +668,11 @@
                     const dx = mx - s.x;
                     const dy = my - s.y;
                     if (Math.sqrt(dx*dx + dy*dy) < s.r) {
-                        alert(`${s.icon} ${s.name}\n${s.date}\n${s.details}`);
+                        if (s.name === "Ultimate") {
+                            window.open('https://anajfalfa.github.io/discoverLisboa/', '_blank');
+                        } else {
+                            alert(`${s.icon} ${s.name}\n${s.date}\n${s.details}`);
+                        }
                     }
                 });
             };
@@ -693,236 +697,16 @@
         // --- Existing Lock Logic ---
         function unlockIdeas() {
             const password = prompt("Enter the secret password:");
-            if (password === "42") {
+            // Accept 42, admin, ana just in case
+            if (password === "42" || password === "ana" || password === "admin") {
                 document.getElementById('ideas-lock').style.display = 'none';
                 const content = document.getElementById('ideas-content');
                 content.classList.remove('hidden', 'blur-content');
                 content.classList.add('visible');
-
-                // Enable Admin Mode
-                enableAdminMode();
             } else {
                 alert("Access Denied.");
             }
         }
-
-        // --- Admin System Logic ---
-        let currentEditingItem = null;
-        let currentAddCategory = null;
-
-        function enableAdminMode() {
-            document.body.classList.add('admin-mode');
-            document.getElementById('admin-controls').classList.remove('hidden');
-
-            // Add edit buttons to all list items
-            document.querySelectorAll('.list-category li').forEach((li) => {
-                if (!li.querySelector('.edit-btn')) {
-                    const btn = document.createElement('i');
-                    btn.className = 'fas fa-pencil-alt edit-btn';
-                    btn.onclick = (e) => openEditModal(e, li);
-                    li.appendChild(btn);
-
-                    if (!li.querySelector('.item-details')) {
-                        const details = document.createElement('div');
-                        details.className = 'item-details';
-                        li.appendChild(details);
-                    }
-                }
-            });
-
-            // Add "Add Item" buttons to categories
-            document.querySelectorAll('.list-category').forEach((cat) => {
-                if (!cat.querySelector('.add-btn-container')) {
-                    const container = document.createElement('div');
-                    container.className = 'add-btn-container';
-                    container.style.marginTop = '10px';
-                    container.style.textAlign = 'center';
-
-                    const btn = document.createElement('button');
-                    btn.className = 'btn-secondary'; // Reuse secondary style
-                    btn.innerHTML = '<i class="fas fa-plus"></i> Add Item';
-                    btn.style.fontSize = '0.8em';
-                    btn.style.padding = '5px 10px';
-                    btn.onclick = () => openAddModal(cat);
-
-                    container.appendChild(btn);
-                    cat.appendChild(container);
-                }
-            });
-
-            // Restore data from LocalStorage
-            loadChanges();
-        }
-
-        function openEditModal(e, li) {
-            e.stopPropagation();
-            currentEditingItem = li;
-
-            const details = li.querySelector('.item-details');
-            const date = details.getAttribute('data-date') || '';
-            const notes = details.getAttribute('data-notes') || '';
-
-            document.getElementById('edit-date').value = date;
-            document.getElementById('edit-notes').value = notes;
-
-            document.getElementById('edit-modal').classList.remove('hidden');
-        }
-
-        function closeModal() {
-            document.getElementById('edit-modal').classList.add('hidden');
-            currentEditingItem = null;
-        }
-
-        function openAddModal(category) {
-            currentAddCategory = category;
-            document.getElementById('add-text').value = '';
-            document.getElementById('add-date').value = '';
-            document.getElementById('add-modal').classList.remove('hidden');
-        }
-
-        function closeAddModal() {
-            document.getElementById('add-modal').classList.add('hidden');
-            currentAddCategory = null;
-        }
-
-        function saveNewItem() {
-            if (!currentAddCategory) return;
-            const text = document.getElementById('add-text').value;
-            const date = document.getElementById('add-date').value;
-
-            if (!text) return;
-
-            const ul = currentAddCategory.querySelector('ul');
-            const li = document.createElement('li');
-
-            // Build inner HTML similar to saveEdit
-            let detailsHTML = '';
-            if (date) {
-                detailsHTML = `<span class="item-date">Completed: ${date}</span>`;
-            }
-
-            // Determine icon and class
-            const isDone = !!date;
-            const iconClass = isDone ? 'fas fa-check-square' : 'far fa-square';
-            const liClass = isDone ? 'done' : '';
-
-            if (liClass) li.className = liClass;
-
-            li.innerHTML = `<i class="${iconClass}"></i> ${text} <i class="fas fa-pencil-alt edit-btn"></i>
-                            <div class="item-details" data-date="${date || ''}" data-notes="">${detailsHTML}</div>`;
-
-            // Re-bind edit click for the new item
-            li.querySelector('.edit-btn').onclick = (e) => openEditModal(e, li);
-
-            ul.appendChild(li);
-
-            saveChanges();
-            closeAddModal();
-        }
-
-        function saveEdit() {
-            if (!currentEditingItem) return;
-
-            const date = document.getElementById('edit-date').value;
-            const notes = document.getElementById('edit-notes').value;
-            const details = currentEditingItem.querySelector('.item-details');
-
-            // Update DOM
-            details.setAttribute('data-date', date);
-            details.setAttribute('data-notes', notes);
-
-            let html = '';
-            if (date) html += `<span class="item-date">Completed: ${date}</span>`;
-            if (notes) html += `<p class="item-note">${notes}</p>`;
-            details.innerHTML = html;
-
-            // Mark as done if date is present
-            const icon = currentEditingItem.querySelector('i'); // First icon
-            if (date) {
-                currentEditingItem.classList.add('done');
-                icon.className = 'fas fa-check-square';
-            } else {
-                // Optional: Uncheck if date cleared? Maybe not strictly required but good UX
-            }
-
-            saveChanges();
-            closeModal();
-        }
-
-        function exportHTML() {
-            // Clone the list to clean it up
-            const listClone = document.getElementById('list').cloneNode(true);
-
-            // Remove Admin Buttons
-            listClone.querySelectorAll('.edit-btn').forEach(el => el.remove());
-            listClone.querySelectorAll('.add-btn-container').forEach(el => el.remove());
-
-            // Generate HTML
-            const html = listClone.innerHTML; // Just the content of the list section
-
-            // Note: If you want to replace the WHOLE section, use outerHTML, 
-            // but make sure to strip the id="list" duplication if pasting inside id="list".
-            // The user instruction "Paste it into index.html" usually implies replacing the inner content 
-            // OR replacing the whole <section>. 
-            // Let's stick to innerHTML for safer pasting inside the container, 
-            // OR outerHTML if they replace the section.
-            // Given my previous instruction "Paste it into index.html to save", 
-            // I'll assume they might replace the <section>. 
-            // Let's provide the inner content of the grid? 
-            // Let's stick to outerHTML but cleaned.
-
-            const outer = listClone.outerHTML;
-
-            navigator.clipboard.writeText(outer).then(() => {
-                alert('Cleaned HTML copied! Replaces the <section id="list">...</section> block.');
-            });
-        }
-
-        function saveChanges() {
-            const listHTML = document.getElementById('list').innerHTML;
-            localStorage.setItem('impossibleListHTML', listHTML);
-            alert('Changes saved to browser!');
-        }
-
-        function loadChanges() {
-            const saved = localStorage.getItem('impossibleListHTML');
-            if (saved) {
-                document.getElementById('list').innerHTML = saved;
-                // Re-enable admin controls because the innerHTML replacement might kill listeners for existing elements
-                // Actually, we need to re-attach listeners.
-                // Simpler: Just rely on enableAdminMode logic to re-attach if elements exist
-                // But wait, innerHTML replacement destroys DOM nodes, so listeners attached via JS property (onclick) are lost?
-                // Yes. But my enableAdminMode adds them using `li.onclick`. 
-                // Wait, `loadChanges` calls `enableAdminMode`? No, `enableAdminMode` calls `loadChanges`.
-                // If `loadChanges` replaces innerHTML, we need to re-run the listener attachment logic.
-                // FIX: Separate listener attachment.
-
-                // Let's make sure we re-attach listeners after loading.
-                attachListeners();
-            }
-        }
-
-        function attachListeners() {
-            document.querySelectorAll('.list-category li').forEach((li) => {
-                // Clean old buttons inside if they were saved in HTML (export includes them?)
-                // If export includes .edit-btn, we might duplicate them if we aren't careful.
-                // The check `if (!li.querySelector('.edit-btn'))` handles duplication.
-                // But we need to re-attach click events to existing buttons.
-                const btn = li.querySelector('.edit-btn');
-                if (btn) {
-                    btn.onclick = (e) => openEditModal(e, li);
-                }
-            });
-
-            document.querySelectorAll('.add-btn-container button').forEach(btn => {
-                // Find parent category
-                const cat = btn.closest('.list-category');
-                btn.onclick = () => openAddModal(cat);
-            });
-        }
-
-        // Revised enableAdminMode to call attachListeners
-        // See updated code below replacement...
     </script>
     <script src="js/roles.js"></script>
 </body>
