@@ -1,78 +1,129 @@
-<section class="dia-do-pai">
-    <header>
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feliz Dia do Pai 💛</title>
+    <!-- Elegant fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="diadopai26.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div id="particles-js"></div> <!-- Optional background particle effect -->
+
+    <!-- LOCK SCREEN -->
+    <div id="lock-screen" class="glass-container">
         <h1>Feliz Dia do Pai 💛</h1>
-        <p>Um álbum digital cheio de memórias, carinho e gratidão.
-            Fiz esta página só para ti, Pai — tens de resolver uma pequena charada para entrar 😉</p>
-
-
-        <!-- PLAYER DE MÚSICA -->
-        <div class="musica">
-            <p class="musica-titulo">🎵 Sugestão: carrega no play enquanto exploras o álbum</p>
-            <audio controls>
-                <!-- Substitui o src abaixo pelo link do teu ficheiro de música -->
-                <source src="caminho/para-a-tua-musica.mp3" type="audio/mpeg">
-                O teu navegador não suporta áudio em HTML5.
-            </audio>
+        <p class="subtitle">Um álbum digital cheio de memórias, carinho e gratidão.</p>
+        <p>Fiz esta página só para ti, Pai — tens de resolver uma pequena charada para entrar 😉</p>
+        
+        <div class="charada-box">
+            <h2>🔐 A Charada</h2>
+            <p>Soma as seguintes pistas, tudo seguido (em minúsculas, sem espaços):</p>
+            <ul class="pistas-list">
+                <li>O teu segundo nome</li>
+                <li>O ano em que começaste a escrever a tua história</li>
+                <li>O meu nome e o da tua mãe</li>
+                <li>O ano em que eu cheguei</li>
+            </ul>
+            <div class="input-group">
+                <input type="text" id="pwd-input" placeholder="A tua resposta..." onkeypress="if(event.key === 'Enter') checkPassword()">
+                <button onclick="checkPassword()" class="btn-unlock"><i class="fas fa-unlock-alt"></i> Entrar</button>
+            </div>
+            <p id="error-msg" class="error-msg"></p>
         </div>
+    </div>
 
-    </header>
+    <!-- MAIN CONTENT (Hidden by default) -->
+    <div id="main-content" class="hidden">
+        <header class="main-header glass-container">
+            <h1>Para o Melhor Pai do Mundo 💛</h1>
+            
+            <div class="musica-box">
+                <p><i class="fas fa-music"></i> Sugestão: carrega no play enquanto exploras o álbum</p>
+                <audio controls class="custom-audio">
+                    <!-- Update with actual path if needed -->
+                    <source src="img/musica.mp3" type="audio/mpeg">
+                    O teu navegador não suporta áudio.
+                </audio>
+            </div>
+        </header>
 
-    <!-- CHARADA / PASSWORD -->
-    <section class="charada">
-        <h2>🔐 A Charada</h2>
-        <p>
-            Soma as pistas:
-            <br><strong>O teu segundo nome</strong> +
-            <br><strong>o ano em que começaste a escrever a tua história</strong> +
-            <br><strong>o meu nome e da tua mãe</strong> +
-            <br><strong>o ano em que eu cheguei</strong>.
-        </p>
-        <p class="resolucao">Resposta: <strong>manuel1965julia2003</strong></p>
-    </section>
+        <section class="capitulo glass-container fade-in">
+            <h2><i class="fas fa-camera-retro"></i> Momentos de Infância</h2>
+            <div class="galeria">
+                <figure class="polaroid">
+                    <img src="FOTO1.jpg" alt="Foto de infância" onerror="this.src='https://images.unsplash.com/photo-1511895426328-dc8714191300?q=80&w=600&auto=format&fit=crop'">
+                    <figcaption>Aqui começou tudo… 💫</figcaption>
+                </figure>
+                <figure class="polaroid">
+                    <img src="FOTO2.jpg" alt="Férias antigas" onerror="this.src='https://images.unsplash.com/photo-1476610283151-546306e926ea?q=80&w=600&auto=format&fit=crop'">
+                    <figcaption>As nossas férias preferidas.</figcaption>
+                </figure>
+            </div>
+        </section>
 
-    <!-- CAPÍTULO 1 -->
-    <section class="capitulo">
-        <h2>📸 Momentos de Infância</h2>
-        <div class="galeria">
-            <figure>
-                <img src="FOTO1.jpg" alt="Foto de infância">
-                <figcaption>Aqui começou tudo… 💫</figcaption>
-            </figure>
+        <section class="capitulo glass-container fade-in">
+            <h2><i class="fas fa-compass"></i> As Nossas Aventuras</h2>
+            <div class="galeria">
+                <figure class="polaroid">
+                    <img src="FOTO3.jpg" alt="Momento divertido" onerror="this.src='https://images.unsplash.com/photo-1544465544-1b71aee9dfa3?q=80&w=600&auto=format&fit=crop'">
+                    <figcaption>O dia em que te fiz rir até chorar 😂</figcaption>
+                </figure>
+            </div>
+        </section>
 
-            <figure>
-                <img src="FOTO2.jpg" alt="Férias antigas">
-                <figcaption>As nossas férias preferidas.</figcaption>
-            </figure>
-        </div>
-    </section>
+        <section class="carta glass-container fade-in">
+            <h2><i class="fas fa-envelope-open-text"></i> Uma Carta Para Ti, Pai</h2>
+            <div class="carta-content">
+                <p>Pai,</p>
+                <p>Queria dizer-te de uma forma diferente o quanto significas para mim.</p>
+                <p>Cada foto aqui carrega uma memória, mas também um sentimento profundo — <strong>gratidão</strong>.</p>
+                <p>Obrigada por cada abraço apertado, cada conselho sábio, cada história contada e cada momento de paciência infinita.</p>
+                <p>És o meu porto seguro e uma das melhores partes da minha vida.</p>
+            </div>
+        </section>
 
-    <!-- CAPÍTULO 2 -->
-    <section class="capitulo">
-        <h2>🌟 As Nossas Aventuras</h2>
-        <div class="galeria">
-            <figure>
-                <img src="FOTO3.jpg" alt="Momento divertido">
-                <figcaption>O dia em que te fiz rir até chorar 😂</figcaption>
-            </figure>
-        </div>
-    </section>
+        <footer class="final">
+            <p>Obrigada por tudo.</p>
+            <p class="signature">Com amor, Ana Júlia 🤍</p>
+            <a href="index-pt.html" class="back-home"><i class="fas fa-home"></i> Voltar ao Início</a>
+        </footer>
+    </div>
 
-    <!-- CARTA -->
-    <section class="carta">
-        <h2>💌 Uma Carta Para Ti, Pai</h2>
-        <p>
-            Pai, queria dizer-te de uma forma diferente o quanto significas para mim.
-            Cada foto aqui carrega uma memória, mas também um sentimento — gratidão.
-            Obrigada por cada abraço, cada conselho, cada história e cada momento de paciência.
-            <br><br>
-            És um porto seguro e uma das melhores partes da minha vida.
-        </p>
-    </section>
-
-    <!-- FINAL -->
-    <section class="final">
-        <p>Obrigada por tudo.
-            <br><strong>Com amor, Ana Júlia 🤍</strong>
-        </p>
-    </section>
-</section>
+    <!-- Interatividade -->
+    <script>
+        function checkPassword() {
+            const input = document.getElementById('pwd-input').value.toLowerCase().replace(/\s/g, '');
+            const errorMsg = document.getElementById('error-msg');
+            
+            // Aceitar a resposta exata da charada original
+            if (input === 'manuel1965julia2003' || input === 'manuel1965anajulia2003') {
+                // Animação de saída
+                document.getElementById('lock-screen').style.opacity = '0';
+                setTimeout(() => {
+                    document.getElementById('lock-screen').style.display = 'none';
+                    const mainContent = document.getElementById('main-content');
+                    mainContent.classList.remove('hidden');
+                    
+                    // Trigger fade-in animations
+                    setTimeout(() => {
+                        mainContent.style.opacity = '1';
+                        const elements = document.querySelectorAll('.fade-in');
+                        elements.forEach((el, index) => {
+                            setTimeout(() => {
+                                el.classList.add('visible');
+                            }, index * 200);
+                        });
+                    }, 50);
+                }, 500);
+            } else {
+                errorMsg.textContent = 'Mmm... Tenta outra vez! Conta bem as pistas... 😉';
+                errorMsg.style.animation = 'shake 0.5s';
+                setTimeout(() => { errorMsg.style.animation = ''; }, 500);
+            }
+        }
+    </script>
+</body>
+</html>
