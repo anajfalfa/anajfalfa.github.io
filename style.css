@@ -985,6 +985,90 @@ footer span {
     color: #bbb;
 }
 
+/* Subject Tags (used in Timeline and Portfolio) */
+.subject-tag {
+    display: inline-block;
+    background: rgba(0, 157, 224, 0.1);
+    color: #009de0;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.85em;
+    font-weight: 500;
+    margin-right: 8px;
+    margin-bottom: 8px;
+    border: 1px solid rgba(0, 157, 224, 0.2);
+}
+
+/* Portfolio Section */
+.portfolio-section {
+    padding: 60px 0;
+    width: 100%;
+}
+
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.portfolio-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    height: 100%;
+}
+
+.portfolio-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px 0 rgba(31, 38, 135, 0.45);
+}
+
+.portfolio-image-container {
+    overflow: hidden;
+    height: 200px;
+    width: 100%;
+}
+
+.portfolio-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.portfolio-card:hover .portfolio-image-container img {
+    transform: scale(1.1);
+}
+
+.portfolio-info {
+    padding: 25px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.portfolio-info h3 {
+    margin-bottom: 10px;
+    color: #2c3e50;
+    font-size: 1.3em;
+}
+
+.portfolio-info p {
+    font-size: 0.95em;
+    color: #555;
+    margin-bottom: 15px;
+    line-height: 1.5;
+}
+
+.tech-stack {
+    margin-top: auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
 @keyframes zoomIn {
     from {
         transform: scale(0.8);

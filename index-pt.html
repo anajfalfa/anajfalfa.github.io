@@ -33,7 +33,7 @@
     <!-- Barra de Atalhos -->
     <div class="navbar">
         <a href="index-pt.html">Página Inicial</a>
-        <a href="index-pt.html#portfolio">Portfólio</a>
+        <a href="#portfolio">Portfólio</a>
         <a href="photography-pt.html">Fotografia</a>
         <a href="cv-view-pt.html">CV</a>
         <a href="blog-pt.html">Blog</a>
@@ -153,6 +153,77 @@
                         <p>Desenvolvimento integral do website e sistema de gestão (Backoffice e Área Reservada),
                             utilizando <strong>Next.js</strong>, <strong>Prisma</strong> e <strong>SQLite</strong>.</p>
                     </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio Section -->
+        <section id="portfolio" class="portfolio-section">
+            <h2 style="text-align: center; margin-bottom: 30px;">📂 Portfólio</h2>
+            <div class="portfolio-grid">
+                <!-- NEBM -->
+                <div class="portfolio-card glass">
+                    <div class="portfolio-image-container">
+                        <img src="img/nebm.jpg" alt="NEBM">
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>NEBM - IST</h3>
+                        <p><strong>Cargo:</strong> Presidente e Coordenadora de IT</p>
+                        <p>Liderei a reforma completa do website oficial, coordenando a equipa de informática e implementando melhorias estruturais modernas.</p>
+                        <div class="tech-stack">
+                            <span class="subject-tag">Coordenação de IT</span>
+                            <span class="subject-tag">Reforma de Website</span>
+                            <span class="subject-tag">Liderança</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- JOB2BE -->
+                <div class="portfolio-card glass">
+                    <div class="portfolio-image-container">
+                        <img src="img/job2be.jpeg" alt="JOB2BE">
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>JOB2BE</h3>
+                        <p><strong>Cargo:</strong> Colaboradora de IT e Design</p>
+                        <p>Contribuí para o desenvolvimento e identidade visual da plataforma JOB2BE, especializando-me em gestão de base de dados e refinamentos de frontend.</p>
+                        <div class="tech-stack">
+                            <span class="subject-tag">PostgreSQL</span>
+                            <span class="subject-tag">IT & Design</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 1066 -->
+                <div class="portfolio-card glass">
+                    <div class="portfolio-image-container">
+                        <img src="img/agrupamento1066_website.jpg" alt="1066 Ribamar">
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>CNE 1066 Ribamar</h3>
+                        <p><strong>Cargo:</strong> Desenvolvedora Full-Stack</p>
+                        <p>Desenvolvi um sistema de gestão abrangente e o website oficial para o agrupamento local de escuteiros, com um backoffice seguro.</p>
+                        <div class="tech-stack">
+                            <span class="subject-tag">Next.js</span>
+                            <span class="subject-tag">Prisma</span>
+                            <span class="subject-tag">SQLite</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ultimate Frisbee -->
+                <div class="portfolio-card glass">
+                    <div class="portfolio-image-container" style="background: linear-gradient(135deg, #9b59b6, #8e44ad); height: 200px; display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-flying-disc fa-5x" style="color: white; opacity: 0.8;"></i>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Discover Ultimate</h3>
+                        <p><strong>Cargo:</strong> Líder de Projeto e Dev</p>
+                        <p>Uma plataforma interativa desenhada para promover e organizar atividades de Ultimate Frisbee, mapeando a jornada desportiva da comunidade.</p>
+                        <div class="tech-stack">
+                            <a href="https://anajfalfa.github.io/discoverLisboa/" target="_blank" class="btn-secondary" style="font-size: 0.8em; padding: 5px 10px; text-decoration: none;"><i class="fas fa-external-link-alt"></i> Visitar Projeto</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -470,15 +541,9 @@
         <!-- Ideas Section -->
         <section id="ideas" class="ideas-section">
             <h2>As Minhas Ideias</h2>
-            <p class="section-subtitle">Área de acesso restrito.</p>
+            <p class="section-subtitle">Uma coleção de projetos e conceitos que me entusiasma explorar.</p>
 
-            <div id="ideas-lock" class="ideas-lock">
-                <i class="fas fa-lock fa-3x"></i>
-                <p>Esta secção está protegida por palavra-passe.</p>
-                <button onclick="unlockIdeas()" class="btn-primary">Desbloquear Acesso</button>
-            </div>
-
-            <div id="ideas-content" class="ideas-content hidden blur-content">
+            <div id="ideas-content" class="ideas-content visible">
                 <div class="idea-card glass">
                     <h3>❄️ Globos de Neve de Ribamar</h3>
                     <p>Design e produção de pisa-papéis/globos de neve com foco em Ribamar, Lourinhã, Zona Oeste e
@@ -693,19 +758,6 @@
             // ... original scroll logic if any ...
         });
         window.addEventListener('resize', drawSportsGraph);
-
-        // --- Lógica de Bloqueio ---
-        function unlockIdeas() {
-            const password = prompt("Introduza a palavra-passe secreta:");
-            if (password === "42" || password === "ana" || password === "admin") {
-                document.getElementById('ideas-lock').style.display = 'none';
-                const content = document.getElementById('ideas-content');
-                content.classList.remove('hidden', 'blur-content');
-                content.classList.add('visible');
-            } else {
-                alert("Acesso Negado.");
-            }
-        }
     </script>
     <script src="js/roles.js"></script>
 </body>

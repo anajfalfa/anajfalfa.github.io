@@ -34,7 +34,7 @@
     <!-- Barra de Atalhos -->
     <div class="navbar">
         <a href="index.html">Home</a>
-        <a href="index.html#portfolio">Portfolio</a>
+        <a href="#portfolio">Portfolio</a>
         <a href="photography.html">Photography</a>
         <a href="cv-view.html">CV</a>
         <a href="blog.html">Blog</a>
@@ -142,15 +142,9 @@
         <!-- Restricted Ideas Section -->
         <section id="ideas" class="ideas-section">
             <h2>My Ideas</h2>
-            <p class="section-subtitle">Restricted access area.</p>
+            <p class="section-subtitle">A collection of projects and concepts I'm passionate about exploring.</p>
 
-            <div id="ideas-lock" class="ideas-lock">
-                <i class="fas fa-lock fa-3x"></i>
-                <p>This section is password protected.</p>
-                <button onclick="unlockIdeas()" class="btn-primary">Unlock Access</button>
-            </div>
-
-            <div id="ideas-content" class="ideas-content hidden blur-content">
+            <div id="ideas-content" class="ideas-content visible">
                 <div class="idea-card glass">
                     <h3>❄️ Ribamar Snow Globes</h3>
                     <p>Design and production of paperweights/snow globes featuring Ribamar, Lourinhã, Zona Oeste, and
@@ -206,6 +200,77 @@
             </div>
         </section>
 
+
+        <!-- Portfolio Section -->
+        <section id="portfolio" class="portfolio-section">
+            <h2 style="text-align: center; margin-bottom: 30px;">📂 Portfolio</h2>
+            <div class="portfolio-grid">
+                <!-- NEBM -->
+                <div class="portfolio-card glass">
+                    <div class="portfolio-image-container">
+                        <img src="img/nebm.jpg" alt="NEBM">
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>NEBM - IST</h3>
+                        <p><strong>Role:</strong> President & IT Coordinator</p>
+                        <p>Led the complete reform of the official website, coordinating the IT team and implementing modern structural improvements to support student representation.</p>
+                        <div class="tech-stack">
+                            <span class="subject-tag">IT Coordination</span>
+                            <span class="subject-tag">Website Reform</span>
+                            <span class="subject-tag">Leadership</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- JOB2BE -->
+                <div class="portfolio-card glass">
+                    <div class="portfolio-image-container">
+                        <img src="img/job2be.jpeg" alt="JOB2BE">
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>JOB2BE</h3>
+                        <p><strong>Role:</strong> IT & Design Collaborator</p>
+                        <p>Contributed to the development and visual identity of the JOB2BE platform, specializing in database management and frontend refinements.</p>
+                        <div class="tech-stack">
+                            <span class="subject-tag">PostgreSQL</span>
+                            <span class="subject-tag">IT & Design</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 1066 -->
+                <div class="portfolio-card glass">
+                    <div class="portfolio-image-container">
+                        <img src="img/agrupamento1066_website.jpg" alt="1066 Ribamar">
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>CNE 1066 Ribamar</h3>
+                        <p><strong>Role:</strong> Full-Stack Developer</p>
+                        <p>Developed a comprehensive management system and official website for the local scout group, featuring a secure backoffice for inventory and records.</p>
+                        <div class="tech-stack">
+                            <span class="subject-tag">Next.js</span>
+                            <span class="subject-tag">Prisma</span>
+                            <span class="subject-tag">SQLite</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ultimate Frisbee -->
+                <div class="portfolio-card glass">
+                    <div class="portfolio-image-container" style="background: linear-gradient(135deg, #9b59b6, #8e44ad); height: 200px; display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-flying-disc fa-5x" style="color: white; opacity: 0.8;"></i>
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Discover Ultimate</h3>
+                        <p><strong>Role:</strong> Project Lead & Dev</p>
+                        <p>An interactive platform designed to promote and organize Ultimate Frisbee activities, mapping the "sports journey" of the community.</p>
+                        <div class="tech-stack">
+                            <a href="https://anajfalfa.github.io/discoverLisboa/" target="_blank" class="btn-secondary" style="font-size: 0.8em; padding: 5px 10px; text-decoration: none;"><i class="fas fa-external-link-alt"></i> Visit Project</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
         <!-- Sports Journey Section -->
         <section id="sports-journey" class="sports-section">
@@ -693,20 +758,6 @@
             drawSportsGraph();
         });
         window.addEventListener('resize', drawSportsGraph);
-    </script>
-        // --- Existing Lock Logic ---
-        function unlockIdeas() {
-            const password = prompt("Enter the secret password:");
-            // Accept 42, admin, ana just in case
-            if (password === "42" || password === "ana" || password === "admin") {
-                document.getElementById('ideas-lock').style.display = 'none';
-                const content = document.getElementById('ideas-content');
-                content.classList.remove('hidden', 'blur-content');
-                content.classList.add('visible');
-            } else {
-                alert("Access Denied.");
-            }
-        }
     </script>
     <script src="js/roles.js"></script>
 </body>
