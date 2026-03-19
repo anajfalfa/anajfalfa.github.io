@@ -161,6 +161,25 @@
             color: #2c3e50;
         }
 
+        /* --- Sub-Navigation --- */
+        .btn-subnav {
+            background: rgba(255,255,255,0.7);
+            border: 2px solid #ddd;
+            color: #2c3e50;
+            padding: 10px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .btn-subnav:hover {
+            background: #f39c12;
+            color: white;
+            border-color: #f39c12;
+            box-shadow: 0 4px 15px rgba(243, 156, 18, 0.3);
+            transform: translateY(-2px);
+        }
+
         /* ---- Professor Graph ---- */
         .graph-section {
             background: rgba(255, 255, 255, 0.95);
@@ -242,15 +261,25 @@
 
     <div class="container reviews-container">
         <div class="profile-section">
-            <h1 style="margin-top: 0;">⭐ Academic Reviews
+            <h1 style="margin-top: 0;">⭐ Reviews & Recommendations
                 <i class="fas fa-lock admin-lock" onclick="unlockAdmin()" title="Admin Login"
                     style="font-size: 0.5em; vertical-align: middle;"></i>
             </h1>
-            <p style="color: #7f8c8d; font-style: italic;">Honest feedback on courses, professors, and academic
-                experiences</p>
+            <p style="color: #7f8c8d; font-style: italic;">Honest feedback on Professors, Companies, and Courses</p>
         </div>
 
-        <!-- Admin Controls -->
+        <!-- Sub-Navigation Menu -->
+        <div class="page-subnav" style="display: flex; justify-content: center; gap: 15px; margin-bottom: 40px; flex-wrap: wrap;">
+            <a href="#professors" class="btn-subnav"><i class="fas fa-chalkboard-teacher"></i> Professors</a>
+            <a href="#companies" class="btn-subnav"><i class="fas fa-building"></i> Companies & Recruitment</a>
+            <a href="#courses" class="btn-subnav"><i class="fas fa-book-open"></i> Courses (TA & Wishlist)</a>
+        </div>
+
+        <!-- Section 1: Professores -->
+        <section id="professors" class="review-category-section">
+            <h2 class="section-title" style="margin-bottom: 20px; text-align: left; padding-bottom: 10px; font-size: 1.5em;">👨‍🏫 Academic Profiles</h2>
+
+            <!-- Admin Controls -->
         <div id="admin-controls" class="admin-controls">
             <button class="btn-primary" onclick="openAddReviewModal()"><i class="fas fa-plus"></i> Add Review</button>
             <button class="btn-danger" style="margin-left: 10px; background: #e74c3c; color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-weight: 600;" onclick="clearReviews()"><i class="fas fa-trash"></i> Clear Added Reviews</button>
@@ -406,14 +435,83 @@
             </div>
 
         </div>
+        </section> <!-- End Section 1 -->
+
+        <!-- Section 2: Companies & Recruitment -->
+        <section id="companies" class="review-category-section" style="margin-top: 60px;">
+            <h2 class="section-title" style="margin-bottom: 30px; text-align: left; padding-bottom: 10px; font-size: 1.5em;">🏢 Companies & Recruitment</h2>
+            
+            <div class="review-card neutral" style="border-left-color: #9b59b6;">
+                <div class="review-header">
+                    <div class="professor-info">
+                        <h3>Company Name (Placeholder)</h3>
+                        <p>Recruitment Process for Software Engineer</p>
+                    </div>
+                </div>
+                <div class="review-meta">
+                    <div class="meta-badge"><i class="fas fa-calendar"></i> Experience: Technical Interview</div>
+                </div>
+
+                <div class="review-text">
+                    The recruitment process was transparent and challenging. The engineering team stood out for their clear communication and real problem-solving questions. They cared deeply about how I approached a problem rather than just checking off algorithms.
+                </div>
+
+                <div class="highlights" style="background: rgba(155, 89, 182, 0.1); border-left-color: #9b59b6;">
+                    <h4 style="color: #8e44ad;"><i class="fas fa-heart"></i> Why I recommend them</h4>
+                    <ul>
+                        <li>Constructive feedback provided after technical assessments</li>
+                        <li>Company culture strongly values a growth mindset</li>
+                        <li>Interviewers genuinely interested in my reasoning</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Courses (TA & Wishlist) -->
+        <section id="courses" class="review-category-section" style="margin-top: 60px; margin-bottom: 40px;">
+            <h2 class="section-title" style="margin-bottom: 30px; text-align: left; padding-bottom: 10px; font-size: 1.5em;">📚 Courses (TA & Wishlist)</h2>
+            
+            <div class="review-card positive" style="border-left-color: #e74c3c;">
+                <div class="review-header">
+                    <div class="professor-info">
+                        <h3>Course Name (Placeholder)</h3>
+                        <p>Teaching Assistant (TA)</p>
+                    </div>
+                    <div class="rating-stars" style="color: #e74c3c;"><i class="fas fa-chalkboard-teacher"></i></div>
+                </div>
+                <div class="review-meta">
+                    <div class="meta-badge"><i class="fas fa-calendar"></i> Assisting Undergraduate Students</div>
+                </div>
+
+                <div class="review-text">
+                    Being a Teaching Assistant for this course taught me so much about empathy and how to effectively explain abstract concepts using real-life analogies. Seeing the "click" moment when students finally understand the material is incredibly rewarding and solidifies my own technical foundation.
+                </div>
+            </div>
+            
+            <div class="review-card neutral" style="border-left-color: #34495e;">
+                <div class="review-header">
+                    <div class="professor-info">
+                        <h3>Advanced Topics (e.g. Deep Learning)</h3>
+                        <p>Course I want to attend in the future</p>
+                    </div>
+                    <div class="rating-stars" style="color: #34495e;"><i class="fas fa-eye"></i></div>
+                </div>
+                <div class="review-meta">
+                    <div class="meta-badge"><i class="fas fa-calendar"></i> Focus: Updating knowledge</div>
+                </div>
+
+                <div class="review-text">
+                    I follow the professor's work closely and the topics taught are becoming increasingly relevant. I am looking to expand my knowledge in this field to understand the direction modern systems are going in reality.
+                </div>
+            </div>
+        </section>
 
         <!-- Disclaimer -->
         <div class="footer-note">
             <p>
-                <strong>About these reviews:</strong> These are honest, personal reflections on my academic experiences.
+                <strong>About these reviews:</strong> These are honest, personal reflections on my experiences.
                 They represent my perspective and are intended to be constructive and fair. Reviews are based on my
-                interactions
-                and learning experiences, and other students may have different experiences.
+                interactions and learning experiences, and other students may have different experiences.
             </p>
         </div>
 
