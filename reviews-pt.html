@@ -152,6 +152,56 @@
         .verdict strong {
             color: #2c3e50;
         }
+        .verdict strong {
+            color: #2c3e50;
+        }
+
+        /* ---- Professor Graph ---- */
+        .graph-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 24px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.08);
+        }
+
+        .graph-section h2 {
+            font-size: 1.1em;
+            color: #2c3e50;
+            margin-bottom: 4px;
+        }
+
+        .graph-section p.graph-hint {
+            font-size: 0.8em;
+            color: #95a5a6;
+            margin-bottom: 16px;
+        }
+
+        #prof-graph {
+            width: 100%;
+            height: 280px;
+            border-radius: 10px;
+            background: #f8f9fa;
+            overflow: hidden;
+            cursor: default;
+        }
+
+        .graph-legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 14px;
+            font-size: 0.8em;
+            color: #555;
+        }
+
+        .legend-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 4px;
+        }
     </style>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
@@ -187,9 +237,32 @@
 
     <div class="container reviews-container">
         <div class="profile-section">
-            <h1 style="margin-top: 0;">⭐ Críticas Académicas</h1>
+            <h1 style="margin-top: 0;">⭐ Críticas Académicas
+                <i class="fas fa-lock admin-lock" onclick="unlockAdmin()" title="Admin Login"
+                    style="font-size: 0.5em; vertical-align: middle;"></i>
+            </h1>
             <p style="color: #7f8c8d; font-style: italic;">Feedback honesto sobre Professores e Experiências</p>
         </div>
+
+        <!-- Admin Controls -->
+        <div id="admin-controls" class="admin-controls">
+            <button class="btn-primary" onclick="openAddReviewModal()"><i class="fas fa-plus"></i> Add Review</button>
+            <button class="btn-danger" style="margin-left: 10px; background: #e74c3c; color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-weight: 600;" onclick="clearReviews()"><i class="fas fa-trash"></i> Clear Added Reviews</button>
+        </div>
+
+        <!-- Professor Graph -->
+        <div class="graph-section">
+            <h2>🕷️ Rede de Professores</h2>
+            <p class="graph-hint">Clica num nó para saltar para a crítica</p>
+            <canvas id="prof-graph"></canvas>
+            <div class="graph-legend">
+                <span><span class="legend-dot" style="background:#27ae60;"></span> Positivo</span>
+                <span><span class="legend-dot" style="background:#f39c12;"></span> Neutro</span>
+                <span><span class="legend-dot" style="background:#3498db;"></span> Orientador / Apoio</span>
+            </div>
+        </div>
+
+        <div id="reviews-list">
 
         <!-- Review 1 -->
         <div class="review-card positive">
@@ -307,6 +380,171 @@
     <footer style="width: 100%; text-align: center; padding: 30px 20px; color: #95a5a6; margin-top: auto; border-top: 1px solid rgba(0,0,0,0.1);">
         <p>&copy; 2024-2026 Ana Alfaiate. Todos os direitos reservados. | <a href="https://github.com/anajfalfa" target="_blank" style="color: #f39c12; text-decoration: none;">GitHub</a></p>
     </footer>
+
+<!-- Add Review Modal -->
+<div id="add-review-modal" class="modal hidden"
+    style="position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);display:flex;justify-content:center;align-items:center;z-index:1000;">
+    <div
+        style="background:white;padding:30px;border-radius:15px;width:90%;max-width:500px;box-shadow:0 10px 40px rgba(0,0,0,0.2);">
+        <h3 style="margin-top:0;">Adicionar Crítica a Professor / Orientador</h3>
+        <input type="text" id="review-name" placeholder="Nome"
+            style="width:100%;padding:10px;margin-bottom:12px;border:1px solid #ddd;border-radius:5px;font-family:inherit;">
+        <input type="text" id="review-role" placeholder="Cargo / Disciplina"
+            style="width:100%;padding:10px;margin-bottom:12px;border:1px solid #ddd;border-radius:5px;font-family:inherit;">
+        <select id="review-type"
+            style="width:100%;padding:10px;margin-bottom:12px;border:1px solid #ddd;border-radius:5px;font-family:inherit;">
+            <option value="positive">Positivo (Verde)</option>
+            <option value="neutral">Neutro (Laranja)</option>
+            <option value="support">Orientador / Apoio (Azul)</option>
+        </select>
+        <input type="number" id="review-stars" value="5" min="1" max="5"
+            style="width:100%;padding:10px;margin-bottom:12px;border:1px solid #ddd;border-radius:5px;font-family:inherit;">
+        <input type="text" id="review-meta1" placeholder="Data / Universidade"
+            style="width:100%;padding:10px;margin-bottom:12px;border:1px solid #ddd;border-radius:5px;font-family:inherit;">
+        <textarea id="review-body" placeholder="Texto da crítica..." rows="4"
+            style="width:100%;padding:10px;margin-bottom:12px;border:1px solid #ddd;border-radius:5px;font-family:inherit;"></textarea>
+        <div style="display:flex;justify-content:flex-end;gap:10px;">
+            <button onclick="saveNewReview()" class="btn-primary">Adicionar</button>
+            <button onclick="closeReviewModal()"
+                style="background:#ecf0f1;color:#333;border:none;padding:10px 20px;border-radius:8px;cursor:pointer;font-weight:600;">Cancelar</button>
+        </div>
+    </div>
+</div>
+<style>
+    .modal.hidden {
+        display: none !important
+    }
+
+    .admin-controls {
+        display: none;
+        margin-bottom: 20px;
+        text-align: right
+    }
+
+    .admin-mode .admin-controls {
+        display: block
+    }
+
+    .admin-lock {
+        cursor: pointer;
+        opacity: .4;
+        transition: opacity .3s
+    }
+
+    .admin-lock:hover {
+        opacity: 1
+    }
+
+    .btn-primary {
+        background: linear-gradient(135deg, #f39c12, #e67e22);
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: 600
+    }
+</style>
+    <script>
+    function unlockAdmin() {
+        var pw = prompt('Palavra-passe de Admin:');
+        if (pw === '42' || pw === 'ana') { document.body.classList.add('admin-mode'); loadReviews(); }
+        else if (pw !== null) { alert('Acesso Negado.'); }
+    }
+    function clearReviews() {
+        if (confirm('Tens a certeza que queres limpar todas as críticas adicionadas? Isso não removerá as críticas fixas (hardcoded).')) {
+            localStorage.removeItem('savedReviews_PT');
+            location.reload();
+        }
+    }
+    function openAddReviewModal() { document.getElementById('add-review-modal').classList.remove('hidden'); }
+    function closeReviewModal() { document.getElementById('add-review-modal').classList.add('hidden'); }
+    function saveNewReview() {
+        var name = document.getElementById('review-name').value;
+        var role = document.getElementById('review-role').value;
+        var type = document.getElementById('review-type').value;
+        var stars = parseInt(document.getElementById('review-stars').value) || 5;
+        var meta1 = document.getElementById('review-meta1').value;
+        var body = document.getElementById('review-body').value;
+        if (!name || !body) { alert('Nome e texto da crítica são obrigatórios.'); return; }
+        var sh = '';
+        for (var i = 0; i < 5; i++) sh += '<span class="star ' + (i < stars ? '' : 'empty') + '">★</span>';
+        var html = '<div class="review-card ' + type + '"><div class="review-header"><div class="reviewer-info"><h3>' + name + '</h3><p class="reviewer-role">' + role + '</p></div><div class="stars">' + sh + '</div></div><span class="review-date">Experiência: ' + meta1 + '</span><div class="review-body">' + body + '</div></div>';
+        var list = document.getElementById('reviews-list');
+        list.insertAdjacentHTML('afterbegin', html);
+        localStorage.setItem('savedReviews_PT', list.innerHTML);
+        closeReviewModal();
+        drawGraph();
+    }
+    function loadReviews() { var s = localStorage.getItem('savedReviews_PT'); if (s) document.getElementById('reviews-list').innerHTML = s; }
+
+    function drawGraph() {
+        var canvas = document.getElementById('prof-graph');
+        if (!canvas) return;
+        var cards = document.querySelectorAll('#reviews-list .review-card');
+        var profs = [];
+        cards.forEach(function (card) {
+            var ne = card.querySelector('h3'); if (!ne) return;
+            var color = '#3498db';
+            if (card.classList.contains('positive')) color = '#27ae60';
+            if (card.classList.contains('neutral')) color = '#f39c12';
+            profs.push({ name: ne.textContent.trim(), color: color, card: card });
+        });
+        var W = canvas.parentElement.offsetWidth - 48, H = 260;
+        canvas.width = W; canvas.height = H;
+        var ctx = canvas.getContext('2d');
+        var cx = W / 2, cy = H / 2, rx = Math.min(W * .36, 280), ry = Math.min(H * .36, 90);
+        profs.forEach(function (p, i) {
+            var a = (2 * Math.PI * i / (profs.length || 1)) - Math.PI / 2;
+            p.x = cx + rx * Math.cos(a); p.y = cy + ry * Math.sin(a); p.r = 26;
+        });
+        ctx.clearRect(0, 0, W, H); ctx.fillStyle = '#f8f9fa'; ctx.fillRect(0, 0, W, H);
+        profs.forEach(function (p) {
+            ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(p.x, p.y);
+            ctx.strokeStyle = p.color + '44'; ctx.lineWidth = 1.5; ctx.stroke();
+        });
+        profs.forEach(function (p) {
+            ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, 2 * Math.PI);
+            ctx.fillStyle = p.color + '22'; ctx.fill();
+            ctx.strokeStyle = p.color; ctx.lineWidth = 2.5; ctx.stroke();
+            var words = p.name.split(/\s+/);
+            var initials = words.filter(function (w) { return /^[A-Z]/.test(w); }).map(function (w) { return w[0]; }).join('').slice(0, 2) || p.name[0];
+            ctx.fillStyle = p.color; ctx.font = 'bold 11px Poppins,sans-serif';
+            ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+            ctx.fillText(initials, p.x, p.y);
+            ctx.fillStyle = '#555'; ctx.font = '9px Poppins,sans-serif';
+            ctx.fillText(words[words.length - 1], p.x, p.y + p.r + 10);
+        });
+        ctx.beginPath(); ctx.arc(cx, cy, 20, 0, 2 * Math.PI); ctx.fillStyle = '#f39c12'; ctx.fill();
+        ctx.fillStyle = '#fff'; ctx.font = 'bold 9px Poppins,sans-serif';
+        ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText('Ana', cx, cy);
+        canvas.onclick = function (e) {
+            var rect = canvas.getBoundingClientRect();
+            var mx = e.clientX - rect.left, my = e.clientY - rect.top;
+            profs.forEach(function (p) {
+                var dx = mx - p.x, dy = my - p.y;
+                if (Math.sqrt(dx * dx + dy * dy) < p.r) {
+                    p.card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    var o = p.card.style.boxShadow;
+                    p.card.style.boxShadow = '0 0 0 4px ' + p.color + '88';
+                    setTimeout(function () { p.card.style.boxShadow = o; }, 1400);
+                }
+            });
+        };
+        canvas.onmousemove = function (e) {
+            var rect = canvas.getBoundingClientRect();
+            var mx = e.clientX - rect.left, my = e.clientY - rect.top;
+            var hover = profs.some(function (p) { return Math.sqrt((mx - p.x) * (mx - p.x) + (my - p.y) * (my - p.y)) < p.r; });
+            canvas.style.cursor = hover ? 'pointer' : 'default';
+        };
+    }
+    document.addEventListener('DOMContentLoaded', function () {
+        var s = localStorage.getItem('savedReviews_PT');
+        if (s) document.getElementById('reviews-list').innerHTML = s;
+        drawGraph();
+    });
+    window.addEventListener('resize', drawGraph);
+</script>
     <script src="js/roles.js"></script>
 </body>
 

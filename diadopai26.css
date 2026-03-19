@@ -1,0 +1,224 @@
+.dia-do-pai {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    color: #333;
+}
+
+.dia-do-pai header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.charada {
+    background: #fff4da;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    border-left: 6px solid #ffb84d;
+}
+
+.charada h2 {
+    margin-bottom: 0.8rem;
+}
+
+.charada .resolucao {
+    margin-top: 1rem;
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.capitulo {
+    margin-bottom: 2.5rem;
+}
+
+.capitulo h2 {
+    margin-bottom: 1rem;
+    font-size: 1.4rem;
+}
+
+.galeria {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+}
+
+.galeria figure {
+    background: #fafafa;
+    border-radius: 8px;
+    padding: 0.5rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+.galeria img {
+    width: 100%;
+    border-radius: 6px;
+    display: block;
+}
+
+figcaption {
+    font-size: 0.9rem;
+    margin-top: 0.4rem;
+}
+
+.carta {
+    background: #fff7e6;
+    padding: 1.5rem;
+    border-radius: 10px;
+    line-height: 1.6;
+}
+
+.final {
+    margin-top: 2rem;
+    text-align: center;
+    font-weight: 600;
+}
+
+/* CONTAINER GERAL */
+.dia-do-pai {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    color: #333;
+    box-sizing: border-box;
+}
+
+/* TEXTO BASE */
+.dia-do-pai p {
+    line-height: 1.6;
+}
+
+/* CABEÇALHO */
+.dia-do-pai header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.dia-do-pai h1 {
+    font-size: 2.2rem;
+    margin-bottom: 0.7rem;
+}
+
+/* PLAYER DE MÚSICA */
+.musica {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    background: #f3f7ff;
+    border-radius: 10px;
+    display: inline-block;
+    text-align: left;
+}
+
+.musica-titulo {
+    font-size: 0.95rem;
+    margin-bottom: 0.5rem;
+}
+
+.musica audio {
+    width: 100%;
+    max-width: 320px;
+    display: block;
+}
+
+/* CHARADA */
+.charada {
+    background: #fff4da;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    border-left: 6px solid #ffb84d;
+}
+
+.charada h2 {
+    margin-bottom: 0.8rem;
+}
+
+.charada .resolucao {
+    margin-top: 1rem;
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+/* CAPÍTULOS */
+.capitulo {
+    margin-bottom: 2.5rem;
+}
+
+.capitulo h2 {
+    margin-bottom: 1rem;
+    font-size: 1.4rem;
+}
+
+/* GALERIA DE FOTOS */
+.galeria {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
+}
+
+.galeria figure {
+    background: #fafafa;
+    border-radius: 8px;
+    padding: 0.5rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+/* Caso uses <img>, isto garante que ficam responsivas */
+.galeria img {
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+    display: block;
+}
+
+figcaption {
+    font-size: 0.9rem;
+    margin-top: 0.4rem;
+}
+
+/* CARTA */
+.carta {
+    background: #fff7e6;
+    padding: 1.5rem;
+    border-radius: 10px;
+    line-height: 1.6;
+}
+
+/* FINAL */
+.final {
+    margin-top: 2rem;
+    text-align: center;
+    font-weight: 600;
+}
+
+/* ---------------------------
+   AJUSTES MOBILE (ECRÃS PEQUENOS)
+---------------------------- */
+@media (max-width: 600px) {
+    .dia-do-pai {
+        padding: 1.5rem 1rem;
+    }
+
+    .dia-do-pai h1 {
+        font-size: 1.8rem;
+    }
+
+    .capitulo h2 {
+        font-size: 1.25rem;
+    }
+
+    .charada,
+    .carta {
+        padding: 1.2rem;
+    }
+
+    .musica {
+        width: 100%;
+    }
+
+    .musica audio {
+        max-width: 100%;
+    }
+}

@@ -253,6 +253,7 @@
         <!-- Admin Controls -->
         <div id="admin-controls" class="admin-controls">
             <button class="btn-primary" onclick="openAddReviewModal()"><i class="fas fa-plus"></i> Add Review</button>
+            <button class="btn-danger" style="margin-left: 10px; background: #e74c3c; color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; font-weight: 600;" onclick="clearReviews()"><i class="fas fa-trash"></i> Clear Added Reviews</button>
         </div>
 
         <!-- Professor Graph -->
@@ -499,6 +500,12 @@
         var pw = prompt('Admin password:');
         if (pw === '42' || pw === 'ana') { document.body.classList.add('admin-mode'); loadReviews(); }
         else if (pw !== null) { alert('Access Denied.'); }
+    }
+    function clearReviews() {
+        if (confirm('Are you sure you want to clear all added reviews? This will not remove the hardcoded reviews.')) {
+            localStorage.removeItem('savedReviews_EN');
+            location.reload();
+        }
     }
     function openAddReviewModal() { document.getElementById('add-review-modal').classList.remove('hidden'); }
     function closeReviewModal() { document.getElementById('add-review-modal').classList.add('hidden'); }

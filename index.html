@@ -207,6 +207,15 @@
         </section>
 
 
+        <!-- Sports Journey Section -->
+        <section id="sports-journey" class="sports-section">
+            <h2 style="text-align: center; margin-bottom: 30px;">🏅 Sports Journey</h2>
+            <p style="text-align: center; color: #7f8c8d; margin-bottom: 20px;">A succession of sports that shaped my discipline and team spirit</p>
+            <div class="graph-container-sports glass" style="padding: 20px; border-radius: 15px; margin-bottom: 40px;">
+                <canvas id="sports-graph" style="width: 100%; height: 300px;"></canvas>
+            </div>
+        </section>
+
         <!-- Timeline Section -->
         <section id="timeline" class="timeline-section">
             <h2>Timeline</h2>
@@ -565,6 +574,122 @@
 
     <!-- Scripts -->
     <script>
+        function drawSportsGraph() {
+            const canvas = document.getElementById('sports-graph');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            const container = canvas.parentElement;
+            const W = container.offsetWidth - 40;
+            const H = 280;
+            canvas.width = W;
+            canvas.height = H;
+
+            const sports = [
+                { name: "Ballet", date: "Childhood", color: "#fd79a8", icon: "🩰", details: "First steps in movement" },
+                { name: "Swimming", date: "Childhood", color: "#74b9ff", icon: "🏊", details: "Resistance development" },
+                { name: "Basketball", date: "5th Grade", color: "#e67e22", icon: "🏀", details: "Start of team sports" },
+                { name: "Tennis", date: "5th-9th Grade", color: "#f1c40f", icon: "🎾", details: "3rd place National Braga (9th Grade)" },
+                { name: "Volleyball", date: "High School & 1st Yr", color: "#3498db", icon: "🏐", details: "High School and 1st year at Técnico" },
+                { name: "Ultimate", date: "2025-Pres.", color: "#9b59b6", icon: "🥏", details: "DTU (Sept 25) & Discover (Jan 26)" }
+            ];
+
+            const padding = 60;
+            const step = (W - 2 * padding) / (sports.length - 1);
+            const centerY = H / 2;
+
+            // Draw connections
+            ctx.beginPath();
+            ctx.setLineDash([5, 5]);
+            ctx.moveTo(padding, centerY);
+            ctx.lineTo(W - padding, centerY);
+            ctx.strokeStyle = "#bdc3c7";
+            ctx.lineWidth = 2;
+            ctx.stroke();
+            ctx.setLineDash([]);
+
+            sports.forEach((s, i) => {
+                const x = padding + i * step;
+                const y = centerY;
+                s.x = x; s.y = y; s.r = 35;
+
+                // Draw arrow to next
+                if (i < sports.length - 1) {
+                    const nextX = padding + (i + 1) * step;
+                    ctx.beginPath();
+                    const headlen = 10;
+                    const angle = 0;
+                    ctx.moveTo(x + s.r, y);
+                    ctx.lineTo(nextX - s.r, y);
+                    ctx.strokeStyle = s.color;
+                    ctx.lineWidth = 3;
+                    ctx.stroke();
+                    
+                    // Arrow head
+                    ctx.beginPath();
+                    ctx.moveTo(nextX - s.r, y);
+                    ctx.lineTo(nextX - s.r - headlen, y - 5);
+                    ctx.lineTo(nextX - s.r - headlen, y + 5);
+                    ctx.fillStyle = s.color;
+                    ctx.fill();
+                }
+
+                // Draw node
+                ctx.beginPath();
+                ctx.arc(x, y, s.r, 0, Math.PI * 2);
+                ctx.fillStyle = "white";
+                ctx.fill();
+                ctx.strokeStyle = s.color;
+                ctx.lineWidth = 4;
+                ctx.stroke();
+
+                // Icon
+                ctx.font = "24px Arial";
+                ctx.textAlign = "center";
+                ctx.textBaseline = "middle";
+                ctx.fillText(s.icon, x, y - 5);
+
+                // Name
+                ctx.fillStyle = "#2c3e50";
+                ctx.font = "bold 12px Poppins, sans-serif";
+                ctx.fillText(s.name, x, y + 55);
+
+                // Date
+                ctx.fillStyle = "#7f8c8d";
+                ctx.font = "10px Poppins, sans-serif";
+                ctx.fillText(s.date, x, y + 70);
+            });
+
+            // Interactivity
+            canvas.onclick = function(e) {
+                const rect = canvas.getBoundingClientRect();
+                const mx = e.clientX - rect.left;
+                const my = e.clientY - rect.top;
+                sports.forEach(s => {
+                    const dx = mx - s.x;
+                    const dy = my - s.y;
+                    if (Math.sqrt(dx*dx + dy*dy) < s.r) {
+                        alert(`${s.icon} ${s.name}\n${s.date}\n${s.details}`);
+                    }
+                });
+            };
+            
+            canvas.onmousemove = function(e) {
+                const rect = canvas.getBoundingClientRect();
+                const mx = e.clientX - rect.left;
+                const my = e.clientY - rect.top;
+                let hover = false;
+                sports.forEach(s => {
+                    if (Math.sqrt((mx-s.x)**2 + (my-s.y)**2) < s.r) hover = true;
+                });
+                canvas.style.cursor = hover ? 'pointer' : 'default';
+            };
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            drawSportsGraph();
+        });
+        window.addEventListener('resize', drawSportsGraph);
+    </script>
         // --- Existing Lock Logic ---
         function unlockIdeas() {
             const password = prompt("Enter the secret password:");

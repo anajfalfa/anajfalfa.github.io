@@ -157,6 +157,15 @@
             </div>
         </section>
 
+        <!-- Sports Journey Section -->
+        <section id="sports-journey" class="sports-section">
+            <h2 style="text-align: center; margin-bottom: 30px;">🏅 Percurso Desportivo</h2>
+            <p style="text-align: center; color: #7f8c8d; margin-bottom: 20px;">Uma sucessão dos desportos que moldaram a minha disciplina e espírito de equipa</p>
+            <div class="graph-container-sports glass" style="padding: 20px; border-radius: 15px; margin-bottom: 40px;">
+                <canvas id="sports-graph" style="width: 100%; height: 300px;"></canvas>
+            </div>
+        </section>
+
         <!-- Timeline Section -->
         <section id="timeline" class="timeline-section">
             <h2>Linha do Tempo</h2>
@@ -525,7 +534,7 @@
 
     <footer>
         <p>&copy; 2026 Ana Alfaiate | Todos os direitos reservados</p>
-        <p>Desenvolvido com <span style="color: red;">&hearts;</span> por Ana Alfaiate</p>
+        <p>Desenvolvido com <span style="color: red;">&hearts;</span> por Ana Alfaiate <a href="diadopai26.html" style="color: inherit; text-decoration: none; cursor: default;">🤍</a></p>
     </footer>
 
     <!-- Admin Controls -->
@@ -564,6 +573,123 @@
 
     <!-- Scripts -->
     <script>
+        function drawSportsGraph() {
+            const canvas = document.getElementById('sports-graph');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            const container = canvas.parentElement;
+            const W = container.offsetWidth - 40;
+            const H = 280;
+            canvas.width = W;
+            canvas.height = H;
+
+            const sports = [
+                { name: "Ballet", date: "Infância", color: "#fd79a8", icon: "🩰", details: "Primeiros passos no movimento" },
+                { name: "Natação", date: "Infância", color: "#74b9ff", icon: "🏊", details: "Desenvolvimento de resistência" },
+                { name: "Basket", date: "5º Ano", color: "#e67e22", icon: "🏀", details: "Início nos desportos de equipa" },
+                { name: "Ténis", date: "5º-9º Ano", color: "#f1c40f", icon: "🎾", details: "3º lugar Nacional Braga (9º ano)" },
+                { name: "Voleibol", date: "Sec. & 1º Ano", color: "#3498db", icon: "🏐", details: "Secundário e 1º ano no Técnico" },
+                { name: "Ultimate", date: "2025-Pres.", color: "#9b59b6", icon: "🥏", details: "DTU (Set 25) & Discover (Jan 26)" }
+            ];
+
+            const padding = 60;
+            const step = (W - 2 * padding) / (sports.length - 1);
+            const centerY = H / 2;
+
+            // Draw connections
+            ctx.beginPath();
+            ctx.setLineDash([5, 5]);
+            ctx.moveTo(padding, centerY);
+            ctx.lineTo(W - padding, centerY);
+            ctx.strokeStyle = "#bdc3c7";
+            ctx.lineWidth = 2;
+            ctx.stroke();
+            ctx.setLineDash([]);
+
+            sports.forEach((s, i) => {
+                const x = padding + i * step;
+                const y = centerY;
+                s.x = x; s.y = y; s.r = 35;
+
+                // Draw arrow to next
+                if (i < sports.length - 1) {
+                    const nextX = padding + (i + 1) * step;
+                    ctx.beginPath();
+                    const headlen = 10;
+                    const angle = 0;
+                    ctx.moveTo(x + s.r, y);
+                    ctx.lineTo(nextX - s.r, y);
+                    ctx.strokeStyle = s.color;
+                    ctx.lineWidth = 3;
+                    ctx.stroke();
+                    
+                    // Arrow head
+                    ctx.beginPath();
+                    ctx.moveTo(nextX - s.r, y);
+                    ctx.lineTo(nextX - s.r - headlen, y - 5);
+                    ctx.lineTo(nextX - s.r - headlen, y + 5);
+                    ctx.fillStyle = s.color;
+                    ctx.fill();
+                }
+
+                // Draw node
+                ctx.beginPath();
+                ctx.arc(x, y, s.r, 0, Math.PI * 2);
+                ctx.fillStyle = "white";
+                ctx.fill();
+                ctx.strokeStyle = s.color;
+                ctx.lineWidth = 4;
+                ctx.stroke();
+
+                // Icon
+                ctx.font = "24px Arial";
+                ctx.textAlign = "center";
+                ctx.textBaseline = "middle";
+                ctx.fillText(s.icon, x, y - 5);
+
+                // Name
+                ctx.fillStyle = "#2c3e50";
+                ctx.font = "bold 12px Poppins, sans-serif";
+                ctx.fillText(s.name, x, y + 55);
+
+                // Date
+                ctx.fillStyle = "#7f8c8d";
+                ctx.font = "10px Poppins, sans-serif";
+                ctx.fillText(s.date, x, y + 70);
+            });
+
+            // Interactivity
+            canvas.onclick = function(e) {
+                const rect = canvas.getBoundingClientRect();
+                const mx = e.clientX - rect.left;
+                const my = e.clientY - rect.top;
+                sports.forEach(s => {
+                    const dx = mx - s.x;
+                    const dy = my - s.y;
+                    if (Math.sqrt(dx*dx + dy*dy) < s.r) {
+                        alert(`${s.icon} ${s.name}\n${s.date}\n${s.details}`);
+                    }
+                });
+            };
+            
+            canvas.onmousemove = function(e) {
+                const rect = canvas.getBoundingClientRect();
+                const mx = e.clientX - rect.left;
+                const my = e.clientY - rect.top;
+                let hover = false;
+                sports.forEach(s => {
+                    if (Math.sqrt((mx-s.x)**2 + (my-s.y)**2) < s.r) hover = true;
+                });
+                canvas.style.cursor = hover ? 'pointer' : 'default';
+            };
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            drawSportsGraph();
+            // ... original scroll logic if any ...
+        });
+        window.addEventListener('resize', drawSportsGraph);
+
         // --- Lógica de Bloqueio ---
         function unlockIdeas() {
             const password = prompt("Introduza a palavra-passe secreta:");
