@@ -445,21 +445,36 @@
         font-weight: 600
     }
 </style>
-    <script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+    // --- CONFIGURAÇÃO SUPABASE ---
+    const SUPABASE_URL = 'COLE_AQUI_O_SEU_PROJECT_URL';
+    const SUPABASE_KEY = 'COLE_AQUI_A_SUA_ANON_KEY';
+    const supabaseClient = (SUPABASE_URL.includes('COLE_AQUI')) ? null : supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+    // ------------------------------
+
     function unlockAdmin() {
         var pw = prompt('Palavra-passe de Admin:');
         if (pw === '42' || pw === 'ana') { document.body.classList.add('admin-mode'); loadReviews(); }
         else if (pw !== null) { alert('Acesso Negado.'); }
     }
-    function clearReviews() {
+    
+    async function clearReviews() {
         if (confirm('Tens a certeza que queres limpar todas as críticas adicionadas? Isso não removerá as críticas fixas (hardcoded).')) {
-            localStorage.removeItem('savedReviews_PT');
-            location.reload();
+            if (!supabaseClient) {
+                localStorage.removeItem('savedReviews_PT');
+                location.reload();
+            } else {
+                const { error } = await supabaseClient.from('academic_reviews').delete().eq('language', 'PT');
+                if(!error) location.reload();
+            }
         }
     }
+
     function openAddReviewModal() { document.getElementById('add-review-modal').classList.remove('hidden'); }
     function closeReviewModal() { document.getElementById('add-review-modal').classList.add('hidden'); }
-    function saveNewReview() {
+    
+    async function saveNewReview() {
         var name = document.getElementById('review-name').value;
         var role = document.getElementById('review-role').value;
         var type = document.getElementById('review-type').value;
@@ -467,16 +482,56 @@
         var meta1 = document.getElementById('review-meta1').value;
         var body = document.getElementById('review-body').value;
         if (!name || !body) { alert('Nome e texto da crítica são obrigatórios.'); return; }
-        var sh = '';
-        for (var i = 0; i < 5; i++) sh += '<span class="star ' + (i < stars ? '' : 'empty') + '">★</span>';
-        var html = '<div class="review-card ' + type + '"><div class="review-header"><div class="reviewer-info"><h3>' + name + '</h3><p class="reviewer-role">' + role + '</p></div><div class="stars">' + sh + '</div></div><span class="review-date">Experiência: ' + meta1 + '</span><div class="review-body">' + body + '</div></div>';
+        
+        if (!supabaseClient) {
+            var sh = '';
+            for (var i = 0; i < 5; i++) sh += '<span class="star ' + (i < stars ? '' : 'empty') + '">★</span>';
+            var html = '<div class="review-card ' + type + '"><div class="review-header"><div class="reviewer-info"><h3>' + name + '</h3><p class="reviewer-role">' + role + '</p></div><div class="stars">' + sh + '</div></div><span class="review-date">Experiência: ' + meta1 + '</span><div class="review-body">' + body + '</div></div>';
+            var list = document.getElementById('reviews-list');
+            list.insertAdjacentHTML('afterbegin', html);
+            localStorage.setItem('savedReviews_PT', list.innerHTML);
+            closeReviewModal();
+            drawGraph();
+            return;
+        }
+
+        const { error } = await supabaseClient.from('academic_reviews').insert([
+            { language: 'PT', name: name, role: role, type: type, stars: stars, meta1: meta1, body: body }
+        ]);
+
+        if (error) {
+            alert('Erro a guardar crítica na BD: ' + error.message);
+        } else {
+            document.getElementById('review-name').value = '';
+            document.getElementById('review-role').value = '';
+            document.getElementById('review-meta1').value = '';
+            document.getElementById('review-body').value = '';
+            closeReviewModal();
+            loadReviews(); // Atualizar lista
+        }
+    }
+    
+    async function loadReviews() { 
+        if (!supabaseClient) {
+            var s = localStorage.getItem('savedReviews_PT'); 
+            if (s) { document.getElementById('reviews-list').innerHTML = s; drawGraph(); }
+            return;
+        }
+
+        const { data, error } = await supabaseClient.from('academic_reviews').select('*').eq('language', 'PT').order('created_at', { ascending: true });
+        if (error) { console.error('Error fetching reviews:', error); return; }
+
         var list = document.getElementById('reviews-list');
-        list.insertAdjacentHTML('afterbegin', html);
-        localStorage.setItem('savedReviews_PT', list.innerHTML);
-        closeReviewModal();
+        document.querySelectorAll('.db-review').forEach(function(el) { el.remove(); });
+
+        data.forEach(function(review) {
+            var sh = '';
+            for (var i = 0; i < 5; i++) sh += '<span class="star ' + (i < review.stars ? '' : 'empty') + '">★</span>';
+            var html = '<div class="review-card db-review ' + review.type + '"><div class="review-header"><div class="reviewer-info"><h3>' + review.name + '</h3><p class="reviewer-role">' + review.role + '</p></div><div class="stars">' + sh + '</div></div><span class="review-date">Experiência: ' + review.meta1 + '</span><div class="review-body">' + review.body + '</div></div>';
+            list.insertAdjacentHTML('afterbegin', html);
+        });
         drawGraph();
     }
-    function loadReviews() { var s = localStorage.getItem('savedReviews_PT'); if (s) document.getElementById('reviews-list').innerHTML = s; }
 
     function drawGraph() {
         var canvas = document.getElementById('prof-graph');
@@ -539,9 +594,9 @@
         };
     }
     document.addEventListener('DOMContentLoaded', function () {
-        var s = localStorage.getItem('savedReviews_PT');
-        if (s) document.getElementById('reviews-list').innerHTML = s;
-        drawGraph();
+        loadReviews();
+        // Fallback para desenhar o gráfico se a DB ainda não tiver carregado
+        setTimeout(drawGraph, 500);
     });
     window.addEventListener('resize', drawGraph);
 </script>
