@@ -206,7 +206,43 @@
         .footer-note {
             font-size: 0.78em;
             color: rgba(255, 255, 255, 0.25);
-            margin-top: 20px;
+            margin-top: 10px;
+        }
+
+        .contact-footer {
+            margin-top: 30px;
+            font-size: 0.9em;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .footer-email {
+            color: #009de0;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .footer-email:hover {
+            color: #f39c12;
+            text-decoration: underline;
+        }
+
+        .modal-footer {
+            margin-top: 15px;
+        }
+
+        .request-link {
+            display: inline-block;
+            font-size: 0.8em;
+            color: #2ed573;
+            text-decoration: none;
+            margin-bottom: 10px;
+            transition: color 0.3s;
+        }
+
+        .request-link:hover {
+            color: #fff;
+            text-decoration: underline;
         }
 
         /* Password Modal */
@@ -386,6 +422,10 @@
             </a>
         </div>
 
+        <div class="contact-footer">
+            <p>Need specific info or a collaboration? <a href="mailto:ana.alfaiate@tecnico.ulisboa.pt" class="footer-email">ana.alfaiate@tecnico.ulisboa.pt</a></p>
+        </div>
+
         <p class="footer-note">You can always switch role later from the navigation bar.</p>
     </div>
 
@@ -398,7 +438,11 @@
             <input type="password" id="anaPassword" placeholder="••••••"
                 onkeydown="if(event.key==='Enter')checkAnaPassword()">
             <button class="btn-enter" onclick="checkAnaPassword()"><i class="fas fa-key"></i> Enter</button>
-            <button class="btn-cancel" onclick="closeAnaModal()">Cancel</button>
+            <div class="modal-footer">
+                <a href="mailto:ana.alfaiate@tecnico.ulisboa.pt?subject=Requesting Access to Ana Profile" class="request-link">Don't have a password? Request Access</a>
+                <br>
+                <button class="btn-cancel" onclick="closeAnaModal()">Cancel</button>
+            </div>
         </div>
     </div>
 

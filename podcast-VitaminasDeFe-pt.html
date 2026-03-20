@@ -125,7 +125,7 @@
 
         .rubricas-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 20px;
             margin-top: 20px;
         }
@@ -134,26 +134,36 @@
             background: white;
             padding: 20px;
             border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-            text-align: left;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+            border-top: 4px solid #f39c12;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .rubrica-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
         }
 
         .rubrica-card i {
+            font-size: 1.5em;
             color: #f39c12;
             margin-bottom: 10px;
-            font-size: 1.2em;
         }
 
         .rubrica-card h3 {
-            font-size: 1rem;
-            margin-bottom: 8px;
+            font-size: 1.1em;
+            margin: 10px 0 5px;
             color: #2c3e50;
         }
 
         .rubrica-card p {
-            font-size: 0.9rem;
+            font-size: 0.85em;
             color: #666;
-            margin: 0;
+            line-height: 1.4;
+            margin-bottom: 10px;
         }
     </style>
     <!-- Google tag (gtag.js) -->
@@ -201,7 +211,7 @@
             </p>
             
             <div class="social-buttons">
-                <a href="#" class="social-btn btn-spotify">
+                <a href="https://open.spotify.com/show/5yuzKn6k0YlNVo2tanvJAM?si=37d2d40780384ff1" target="_blank" class="social-btn btn-spotify">
                     <i class="fab fa-spotify"></i> Spotify
                 </a>
                 <a href="#" class="social-btn btn-instagram">
@@ -239,6 +249,54 @@
             <p style="color: #555; line-height: 1.6;">
                 O "Vitaminas de Fé" nasceu da convicção de que conversas honestas sobre religião precisam de espaço. Através de entrevistas com pessoas de diferentes contextos e vocações, procuramos compreender a complexidade autêntica de viver uma vida religiosa hoje, sem simplificar as perguntas profundas que definem a nossa fé.
             </p>
+        </div>
+
+        <div class="info-section">
+            <h2>Projetos Relacionados</h2>
+            <div class="rubricas-grid">
+                <!-- Carreiras em Movimento -->
+                <div class="rubrica-card" style="border-top-color: #009de0;">
+                    <i class="fas fa-graduation-cap" style="color: #009de0;"></i>
+                    <h3>Carreiras em Movimento</h3>
+                    <p>Explorando percursos profissionais e histórias de sucesso de antigos alunos do Técnico.</p>
+                    <a href="podcast-CarreirasEmMovimento-pt.html" style="color: #f39c12; text-decoration: none; font-size: 0.9em; font-weight: 600; display: block; margin-top: 10px;">Explorar →</a>
+                </div>
+                <!-- 90 Segundos de Ciência -->
+                <div class="rubrica-card">
+                    <i class="fas fa-flask"></i>
+                    <h3>90 Segundos de Ciência</h3>
+                    <p>Podcast de divulgação científica por investigadores do Técnico.</p>
+                    <a href="https://open.spotify.com/show/7CIoAb2TFMQNlBZnDPjtX0?si=e1c61d4f263840ec" target="_blank" style="color: #1DB954; text-decoration: none; font-size: 0.9em; font-weight: 600; display: block; margin-top: 10px;"><i class="fab fa-spotify"></i> Ouvir no Spotify →</a>
+                </div>
+                <!-- EFT: Histórias de Alumni -->
+                <div class="rubrica-card">
+                    <i class="fas fa-user-graduate"></i>
+                    <h3>EFT: Histórias de Alumni</h3>
+                    <p>Série de vídeos de entrevistas a ex-alunos de Engenharia Física (NFIST).</p>
+                    <a href="https://www.nfist.pt/eventos/eft-hist%C3%B3rias-de-alumni" target="_blank" style="color: #f39c12; text-decoration: none; font-size: 0.9em; font-weight: 600; display: block; margin-top: 10px;">Ver Episódios →</a>
+                </div>
+                <!-- Lights on JUNITEC -->
+                <div class="rubrica-card">
+                    <i class="fas fa-lightbulb"></i>
+                    <h3>Lights on JUNITEC</h3>
+                    <p>Inovação e empreendedorismo pela JUNITEC.</p>
+                    <a href="https://open.spotify.com/show/3sCDJ37WsMH7jaeZcFgDQs?si=b2cb04f5fe994aaa" target="_blank" style="color: #1DB954; text-decoration: none; font-size: 0.9em; font-weight: 600; display: block; margin-top: 10px;"><i class="fab fa-spotify"></i> Ouvir no Spotify →</a>
+                </div>
+                <!-- AeroTéc Revista & AeroPod -->
+                <div class="rubrica-card">
+                    <i class="fas fa-plane"></i>
+                    <h3>AeroTéc Revista & AeroPod</h3>
+                    <p>Revista aeroespacial e podcast pelo núcleo de estudantes AeroTEC.</p>
+                    <a href="https://aerotec.pt/revista" target="_blank" style="color: #f39c12; text-decoration: none; font-size: 0.9em; font-weight: 600; display: block; margin-top: 10px;">Ler Revista →</a>
+                </div>
+                <!-- AEIST Student Groups -->
+                <div class="rubrica-card">
+                    <i class="fas fa-users"></i>
+                    <h3>Diretório de Núcleos</h3>
+                    <p>Explora as diversas organizações de estudantes na AEIST.</p>
+                    <a href="https://aeist.pt/student-groups" target="_blank" style="color: #f39c12; text-decoration: none; font-size: 0.9em; font-weight: 600; display: block; margin-top: 10px;">Explorar Grupos →</a>
+                </div>
+            </div>
         </div>
 
         <div style="text-align: center;">

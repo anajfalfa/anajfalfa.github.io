@@ -14,16 +14,12 @@ function applyRole() {
         indicator.textContent = `Role: ${role.charAt(0).toUpperCase() + role.slice(1)}`;
     }
 
+    // Role-specific Navigation Filtering (based on ideas.txt)
+    applyNavFilter(role);
+
     // Role-specific global logic
     if (role === 'ana') {
-        const ideasLock = document.getElementById('ideas-lock');
-        const ideasContent = document.getElementById('ideas-content');
-        if (ideasLock && ideasContent) {
-            ideasLock.style.display = 'none';
-            ideasContent.classList.remove('hidden', 'blur-content');
-            ideasContent.classList.add('visible');
-        }
-        if (typeof enableAdminMode === 'function') enableAdminMode();
+        // All links are visible, nothing else to toggle now
     }
 
     // 2. Professor / Researcher specific UI
@@ -53,6 +49,41 @@ function injectCollaborationButton(role) {
         `;
         document.body.appendChild(btn);
     }
+}
+
+function applyNavFilter(role) {
+    if (role === 'ana' || !role || role === 'guest') return;
+
+    // Mapping from ideas.txt
+    const roleConfig = {
+        'student': ['index', 'portfolio', 'cv', 'reviews', 'tutoring', 'podcast'],
+        'professor': ['index', 'portfolio', 'cv', 'research', 'reviews', 'podcast', 'tutoring'],
+        'researcher': ['index', 'portfolio', 'cv', 'research', 'podcast']
+    };
+
+    const allowedPages = roleConfig[role.toLowerCase()] || [];
+    const navbar = document.querySelector('.navbar');
+    if (!navbar) return;
+
+    const navLinks = navbar.querySelectorAll('a:not(.lang-btn)');
+    navLinks.forEach(link => {
+        const href = link.getAttribute('href');
+        if (!href) return;
+
+        // Check if any allowed page is mentioned in the href
+        const isAllowed = allowedPages.some(page => {
+            if (page === 'index') return href === 'index.html' || href === 'index-pt.html' || href.startsWith('#');
+            if (page === 'podcast') return href.includes('podcast');
+            return href.includes(page);
+        });
+
+        if (!isAllowed) {
+            link.style.display = 'none';
+        }
+    });
+
+    // Also hide the selector if already in a role (optional, keep for switching?)
+    // indicator.style.cursor = 'pointer';
 }
 
 window.addEventListener('load', applyRole);

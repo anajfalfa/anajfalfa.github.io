@@ -13,11 +13,11 @@
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
 
-      gtag('config', 'G-XXXXXXXXXX');
+        gtag('config', 'G-XXXXXXXXXX');
     </script>
 </head>
 
@@ -25,19 +25,20 @@
     <!-- Impossible List Section -->
     <section id="list" class="list-section">
         <div class="navbar gallery-navbar">
-        <a href="index.html">Home</a>
-        <a href="index.html#portfolio">Portfolio</a>
-        <a href="photography.html">Photography</a>
-        <a href="cv-view.html">CV</a>
-        <a href="blog.html">Blog</a>
-        <a href="research.html">Research</a>
-        <a href="podcasts.html">Podcasts</a>
-        <a href="reviews.html">Reviews</a>
-        <a href="tutoring.html">Tutoring</a>
-        <a href="ribamar.html">Ribamar</a>
-        <a href="list.html">Impossible List</a>
-        <div class="lang-switcher">
-            <span id="role-indicator" style="margin-right: 15px; font-size: 0.8em; opacity: 0.7; color: white;"></span>
+            <a href="index.html">Home</a>
+            <a href="index.html#portfolio">Portfolio</a>
+            <a href="photography.html">Photography</a>
+            <a href="cv-view.html">CV</a>
+            <a href="blog.html">Blog</a>
+            <a href="research.html">Research</a>
+            <a href="podcasts.html">Podcasts</a>
+            <a href="reviews.html">Reviews</a>
+            <a href="tutoring.html">Tutoring</a>
+            <a href="ribamar.html">Ribamar</a>
+            <a href="list.html">Impossible List</a>
+            <div class="lang-switcher">
+                <span id="role-indicator"
+                    style="margin-right: 15px; font-size: 0.8em; opacity: 0.7; color: white;"></span>
                 <a href="list.html" class="lang-btn active">EN</a>
                 <a href="list-pt.html" class="lang-btn">PT</a>
             </div>
@@ -79,14 +80,19 @@
                             target="_blank" style="text-decoration: none; color: inherit;">Co-author: ISMRM 2025
                             Abstract (Hawaii)</a></li>
                     <li><i class="far fa-square"></i> Publish a paper</li>
-                    <li><i class="far fa-square"></i> Attend a conference</li>
+                    <li><i class="far fa-square"></i> Attend a conference: ECCB 2026</li>
                     <li><i class="far fa-square"></i> Do a Master's Thesis</li>
                     <li><i class="far fa-square"></i> Do a Doctoral Thesis (?) @ ETH Zurich
-                        <ul class="sub-list" style="list-style-type: none; margin-left: 20px; font-size: 0.9em; opacity: 0.8;">
-                            <li><a href="https://ai.ethz.ch/" target="_blank"><i class="fas fa-link"></i> AI Center</a></li>
-                            <li><a href="https://cadmo.ethz.ch/index.html" target="_blank"><i class="fas fa-link"></i> Algorithms & Combinatorics</a></li>
-                            <li><a href="https://ee.ethz.ch/research/research_areas/biomedical_engineering_and_neuroinformatics.html" target="_blank"><i class="fas fa-link"></i> Biomedical Engineering</a></li>
-                            <li><a href="https://math.ethz.ch/research/data-algorithms-combinatorics-optimization.html" target="_blank"><i class="fas fa-link"></i> Data & Optimization</a></li>
+                        <ul class="sub-list"
+                            style="list-style-type: none; margin-left: 20px; font-size: 0.9em; opacity: 0.8;">
+                            <li><a href="https://ai.ethz.ch/" target="_blank"><i class="fas fa-link"></i> AI Center</a>
+                            </li>
+                            <li><a href="https://cadmo.ethz.ch/index.html" target="_blank"><i class="fas fa-link"></i>
+                                    Algorithms & Combinatorics</a></li>
+                            <li><a href="https://ee.ethz.ch/research/research_areas/biomedical_engineering_and_neuroinformatics.html"
+                                    target="_blank"><i class="fas fa-link"></i> Biomedical Engineering</a></li>
+                            <li><a href="https://math.ethz.ch/research/data-algorithms-combinatorics-optimization.html"
+                                    target="_blank"><i class="fas fa-link"></i> Data & Optimization</a></li>
                         </ul>
                     </li>
                     <li><i class="far fa-square"></i> Do a Postdoc</li>
@@ -98,8 +104,10 @@
 
                     <li style="margin-top: 15px;"></li>
                     <li><i class="far fa-square"></i> Assist a Course: Advanced Algorithms, P3 @ IST</li>
-                    <li><i class="far fa-square"></i> Assist a Course: Knowledge Representation and Reasoning, P3 @ IST</li>
-                    <li><i class="far fa-square"></i> Assist a Course: Information Systems Project Management, P3 @ IST</li>
+                    <li><i class="far fa-square"></i> Assist a Course: Knowledge Representation and Reasoning, P3 @ IST
+                    </li>
+                    <li><i class="far fa-square"></i> Assist a Course: Information Systems Project Management, P3 @ IST
+                    </li>
                     <li><i class="far fa-square"></i> Assist a Course: Information Visualization, P1 @ IST</li>
 
 
@@ -307,7 +315,7 @@
             const items = document.querySelectorAll('.list-category li');
             const total = items.length;
             const completed = document.querySelectorAll('.list-category li.done').length;
-            
+
             document.getElementById('total-count').textContent = total;
             document.getElementById('completed-count').textContent = completed;
             document.getElementById('progress-percent').textContent = Math.round((completed / total) * 100) + '%';
