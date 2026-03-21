@@ -1,426 +1,153 @@
-import React from "react";
 import React, { useState } from "react";
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
 
+export default function App() {
+  const [lang, setLang] = useState("pt");
 
-export default function AtividadeFamiliarPage() {
-  const [lang, setLang] = useState("pt");
+  const t = {
+    pt: {
+      title: "Experiência Familiar em Ribamar da Lourinhã",
+      desc: "Uma experiência única que combina gastronomia tradicional, natureza e história local.",
+      prices: "Tabela de Preços",
+      form: "Formulário de Reserva",
+      name: "Nome",
+      email: "Email",
+      people: "Número de Pessoas",
+      activity: "Atividade",
+      msg: "Mensagem (Opcional)",
+      send: "Enviar Reserva",
+      whatsapp: "Reserva rápida via WhatsApp",
+      items: ["Cozinha em Forno a Lenha", "História da Região", "Visita à Praia", "Visita ao Moinho", "Pacote Completo"],
+      unit: "Preço",
+      included: "Incluído"
+    },
+    en: {
+      title: "Family Experience in Ribamar da Lourinhã",
+      desc: "A unique experience combining traditional cooking, nature, and local history.",
+      prices: "Pricing Table",
+      form: "Reservation Form",
+      name: "Name",
+      email: "Email",
+      people: "Number of People",
+      activity: "Activity",
+      msg: "Message (Optional)",
+      send: "Send Reservation",
+      whatsapp: "Quick WhatsApp Booking",
+      items: ["Wood Oven Cooking", "Local History", "Beach Visit", "Mill Visit", "Full Package"],
+      unit: "Price",
+      included: "Included"
+    },
+    fr: {
+      title: "Expérience Familiale à Ribamar da Lourinhã",
+      desc: "Une expérience unique combinant cuisine traditionnelle, nature et histoire locale.",
+      prices: "Tableau des Prix",
+      form: "Formulaire de Réservation",
+      name: "Nom",
+      email: "Email",
+      people: "Nombre de Personnes",
+      activity: "Activité",
+      msg: "Message (Optionnel)",
+      send: "Envoyer la Réservation",
+      whatsapp: "Réservation Rapide WhatsApp",
+      items: ["Cuisine au Four à Bois", "Histoire Locale", "Visite de la Plage", "Visite du Moulin", "Forfait Complet"],
+      unit: "Prix",
+      included: "Inclus"
+    },
+  };
 
+  // Estilos em Objetos (O padrão correto do React)
+  const styles = {
+    container: { padding: "20px", fontFamily: "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif", color: "#333", maxWidth: "900px", margin: "0 auto" },
+    nav: { display: "flex", justifyContent: "center", gap: "10px", marginBottom: "30px" },
+    btnLang: { padding: "8px 16px", cursor: "pointer", border: "1px solid #ccc", borderRadius: "5px", backgroundColor: "#fff" },
+    grid: { display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "20px", marginTop: "40px" },
+    card: { border: "1px solid #eee", borderRadius: "10px", overflow: "hidden", boxShadow: "0 4px 6px rgba(0,0,0,0.1)" },
+    img: { width: "100%", height: "150px", objectFit: "cover" },
+    whatsappBtn: { display: "inline-block", marginTop: "30px", padding: "12px 24px", backgroundColor: "#25D366", color: "white", borderRadius: "30px", textDecoration: "none", fontWeight: "bold" },
+    table: { width: "100%", marginTop: "20px", borderCollapse: "collapse" },
+    th: { backgroundColor: "#f8f8f8", padding: "12px", border: "1px solid #ddd" },
+    td: { padding: "12px", border: "1px solid #ddd", textAlign: "center" },
+    form: { display: "flex", flexDirection: "column", gap: "15px", maxWidth: "500px", margin: "40px auto", textAlign: "left", padding: "20px", border: "1px solid #eee", borderRadius: "10px" },
+    input: { padding: "10px", borderRadius: "5px", border: "1px solid #ccc", width: "100%" },
+    submitBtn: { padding: "12px", backgroundColor: "#1a4fa3", color: "white", border: "none", borderRadius: "5px", cursor: "pointer", fontWeight: "bold" }
+  };
 
-  const t = {
-    pt: {
-      title: "Experiência Familiar em Ribamar da Lourinhã",
-      desc: "Uma experiência única que combina gastronomia tradicional, natureza e história local.",
-  const [lang, setLang] = useState("pt");
-      prices: "Tabela de Preços",
-
-
-      form: "Formulário de Reserva",
-      name: "Nome",
-  const t = {
-      email: "Email",
-    pt: {
-      people: "Número de Pessoas",
-      title: "Experiência Familiar em Ribamar da Lourinhã",
-      activity: "Atividade",
-      desc: "Uma experiência única que combina gastronomia tradicional, natureza e história local.",
-      msg: "Mensagem (Opcional)",
-      prices: "Tabela de Preços",
-      send: "Enviar Reserva",
-      form: "Formulário de Reserva",
-      whatsapp: "Reserva Rápida pelo WhatsApp",
-      name: "Nome",
-    },
-      email: "Email",
-    en: {
-      people: "Número de Pessoas",
-      title: "Family Experience in Ribamar da Lourinhã",
-      activity: "Atividade",
-      desc: "A unique experience combining traditional cooking, nature, and local history.",
-      msg: "Mensagem (Opcional)",
-      prices: "Pricing Table",
-      send: "Enviar Reserva",
-      form: "Reservation Form",
-      whatsapp: "Reserva Rápida pelo WhatsApp",
-      name: "Name",
-    },
-      email: "Email",
-    en: {
-      people: "Number of People",
-      title: "Family Experience in Ribamar da Lourinhã",
-      activity: "Activity",
-      desc: "A unique experience combining traditional cooking, nature, and local history.",
-      msg: "Message (Optional)",
-      prices: "Pricing Table",
-      send: "Send Reservation",
-      form: "Reservation Form",
-      whatsapp: "Quick WhatsApp Booking",
-      name: "Name",
-    },
-      email: "Email",
-    fr: {
-      people: "Number of People",
-      title: "Expérience Familiale à Ribamar da Lourinhã",
-      activity: "Activity",
-      desc: "Une expérience unique combinant cuisine traditionnelle, nature et histoire locale.",
-      msg: "Message (Optional)",
-      prices: "Tableau des Prix",
-      send: "Send Reservation",
-      form: "Formulaire de Réservation",
-      whatsapp: "Quick WhatsApp Booking",
-      name: "Nom",
-    },
-      email: "Email",
-    fr: {
-      people: "Nombre de Personnes",
-      title: "Expérience Familiale à Ribamar da Lourinhã",
-      activity: "Activité",
-      desc: "Une expérience unique combinant cuisine traditionnelle, nature et histoire locale.",
-      msg: "Message (Optionnel)",
-      prices: "Tableau des Prix",
-      send: "Envoyer la Réservation",
-      form: "Formulaire de Réservation",
-      whatsapp: "Réservation Rapide WhatsApp",
-      name: "Nom",
-    },
-      email: "Email",
-  };
-      people: "Nombre de Personnes",
-
-
-      activity: "Activité",
-      msg: "Message (Optionnel)",
-      send: "Envoyer la Réservation",
-      whatsapp: "Réservation Rapide WhatsApp",
-    },
-  };
   return (
-    <div className="min-h-screen bg-blue-50 flex flex-col items-center p-6">
-    <div className="min-h-screen bg-gradient-to-b from-blue-100 to-blue-50 flex flex-col items-center p-6">
-
-
-      {/* Idioma */}
-      <div className="flex gap-4 mb-6">
-        <Button onClick={() => setLang("pt")}>PT</Button>
-        <Button onClick={() => setLang("en")}>EN</Button>
-    <div className="min-h-screen bg-gradient-to-b from-blue-100 to-blue-50 flex flex-col items-center p-6">
-        <Button onClick={() => setLang("fr")}>FR</Button>
-
-
-      </div>
-
-
-      {/* Idioma */}
-      <div className="flex gap-4 mb-6">
-        <Button onClick={() => setLang("pt")}>PT</Button>
-        <Button onClick={() => setLang("en")}>EN</Button>
-        <Button onClick={() => setLang("fr")}>FR</Button>
-      </div>
-
-
-      <header className="text-center mb-10">
-        <h1 className="text-4xl font-bold text-blue-900 mb-2">
-          Experiência Familiar em Ribamar da Lourinhã
-        </h1>
-        <p className="text-lg text-gray-700 max-w-2xl">
-          Uma experiência única que combina gastronomia tradicional, natureza e
-          história local.
-        </p>
-        <h1 className="text-4xl font-bold text-blue-900 mb-2">{t[lang].title}</h1>
-        <p className="text-lg text-gray-700 max-w-2xl">{t[lang].desc}</p>
-        <h1 className="text-4xl font-bold text-blue-900 mb-2">{t[lang].title}</h1>
-        <p className="text-lg text-gray-700 max-w-2xl">{t[lang].desc}</p>
-      </header>
-
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 max-w-5xl w-full">
-        <Card className="rounded-2xl shadow-xl p-2">
-          <CardContent>
-            <h2 className="text-2xl font-semibold mb-3 text-blue-800">
-              🍽 Cozinha em Forno a Lenha com Vista para o Mar
-            </h2>
-            <p className="text-gray-700 mb-4">
-              Participe numa experiência gastronómica autêntica, cozinhando em
-              forno de lenha enquanto aprecia uma vista magnífica para o oceano.
-            </p>
-      {/* Cards com Fotos */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl w-full">
-        <Card className="rounded-2xl shadow-xl overflow-hidden">
-          <img src="/forno-lenha.jpg" alt="Forno a Lenha" className="h-56 w-full object-cover" />
-          <CardContent className="p-4">
-            <h2 className="text-2xl font-semibold mb-3 text-blue-800">🍽 Cozinha em Forno a Lenha</h2>
-            <p className="text-gray-700">Cozedura tradicional com vista mar.</p>
-      {/* Cards com Fotos */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-6xl w-full">
-        <Card className="rounded-2xl shadow-xl overflow-hidden">
-          <img src="/forno-lenha.jpg" alt="Forno a Lenha" className="h-56 w-full object-cover" />
-          <CardContent className="p-4">
-            <h2 className="text-2xl font-semibold mb-3 text-blue-800">🍽 Cozinha em Forno a Lenha</h2>
-            <p className="text-gray-700">Cozedura tradicional com vista mar.</p>
-          </CardContent>
-        </Card>
-
-        <Card className="rounded-2xl shadow-xl p-2">
-          <CardContent>
-            <h2 className="text-2xl font-semibold mb-3 text-blue-800">
-              🏛 História da Região
-            </h2>
-            <p className="text-gray-700 mb-4">
-              Descubra histórias locais, tradições e curiosidades da região de
-              Ribamar e Lourinhã, ricas em cultura e património.
-            </p>
-        <Card className="rounded-2xl shadow-xl overflow-hidden">
-          <img src="/historia.jpg" alt="História da Região" className="h-56 w-full object-cover" />
-          <CardContent className="p-4">
-            <h2 className="text-2xl font-semibold mb-3 text-blue-800">🏛 História da Região</h2>
-            <p className="text-gray-700">Cultura, tradições e curiosidades locais.</p>
-        <Card className="rounded-2xl shadow-xl overflow-hidden">
-          <img src="/historia.jpg" alt="História da Região" className="h-56 w-full object-cover" />
-          <CardContent className="p-4">
-            <h2 className="text-2xl font-semibold mb-3 text-blue-800">🏛 História da Região</h2>
-            <p className="text-gray-700">Cultura, tradições e curiosidades locais.</p>
-          </CardContent>
-        </Card>
-
-        <Card className="rounded-2xl shadow-xl p-2">
-          <CardContent>
-            <h2 className="text-2xl font-semibold mb-3 text-blue-800">
-              🏖 Visita à Praia
-            </h2>
-            <p className="text-gray-700 mb-4">
-              Um passeio pela costa, com paragens para apreciar a paisagem e
-              sentir a brisa do mar.
-            </p>
-        <Card className="rounded-2xl shadow-xl overflow-hidden">
-          <img src="/praia.jpg" alt="Praia" className="h-56 w-full object-cover" />
-          <CardContent className="p-4">
-            <h2 className="text-2xl font-semibold mb-3 text-blue-800">🏖 Visita à Praia</h2>
-            <p className="text-gray-700">Passeio pela costa com paisagens únicas.</p>
-        <Card className="rounded-2xl shadow-xl overflow-hidden">
-          <img src="/praia.jpg" alt="Praia" className="h-56 w-full object-cover" />
-          <CardContent className="p-4">
-            <h2 className="text-2xl font-semibold mb-3 text-blue-800">🏖 Visita à Praia</h2>
-            <p className="text-gray-700">Passeio pela costa com paisagens únicas.</p>
-          </CardContent>
-        </Card>
-
-        <Card className="rounded-2xl shadow-xl p-2">
-          <CardContent>
-            <h2 className="text-2xl font-semibold mb-3 text-blue-800">
-              🌾 Visita ao Moinho
-            </h2>
-            <p className="text-gray-700 mb-4">
-              Visita guiada ao moinho tradicional da região, aprendendo sobre o
-              seu funcionamento e importância histórica.
-            </p>
-        <Card className="rounded-2xl shadow-xl overflow-hidden">
-          <img src="/moinho.jpg" alt="Moinho" className="h-56 w-full object-cover" />
-          <CardContent className="p-4">
-            <h2 className="text-2xl font-semibold mb-3 text-blue-800">🌾 Visita ao Moinho</h2>
-            <p className="text-gray-700">Moinho tradicional e história local.</p>
-        <Card className="rounded-2xl shadow-xl overflow-hidden">
-          <img src="/moinho.jpg" alt="Moinho" className="h-56 w-full object-cover" />
-          <CardContent className="p-4">
-            <h2 className="text-2xl font-semibold mb-3 text-blue-800">🌾 Visita ao Moinho</h2>
-            <p className="text-gray-700">Moinho tradicional e história local.</p>
-          </CardContent>
-        </Card>
+    <div style={styles.container}>
+      {/* Seleção de Idioma */}
+      <div style={styles.nav}>
+        {["pt", "en", "fr"].map((l) => (
+          <button key={l} onClick={() => setLang(l)} style={{...styles.btnLang, fontWeight: lang === l ? "bold" : "normal", borderColor: lang === l ? "#1a4fa3" : "#ccc"}}>
+            {l.toUpperCase()}
+          </button>
+        ))}
       </div>
 
-      {/* WhatsApp */}
-      https://wa.me/351912345678?text=Olá! Quero fazer uma reserva.
+      <h1>{t[lang].title}</h1>
+      <p style={{ fontSize: "1.2rem", color: "#666" }}>{t[lang].desc}</p>
 
+      {/* Grid de Atividades */}
+      <div style={styles.grid}>
+        <div style={styles.card}>
+          <img src="https://images.unsplash.com/photo-1574062230335-142f638ce262?q=80&w=500" alt="Forno" style={styles.img} />
+          <h3 style={{padding: "10px"}}>{t[lang].items[0]}</h3>
+        </div>
+        <div style={styles.card}>
+          <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=500" alt="Praia" style={styles.img} />
+          <h3 style={{padding: "10px"}}>{t[lang].items[2]}</h3>
+        </div>
+        <div style={styles.card}>
+          <img src="https://images.unsplash.com/photo-1541544741938-0af808871cc0?q=80&w=500" alt="Moinho" style={styles.img} />
+          <h3 style={{padding: "10px"}}>{t[lang].items[3]}</h3>
+        </div>
+      </div>
 
-      {/* WhatsApp */}
-      https://wa.me/351912345678?text=Olá! Quero fazer uma reserva.
+      <a href="https://wa.me/35191332211" style={styles.whatsappBtn}>
+        {t[lang].whatsapp}
+      </a>
 
+      {/* Tabela de Preços */}
+      <h2 style={{ marginTop: "60px" }}>{t[lang].prices}</h2>
+      <table style={styles.table}>
+        <thead>
+          <tr>
+            <th style={styles.th}>{t[lang].activity}</th>
+            <th style={styles.th}>{t[lang].unit}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td style={styles.td}>{t[lang].items[0]}</td><td style={styles.td}>€25</td></tr>
+          <tr><td style={styles.td}>{t[lang].items[2]}</td><td style={styles.td}>{t[lang].included}</td></tr>
+          <tr><td style={styles.td}>{t[lang].items[3]}</td><td style={styles.td}>€5</td></tr>
+          <tr style={{ fontWeight: "bold", backgroundColor: "#eef4ff" }}>
+            <td style={styles.td}>{t[lang].items[4]}</td><td style={styles.td}>€30</td>
+          </tr>
+        </tbody>
+      </table>
 
-      {/* Tabela de Preços */}
-      {/* Tabela de Preços */}
-      <Card className="rounded-2xl shadow-xl p-6 mt-10 max-w-3xl w-full text-center">
-        <CardContent>
-          <h2 className="text-2xl font-semibold mb-4 text-blue-900">
-          </h2>
-                <td className="border-b p-2">Visita ao Moinho</td>
-          <h2 className="text-2xl font-semibold mb-4 text-blue-900">{t[lang].prices}</h2>
-          <table className="w-full text-left border-collapse">
-            <thead>
-              <tr>
-                <th className="border-b p-2">Atividade</th>
-                <th className="border-b p-2">Preço</th>
-          <h2 className="text-2xl font-semibold mb-4 text-blue-900">{t[lang].prices}</h2>
-          <table className="w-full text-left border-collapse">
-            <thead>
-              <tr>
-                <th className="border-b p-2">Atividade</th>
-                <th className="border-b p-2">Preço</th>
-              </tr>
-                <td className="border-b p-2">€5</td>
-            </thead>
-              </tr>
-            <tbody>
-              <tr>
-              <tr>
-                <td className="border-b p-2 font-semibold">Pacote Completo (2–4h)</td>
-                <td className="border-b p-2">Cozinha em Forno a Lenha</td>
-                <td className="border-b p-2 font-semibold">€30</td>
-                <td className="border-b p-2">€25</td>
-              </tr>
-              </tr>
-              <tr><td className="border-b p-2">Forno a Lenha</td><td className="border-b p-2">€25</td></tr>
-              <tr><td className="border-b p-2">Visita à Praia</td><td className="border-b p-2">Incluído</td></tr>
-              <tr><td className="border-b p-2">Visita ao Moinho</td><td className="border-b p-2">€5</td></tr>
-              <tr className="font-semibold"><td className="border-b p-2">Pacote Completo</td><td className="border-b p-2">€30</td></tr>
-              <tr><td className="border-b p-2">Forno a Lenha</td><td className="border-b p-2">€25</td></tr>
-              <tr><td className="border-b p-2">Visita à Praia</td><td className="border-b p-2">Incluído</td></tr>
-              <tr><td className="border-b p-2">Visita ao Moinho</td><td className="border-b p-2">€5</td></tr>
-              <tr className="font-semibold"><td className="border-b p-2">Pacote Completo</td><td className="border-b p-2">€30</td></tr>
-            </tbody>
-              <tr>
-          </table>
-                <td className="border-b p-2">Visita à Praia</td>
-                <td className="border-b p-2">Incluído</td>
-              </tr>
-              <tr>
-                <td className="border-b p-2">Visita ao Moinho</td>
-                <td className="border-b p-2">€5</td>
-              </tr>
-              <tr>
-                <td className="border-b p-2 font-semibold">Pacote Completo (2–4h)</td>
-                <td className="border-b p-2 font-semibold">€30</td>
-              </tr>
-            </tbody>
-          </table>
-        </CardContent>
-      </Card>
+      {/* Formulário */}
+      <h2 style={{ marginTop: "60px" }}>{t[lang].form}</h2>
+      <form style={styles.form} onSubmit={(e) => { e.preventDefault(); alert("Ok!"); }}>
+        <label>{t[lang].name}</label>
+        <input style={styles.input} type="text" required />
 
-      {/* Formulário com validação */}
-      {/* Formulário com validação */}
-      <Card className="rounded-2xl shadow-xl p-6 mt-10 max-w-3xl w-full">
+        <label>{t[lang].email}</label>
+        <input style={styles.input} type="email" required />
 
-      {/* Formulário de Reserva */}        <CardContent>
-      <Card className="rounded-2xl shadow-xl p-6 mt-10 max-w-3xl w-full">
-        <CardContent>
-          <h2 className="text-2xl font-semibold mb-6 text-blue-900 text-center">
-            Formulário de Reserva
-          </h2>
-          <h2 className="text-2xl font-semibold mb-6 text-blue-900 text-center">{t[lang].form}</h2>
-          <h2 className="text-2xl font-semibold mb-6 text-blue-900 text-center">{t[lang].form}</h2>
-          <form className="flex flex-col gap-4">
-          <form className="flex flex-col gap-4" onSubmit={(e) => { e.preventDefault(); alert("Reserva enviada!"); }}>
-          <form className="flex flex-col gap-4" onSubmit={(e) => { e.preventDefault(); alert("Reserva enviada!"); }}>
-            <div>
-              <Label>Nome</Label>
-              <Input type="text" placeholder="O seu nome" required />
-              <Label>{t[lang].name}</Label>
-              <Input type="text" required minLength={3} placeholder={t[lang].name} />
-              <Label>{t[lang].name}</Label>
-              <Input type="text" required minLength={3} placeholder={t[lang].name} />
-            </div>
+        <label>{t[lang].people}</label>
+        <input style={styles.input} type="number" min="1" required />
 
-            <div>
-              <Label>Email</Label>
-              <Input type="email" placeholder="email@exemplo.com" required />
-              <Label>{t[lang].email}</Label>
-              <Input type="email" required placeholder={t[lang].email} />
-              <Label>{t[lang].email}</Label>
-              <Input type="email" required placeholder={t[lang].email} />
-            </div>
+        <label>{t[lang].activity}</label>
+        <select style={styles.input}>
+          {t[lang].items.map((item, index) => (
+            <option key={index}>{item}</option>
+          ))}
+        </select>
 
-            <div>
-              <Label>Número de Pessoas</Label>
-              <Input type="number" min="1" placeholder="Ex: 4" required />
-              <Label>{t[lang].people}</Label>
-              <Input type="number" min="1" max="20" required />
-              <Label>{t[lang].people}</Label>
-              <Input type="number" min="1" max="20" required />
-            </div>
+        <label>{t[lang].msg}</label>
+        <textarea style={{...styles.input, height: "80px"}} />
 
-            <div>
-              <Label>Atividade</Label>
-              <Label>{t[lang].activity}</Label>
-              <Label>{t[lang].activity}</Label>
-              <select className="p-2 rounded-md border border-gray-300" required>
-                <option value="Pacote Completo">Pacote Completo</option>
-                <option value="Forno a Lenha">Cozinha em Forno a Lenha</option>
-                <option value="Praia">Visita à Praia</option>
-                <option value="Moinho">Visita ao Moinho</option>
-                <option>Pacote Completo</option>
-                <option>Forno a Lenha</option>
-                <option>Praia</option>
-                <option>Moinho</option>
-                <option>Pacote Completo</option>
-                <option>Forno a Lenha</option>
-                <option>Praia</option>
-                <option>Moinho</option>
-              </select>
-            </div>
-
-                <Label>{t[lang].msg}</Label>              <Textarea placeholder={t[lang].msg} />          <div>
-              <Label>Mensagem (Opcional)</Label>
-              <Textarea placeholder="Alguma informação adicional?" />
-              <Lab              {t[lang].send}el>{t[lang].msg}</Label>
-              <Textarea placeholder={t[lang].msg} />
-            </div>
-
-            <Button className="mt-4 bg-blue-700 hover:bg-blue-800 text-white py-3 text-lg rounded-2xl">
-              Enviar Reserva
-              {t[lang].send}
-            </Button>
-          </form>
-        </CardContent>
-      </Card>
-          </h2>
-
-
-          <form className="flex flex-col gap-4">
-            <div>
-              <Label>Nome</Label>
-              <Input type="text" placeholder="O seu nome" required />
-            </div>
-
-
-            <div>
-              <Label>Email</Label>
-              <Input type="email" placeholder="email@exemplo.com" required />
-            </div>
-
-
-            <div>
-              <Label>Número de Pessoas</Label>
-              <Input type="number" min="1" placeholder="Ex: 4" required />
-            </div>
-
-
-            <div>
-              <Label>Atividade</Label>
-              <select className="p-2 rounded-md border border-gray-300" required>
-                <option value="Pacote Completo">Pacote Completo</option>
-                <option value="Forno a Lenha">Cozinha em Forno a Lenha</option>
-                <option value="Praia">Visita à Praia</option>
-                <option value="Moinho">Visita ao Moinho</option>
-              </select>
-            </div>
-
-
-            <div>
-              <Label>Mensagem (Opcional)</Label>
-              <Textarea placeholder="Alguma informação adicional?" />
-            </div>
-
-
-            <Button className="mt-4 bg-blue-700 hover:bg-blue-800 text-white py-3 text-lg rounded-2xl">
-              Enviar Reserva
-            </Button>
-          </form>
-        </CardContent>
-      </Card>
+        <button type="submit" style={styles.submitBtn}>{t[lang].send}</button>
+      </form>
     </div>
   );
 }
