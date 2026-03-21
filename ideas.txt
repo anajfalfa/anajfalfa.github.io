@@ -10,7 +10,7 @@ Ideas
 -------------------------
 
 
-roles: 
+roles: // LISTA
 -student
 homepage
 reviews
@@ -28,4 +28,48 @@ homepage
 research
 podcast
 
+Lógica Computacional
 
+Ana --> MEIC
+Vasco Manquinho ALC
+Luisa Coheur LN
+    |---> Pedro Monteiro [PIC2 + DMEIC]
+        |---> Susana Vinga [DEI IST | INESC-ID]
+            |---> ETH Niko
+            |---> ETH Jerg
+        |---> CMU --> InÊs Lynce
+
+
+Miguel Couceiro DSC mmac (INESC-ID ARSR)
+    |---> Luxemburgo
+    |---> França
+    |---> 
+
+Carlos Caleiro [Lógica e Computação @ DM IST]
+    |---> José Fragoso [DEI IST | INESC-ID ARSR]
+        |---> Alessandro Gianola + Miguel Couceiro
+    |---> Inês Lynce [DEI IST | INESC-ID ARSR]
+        |---> :) CMU + Marie Curie
+
+Filipe Mena [DM IST | Coord DMat]
+    |---> João Rasga [TAs]
+    |---> ETH Afonso Ribeiro
+    |---> ETH Ana Cannas
+
+Paulo Mateus [DM IST | AMC, CP, CPS]
+    |---> Cripto --> João Ribeiro ETH 
+    |---> Félix Costa
+    |---> João Rasga [Lógica e Computação @ DM IST]
+    |---> Carlos Caleiro [Lógica e Computação @ DM IST]
+    |---> PhD pos doc Sérgio Marcelino
+    |---> Jaime Ramos
+    |---> Luís Caires
+
+
+
+nao fui TA ainda
+
+IAED + ASA queria ser
+
+
+todas as outras menções era de coisas que gostava de assistir
