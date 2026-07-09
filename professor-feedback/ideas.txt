@@ -1,0 +1,18 @@
+/my-feedback-app
+├── /public
+│   └── /assets (Icons for departments)
+├── /src
+│   ├── /components
+│   │   ├── GraphContainer.js   <-- The interactive web
+│   │   ├── Sidebar.js          <-- Search & Filters
+│   │   └── ReviewCard.js       <-- Individual student feedback
+│   ├── /data
+│   │   └── mockData.json       <-- Nodes and Edges for the graph
+│   ├── /pages
+│   │   ├── index.js            <-- The Homepage
+│   │   ├── professor/[id].js   <-- Dynamic Profile Pages
+│   │   └── submit.js           <-- The Review Form
+│   └── /styles
+│       └── globals.css
+├── tailwind.config.js          <-- For easy styling
+└── package.json                <-- Project dependencies

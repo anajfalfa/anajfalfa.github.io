@@ -56,8 +56,8 @@ function applyNavFilter(role) {
 
     // Mapping from ideas.txt
     const roleConfig = {
-        'student': ['index', 'portfolio', 'cv', 'reviews', 'tutoring', 'podcast'],
-        'professor': ['index', 'portfolio', 'cv', 'research', 'reviews', 'podcast', 'tutoring'],
+        'student': ['index', 'portfolio', 'cv', 'reviews', 'tutoring', 'podcast', 'resumosalfa'],
+        'professor': ['index', 'portfolio', 'cv', 'research', 'reviews', 'podcast', 'tutoring', 'resumosalfa'],
         'researcher': ['index', 'portfolio', 'cv', 'research', 'podcast']
     };
 

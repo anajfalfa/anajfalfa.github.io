@@ -1,704 +1,295 @@
-<!-- force rebuild -->
-
 <!DOCTYPE html>
 <html lang="pt">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Página pessoal de Ana Alfaiate">
-    <title> Ana Alfaiate - Página Pessoal</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <meta name="description" content="Página pessoal de Ana Alfaiate - Site em construção / Site under construction">
+    <title>Ana Alfaiate - Em Construção / Under Construction</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="img/favicon.ico">
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-
-        gtag('config', 'G-XXXXXXXXXX');
-    </script>
-    <script>
-        // Verificar papel na entrada
-        if (!sessionStorage.getItem('siteRole')) {
-            window.location.href = 'role.html';
+    <style>
+        :root {
+            --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+            --card-bg: rgba(30, 41, 59, 0.7);
+            --card-border: rgba(255, 255, 255, 0.08);
+            --glow-color: rgba(56, 189, 248, 0.15);
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --accent: #38bdf8;
+            --accent-hover: #7dd3fc;
         }
-    </script>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Outfit', sans-serif;
+            background: var(--bg-gradient);
+            color: var(--text-primary);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Abstract glowing backgrounds for premium look */
+        body::before, body::after {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--glow-color) 0%, transparent 70%);
+            z-index: 0;
+            pointer-events: none;
+            filter: blur(40px);
+        }
+
+        body::before {
+            top: 10%;
+            left: 15%;
+            animation: float-slow 15s infinite alternate ease-in-out;
+        }
+
+        body::after {
+            bottom: 10%;
+            right: 15%;
+            animation: float-slow 20s infinite alternate-reverse ease-in-out;
+        }
+
+        @keyframes float-slow {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(50px, 30px) scale(1.1); }
+        }
+
+        .container {
+            position: relative;
+            z-index: 10;
+            width: 90%;
+            max-width: 650px;
+            padding: 40px;
+            text-align: center;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 24px;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            animation: fadeIn 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Avatar or Icon */
+        .brand-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #38bdf8, #0369a1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            font-size: 2rem;
+            color: #fff;
+            box-shadow: 0 10px 25px -5px rgba(56, 189, 248, 0.4);
+            animation: pulse 3s infinite ease-in-out;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 10px 25px -5px rgba(56, 189, 248, 0.4); }
+            50% { transform: scale(1.05); box-shadow: 0 15px 30px -5px rgba(56, 189, 248, 0.6); }
+        }
+
+        .eyebrow {
+            text-transform: uppercase;
+            letter-spacing: 0.25em;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 8px;
+        }
+
+        h1 {
+            font-size: clamp(2.2rem, 5vw, 3rem);
+            font-weight: 800;
+            background: linear-gradient(to right, #ffffff, #94a3b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 24px;
+        }
+
+        .divider {
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--card-border), transparent);
+            margin: 20px 0;
+            width: 100%;
+        }
+
+        .message-section {
+            margin-bottom: 24px;
+        }
+
+        .message {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+        }
+
+        .lang-switch {
+            display: inline-flex;
+            gap: 8px;
+            background: rgba(15, 23, 42, 0.5);
+            padding: 4px;
+            border-radius: 20px;
+            margin-bottom: 24px;
+            border: 1px solid var(--card-border);
+        }
+
+        .lang-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-secondary);
+            padding: 6px 16px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border-radius: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .lang-btn.active {
+            background: var(--accent);
+            color: #0f172a;
+        }
+
+        .contact-section {
+            margin-top: 30px;
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+        }
+
+        .contact-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--card-border);
+            color: var(--text-primary);
+            padding: 12px 24px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-btn:hover {
+            background: var(--accent);
+            color: #0f172a;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px -10px rgba(56, 189, 248, 0.5);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 24px;
+        }
+
+        .social-icon {
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-icon:hover {
+            color: var(--accent);
+        }
+    </style>
 </head>
-
 <body>
-    <!-- Barra de Atalhos -->
-    <div class="navbar">
-        <a href="index-pt.html">Página Inicial</a>
-        <a href="#portfolio">Portfólio</a>
-        <a href="photography-pt.html">Fotografia</a>
-        <a href="cv-view-pt.html">CV</a>
-        <a href="blog-pt.html">Blog</a>
-        <a href="research-pt.html">Investigação</a>
-        <a href="podcasts-pt.html">Podcasts</a>
-        <a href="reviews-pt.html">Avaliações</a>
-        <a href="tutoring-pt.html">Explicações</a>
-        <a href="ribamar-pt.html">Ribamar</a>
-        <a href="list-pt.html">Impossible List</a>
-        <div class="lang-switcher">
-            <span id="role-indicator" style="margin-right: 15px; font-size: 0.8em; opacity: 0.7; color: white;"></span>
-            <a href="index.html" class="lang-btn">EN</a>
-            <a href="index-pt.html" class="lang-btn active">PT</a>
-        </div>
-    </div>
-
     <div class="container">
-        <!-- Foto e informações pessoais -->
-        <div class="profile-section" id="home">
-            <img src="img/Ana-Alfaiate.jpeg" alt="Ana Alfaiate" class="profile-img">
+        <div class="brand-icon">
+            <i class="fa-solid fa-code"></i>
+        </div>
+        
+        <div class="lang-switch">
+            <button class="lang-btn active" onclick="switchLang('pt')">PT</button>
+            <button class="lang-btn" onclick="switchLang('en')">EN</button>
+        </div>
+
+        <div id="content-pt">
+            <p class="eyebrow">Site em construção</p>
             <h1>Ana Alfaiate</h1>
-            <p class="course"> MEIC & LEBiom</p>
-            <p class="bio">Estudante de Mestrado em Engenharia Informática e de Computadores @ Técnico Lisboa </p>
+            <p class="message">Este espaço está a ser preparado. Em breve ficará disponível com novidades, projetos e conteúdo atualizado.</p>
         </div>
 
-        <!-- Links para redes sociais -->
+        <div id="content-en" style="display: none;">
+            <p class="eyebrow">Site under construction</p>
+            <h1>Ana Alfaiate</h1>
+            <p class="message">This space is being prepared. It will soon be available with updates, projects, and new content.</p>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="contact-section">
+            <span id="contact-text-pt">Queres entrar em contacto?</span>
+            <span id="contact-text-en" style="display: none;">Want to get in touch?</span>
+            <br>
+            <a href="mailto:ana.alfaiate@tecnico.ulisboa.pt" class="contact-btn">
+                <i class="fa-regular fa-envelope"></i>
+                ana.alfaiate@tecnico.ulisboa.pt
+            </a>
+        </div>
+
         <div class="social-links">
-            <a href="https://github.com/anajfalfa" target="_blank" class="social-link" title="anajfalfa"><i
-                    class="fab fa-github"></i> <span class="tooltip" tip-position="bottom">anajfalfa</span>
+            <a href="https://linkedin.com/in/ana-alfaiate" target="_blank" class="social-icon" title="LinkedIn">
+                <i class="fa-brands fa-linkedin-in"></i>
             </a>
-            <a href="https://www.linkedin.com/in/ana-alfaiate/" target="_blank" class="social-link"
-                title="ana-alfaiate"> <i class="fab fa-linkedin"></i> <span class="tooltip"
-                    tip-position="bottom">ana-alfaiate</span></a>
-            <a href="https://discord.com/users/690233975670964313" class="social-link discord-info"
-                title="ana.alfaiate#1460" onclick="alert('ana.alfaiate#1460');">
-                <i class="fab fa-discord"></i> <span class="tooltip" tip-position="bottom">ana.alfaiate#1460</span></a>
-
-            <a href="https://www.instagram.com/ana.alfaiate.01/" target="_blank" class="social-link"
-                title="ana.alfaiate.01">
-                <i class="fab fa-instagram"></i> <span class="tooltip" tip-position="bottom">ana.alfaiate.01</span> </a>
-            <a href="https://open.spotify.com/user/21ehdpvo6opjvfr4cm34looga?si=6c673bd4413145cf" target="_blank"
-                class="social-link" title="Spotify">
-                <i class="fab fa-spotify"></i> <span class="tooltip" tip-position="bottom">Spotify</span> </a>
-            <a href="mailto:anajfalfaiate@gmail.com" target="_blank" class="social-link"
-                title="anajfalfaiate@gmail.com">
-                <i class="fab fa-google"></i> <span class="tooltip" tip-position="bottom">anajfalfaiate@gmail.com</span>
-            </a>
-            <a href="mailto:ana.alfaiate@tecnico.ulisboa.pt" target="_blank" class="social-link"
-                title="ana.alfaiate@tecnico.ulisboa.pt">
-                <i class="fas fa-envelope"></i> <span class="tooltip"
-                    tip-position="bottom">ana.alfaiate@tecnico.ulisboa.pt</span> </a>
-            <a href="https://fenix.tecnico.ulisboa.pt/homepage/ist1102903" class=" social-link" title="ist1102903"> <img
-                    src="img/IST_favicon.ico" alt="IST Técnico" class="ist-icon"> <span class="tooltip"
-                    tip-position="bottom">ist1102903</span> </a>
-            <!-- Academic / Science Profiles -->
-            <a href="https://scholar.google.com/citations?hl=pt-PT&user=RTZ-FhMAAAAJ" target="_blank"
-                class="social-link" title="Google Scholar">
-                <i class="fas fa-graduation-cap"></i>
-                <span class="tooltip" tip-position="bottom">Google Scholar</span>
-            </a>
-
-            <a href="https://www.cienciavitae.pt//pt/3011-3088-A2C4" target="_blank" class="social-link"
-                title="Ciência Vitae">
-                <i class="fas fa-flask"></i>
-                <span class="tooltip" tip-position="bottom">Ciência Vitae</span>
-            </a>
-
-            <a href="https://orcid.org/0009-0003-0951-8324" target="_blank" class="social-link" title="ORCID">
-                <i class="fab fa-orcid"></i>
-                <span class="tooltip" tip-position="bottom">ORCID</span>
-            </a>
-
-            <a href="https://www.researchgate.net/profile/Ana-Alfaiate-6?ev=prf_overview" target="_blank"
-                class="social-link" title="ResearchGate">
-                <i class="fab fa-researchgate"></i>
-                <span class="tooltip" tip-position="bottom">ResearchGate</span>
+            <a href="https://github.com/anajfalfa" target="_blank" class="social-icon" title="GitHub">
+                <i class="fa-brands fa-github"></i>
             </a>
         </div>
-        <!-- Main Div -->
-        <div class="main-container">
-            <p>
-                Bem-vindo ao meu espaço pessoal na web!
-                Aqui podes encontrar a minha "impossible list" e um pouco mais sobre mim.
-            </p>
-        </div>
-        <!-- Portfolio Section -->
-        <section id="portfolio" class="portfolio-section">
-            <h2>O Meu Portfólio</h2>
-            <div class="portfolio-grid">
-                <div class="portfolio-item">
-                    <a href="https://nebm.tecnico.ulisboa.pt/" target="_blank"
-                        style="text-decoration: none; color: inherit; display: block;">
-                        <img src="img/nebm_screenshot.png" alt="Website do NEBM">
-                        <h3>Website do NEBM</h3>
-                        <p>Colaboradora (2022-2023) & Coordenadora (2023-2024)</p>
-                        <p>Redesenhei o website usando <strong>HTML, CSS, JS</strong> e geri a base de dados
-                            <strong>PostgreSQL</strong> para recursos dos membros.
-                        </p>
-                    </a>
-                </div>
-                <div class="portfolio-item">
-                    <a href="https://job2be.tecnico.ulisboa.pt/" target="_blank"
-                        style="text-decoration: none; color: inherit; display: block;">
-                        <img src="img/job2be_screenshot.png" alt="Website do Job2Be">
-                        <h3>Website do JOB2BE 2024</h3>
-                        <p>Colaboradora (2023-2024)</p>
-                        <p>Desenvolvimento front-end e implementação do sistema de pontos em <strong>PostgreSQL</strong>
-                            para a plataforma Job2Be.</p>
-                    </a>
-                </div>
-                <div class="portfolio-item">
-                    <a href="https://agrupamento1066-ribamar.vercel.app/" target="_blank"
-                        style="text-decoration: none; color: inherit; display: block;">
-                        <img src="img/agrupamento1066_website.jpg" alt="Website do Agrupamento 1066 Ribamar">
-                        <h3>Website do Agrupamento 1066 Ribamar</h3>
-                        <p>Desenvolvedora (2026-Presente)</p>
-                        <p>Desenvolvimento integral do website e sistema de gestão (Backoffice e Área Reservada),
-                            utilizando <strong>Next.js</strong>, <strong>Prisma</strong> e <strong>SQLite</strong>.</p>
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Portfolio Section -->
-        <section id="portfolio" class="portfolio-section">
-            <h2 style="text-align: center; margin-bottom: 30px;">📂 Portfólio</h2>
-            <div class="portfolio-grid">
-                <!-- NEBM -->
-                <div class="portfolio-card glass">
-                    <div class="portfolio-image-container">
-                        <img src="img/nebm.jpg" alt="NEBM">
-                    </div>
-                    <div class="portfolio-info">
-                        <h3>NEBM - IST</h3>
-                        <p><strong>Cargo:</strong> Presidente e Coordenadora de IT</p>
-                        <p>Liderei a reforma completa do website oficial, coordenando a equipa de informática e
-                            implementando melhorias estruturais modernas.</p>
-                        <div class="tech-stack">
-                            <span class="subject-tag">Coordenação de IT</span>
-                            <span class="subject-tag">Reforma de Website</span>
-                            <span class="subject-tag">Liderança</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- JOB2BE -->
-                <div class="portfolio-card glass">
-                    <div class="portfolio-image-container">
-                        <img src="img/job2be.jpeg" alt="JOB2BE">
-                    </div>
-                    <div class="portfolio-info">
-                        <h3>JOB2BE</h3>
-                        <p><strong>Cargo:</strong> Colaboradora de IT e Design</p>
-                        <p>Contribuí para o desenvolvimento e identidade visual da plataforma JOB2BE, especializando-me
-                            em gestão de base de dados e refinamentos de frontend.</p>
-                        <div class="tech-stack">
-                            <span class="subject-tag">PostgreSQL</span>
-                            <span class="subject-tag">IT & Design</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 1066 -->
-                <div class="portfolio-card glass">
-                    <div class="portfolio-image-container">
-                        <img src="img/agrupamento1066_website.jpg" alt="1066 Ribamar">
-                    </div>
-                    <div class="portfolio-info">
-                        <h3>CNE 1066 Ribamar</h3>
-                        <p><strong>Cargo:</strong> Desenvolvedora Full-Stack</p>
-                        <p>Desenvolvi um sistema de gestão abrangente e o website oficial para o agrupamento local de
-                            escuteiros, com um backoffice seguro.</p>
-                        <div class="tech-stack">
-                            <span class="subject-tag">Next.js</span>
-                            <span class="subject-tag">Prisma</span>
-                            <span class="subject-tag">SQLite</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Ultimate Frisbee -->
-                <div class="portfolio-card glass">
-                    <div class="portfolio-image-container">
-                        <img src="img/ultimate_frisbee.png" alt="Discover Ultimate">
-                    </div>
-                    <div class="portfolio-info">
-                        <h3>Discover Ultimate</h3>
-                        <p><strong>Cargo:</strong> Líder de Projeto e Dev</p>
-                        <p>Uma plataforma interativa desenhada para promover e organizar atividades de Ultimate Frisbee,
-                            mapeando a jornada desportiva da comunidade.</p>
-                        <div class="tech-stack">
-                            <a href="https://anajfalfa.github.io/discoverLisboa/" target="_blank" class="btn-secondary"
-                                style="font-size: 0.8em; padding: 5px 10px; text-decoration: none;"><i
-                                    class="fas fa-external-link-alt"></i> Visitar Projeto</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Sports Journey Section -->
-        <section id="sports-journey" class="sports-section">
-            <h2 style="text-align: center; margin-bottom: 30px;">🏅 Percurso Desportivo</h2>
-            <p style="text-align: center; color: #7f8c8d; margin-bottom: 20px;">Uma sucessão dos desportos que moldaram
-                a minha disciplina e espírito de equipa</p>
-            <div class="graph-container-sports glass" style="padding: 20px; border-radius: 15px; margin-bottom: 40px;">
-                <canvas id="sports-graph" style="width: 100%; height: 300px;"></canvas>
-            </div>
-        </section>
-
-        <!-- Timeline Section -->
-        <section id="timeline" class="timeline-section">
-            <h2>Linha do Tempo</h2>
-            <div class="timeline">
-                <!-- Evento 1 -->
-                <div class="timeline-element">
-                    <div class="timeline-element-content">
-                        <span class="timeline-element-icon" style="background-color: #fff; border: 3px solid #009de0;">
-                            <img src="img/INESC-ID-new-logo_version-01A.png" alt="INESC-ID Logo"
-                                class="timeline-element-logo-img">
-                        </span>
-                        <h4><a href="https://www.inesc-id.pt/member/30828f05-be75-4348-935a-c3adb9d93266/"
-                                target="_blank" style="text-decoration: none; color: inherit;">INESC-ID</a></h4>
-                        <h5>Estagiária de Investigação (Mestrado)</h5>
-                        <p><strong>Tópico:</strong> Inferência de Modelos Lógicos com SAT/ASP<br>
-                            Investigação no <a
-                                href="https://www.inesc-id.pt/ou/cb43cbf0-f978-439c-a6f6-23ff864ae8d9/members/"
-                                target="_blank" style="color: #009de0;">ARSR</a> (Automated Reasoning and Software
-                            Reliability), sob orientação de Pedro T. Monteiro e Vasco Manquinho.</p>
-                        <p><strong>Keywords:</strong> Redes Regulatórias, Inferência de Modelos, Answer Set Programming,
-                            SAT, Raciocínio Automático</p>
-                        <p><strong>Perfil INESC-ID:</strong> <a
-                                href="https://www.inesc-id.pt/member/30828f05-be75-4348-935a-c3adb9d93266/publications/"
-                                target="_blank">https://www.inesc-id.pt/member/30828f05-be75-4348-935a-c3adb9d93266/publications/</a>
-                        </p>
-                    </div>
-                    <span class="timeline-element-date">Agosto 2025 - Presente</span>
-                </div>
-
-                <!-- Evento 2 -->
-                <div class="timeline-element">
-                    <span class="timeline-element-date">Agosto 2025 - Dezembro 2025</span>
-                    <div class="timeline-element-content">
-                        <span class="timeline-element-icon" style="background-color: #fff;">
-                            <img src="img/Danmarks_Tekniske_Universitet_(logo).svg.png" alt="DTU Logo"
-                                class="timeline-element-logo-img">
-                        </span>
-                        <h4><a href="https://www.dtu.dk/english/" target="_blank"
-                                style="text-decoration: none; color: inherit;">DTU - Technical University of Denmark</a>
-                        </h4>
-                        <h5>Semestre de Intercâmbio Erasmus+</h5>
-                        <p>Engenharia Informática e de Computadores. Foco em Verificação de Programas, Fundamentos de
-                            Cibersegurança e
-                            Teoria Lógicas para Incerteza e Aprendizagem.</p>
-                    </div>
-                </div>
-
-                <!-- Evento 3 -->
-                <div class="timeline-element">
-                    <div class="timeline-element-content">
-                        <span class="timeline-element-icon" style="background-color: #fff;">
-                            <img src="img/IST_Logo.png" alt="IST Logo" class="timeline-element-logo-img">
-                        </span>
-                        <h4><a href="https://tecnico.ulisboa.pt/pt/ensino/cursos/mestrados/engenharia-informatica-e-de-computadores/"
-                                target="_blank" style="text-decoration: none; color: inherit;">Mestrado em Engenharia
-                                Informática e de Computadores</a></h4>
-                        <h5>Técnico Lisboa</h5>
-                        <p>Especialização em Inteligência Artificial e Algoritmos e Aplicações. Vários reconhecimentos
-                            de excelência académica.</p>
-                    </div>
-                    <span class="timeline-element-date">Agosto 2024 - Presente</span>
-                </div>
-
-                <!-- Escola Avançada de Matemática -->
-                <div class="timeline-element">
-                    <div class="timeline-element-content">
-                        <span class="timeline-element-icon" style="background-color: #fff;">
-                            <i class="fas fa-square-root-alt"
-                                style="color: #009de0; font-size: 1.4em; line-height: 40px;"></i>
-                        </span>
-                        <h4>Escola Avançada de Matemática</h4>
-                        <h5>Autora &amp; Instrutora</h5>
-                        <p>Criação e ensino de conteúdo de matemática avançada.</p>
-                    </div>
-                    <span class="timeline-element-date">2024 - Presente</span>
-                </div>
-
-                <!-- CNE Escuteiros -->
-                <div class="timeline-element">
-                    <div class="timeline-element-content">
-                        <span class="timeline-element-icon" style="background-color: #fff;">
-                            <img src="img/agrupamento1066_website.jpg" alt="CNE Logo" class="timeline-element-logo-img">
-                        </span>
-                        <h4>Corpo Nacional de Escutas (CNE)</h4>
-                        <h5>Agrupamento 1066 Ribamar</h5>
-                        <p>Dirigente / Caminheira. Desenvolvimento de liderança e trabalho em equipa.</p>
-                    </div>
-                    <span class="timeline-element-date">Outubro 2024 - Presente</span>
-                </div>
-
-                <!-- Web Summit & Games Week -->
-                <div class="timeline-element">
-                    <div class="timeline-element-content">
-                        <span class="timeline-element-icon" style="background-color: #fff;">
-                            <i class="fas fa-handshake"
-                                style="color: #009de0; font-size: 1.4em; line-height: 40px;"></i>
-                        </span>
-                        <h4>Web Summit & Lisboa Games Week</h4>
-                        <h5>Voluntária</h5>
-                        <p>Apoio geral em grandes eventos de tecnologia e gaming em Lisboa (2023 & 2024).</p>
-                    </div>
-                    <span class="timeline-element-date">Novembro 2024</span>
-                </div>
-
-                <!-- NAPE -->
-                <div class="timeline-element">
-                    <div class="timeline-element-content">
-                        <span class="timeline-element-icon" style="background-color: #fff;">
-                            <img src="img/nape.png" alt="NAPE Logo" class="timeline-element-logo-img">
-                        </span>
-                        <h4><a href="https://nape.tecnico.ulisboa.pt/" target="_blank"
-                                style="text-decoration: none; color: inherit;">NAPE - IST</a></h4>
-                        <h5>Embaixadora do Técnico & Mentora</h5>
-                        <p>Apoio a novos alunos e representação do IST. Mentora no Programa de Mentoria (2022-2023).</p>
-                    </div>
-                    <span class="timeline-element-date">Outubro 2024 - Junho 2025</span>
-                </div>
-
-                <!-- TreeTree2 -->
-                <div class="timeline-element">
-                    <div class="timeline-element-content">
-                        <span class="timeline-element-icon" style="background-color: #fff;">
-                            <img src="img/alpha_rectangle.avif" alt="TreeTree2 Logo" class="timeline-element-logo-img">
-                        </span>
-                        <h4><a href="https://programaalpha.org/" target="_blank"
-                                style="text-decoration: none; color: inherit;">TreeTree2</a></h4>
-                        <h5>Instrutora @ Programa Alpha</h5>
-                        <p>Ensino de ciência e engenharia a alunos do 6º ao 8º ano.</p>
-                    </div>
-                    <span class="timeline-element-date">Outubro 2024 - Abril 2025</span>
-                </div>
-
-                <!-- Missão País -->
-                <div class="timeline-element">
-                    <div class="timeline-element-content">
-                        <span class="timeline-element-icon" style="background-color: #fff;">
-                            <i class="fas fa-cross" style="color: #e67e22; font-size: 1.4em; line-height: 40px;"></i>
-                        </span>
-                        <h4>Missão País</h4>
-                        <h5>Missionária</h5>
-                        <p>Voluntariado universitário em Portugal, apoiando comunidades isoladas através de trabalho
-                            social.</p>
-                    </div>
-                    <span class="timeline-element-date">Fevereiro 2025</span>
-                </div>
-
-                <!-- NEBM -->
-                <div class="timeline-element">
-                    <div class="timeline-element-content">
-                        <span class="timeline-element-icon" style="background-color: #fff;">
-                            <img src="img/nebm.jpg" alt="NEBM Logo" class="timeline-element-logo-img">
-                        </span>
-                        <h4><a href="https://nebm.tecnico.ulisboa.pt/" target="_blank"
-                                style="text-decoration: none; color: inherit;">NEBM - IST</a></h4>
-                        <h5>Presidente & Coordenadora de TI</h5>
-                        <p>Presidente (Jul 2024 - Jul 2025). Coordenadora da Secção de TI (2023-2024), liderando a
-                            reforma do site.</p>
-                    </div>
-                    <span class="timeline-element-date">Setembro 2022 - Julho 2025</span>
-                </div>
-
-                <!-- LaSEEB -->
-                <div class="timeline-element">
-                    <div class="timeline-element-content">
-                        <span class="timeline-element-icon" style="background-color: #fff;">
-                            <img src="img/isr.png" alt="LaSEEB Logo" class="timeline-element-logo-img">
-                        </span>
-                        <h4><a href="https://isr.tecnico.ulisboa.pt/projects_cat/laseeb/" target="_blank"
-                                style="text-decoration: none; color: inherit;">LaSEEB</a></h4>
-                        <h5>Estagiária de Investigação</h5>
-                        <p>Projeto: "Segmentação Automática de Cartilagem do Joelho em RM". Nota Final: 19.</p>
-                    </div>
-                    <span class="timeline-element-date">Fevereiro 2024 - Julho 2024</span>
-                </div>
-
-                <!-- JOB2BE -->
-                <div class="timeline-element">
-                    <div class="timeline-element-content">
-                        <span class="timeline-element-icon" style="background-color: #fff;">
-                            <img src="img/job2be.jpeg" alt="JOB2BE Logo" class="timeline-element-logo-img">
-                        </span>
-                        <h4><a href="https://job2be.tecnico.ulisboa.pt/" target="_blank"
-                                style="text-decoration: none; color: inherit;">JOB2BE</a></h4>
-                        <h5>Colaboradora (TI & Design)</h5>
-                        <p>Desenvolvimento do site/sistemas (TI) e identidade visual (Design).</p>
-                    </div>
-                    <span class="timeline-element-date">Outubro 2022 - Maio 2024</span>
-                </div>
-
-                <!-- Licenciatura -->
-                <div class="timeline-element">
-                    <div class="timeline-element-content">
-                        <span class="timeline-element-icon" style="background-color: #fff;">
-                            <img src="img/IST_Logo.png" alt="IST Logo" class="timeline-element-logo-img">
-                        </span>
-                        <h4><a href="https://tecnico.ulisboa.pt/pt/ensino/cursos/licenciaturas/engenharia-biomedica/"
-                                target="_blank" style="text-decoration: none; color: inherit;">Licenciatura em
-                                Engenharia Biomédica</a></h4>
-                        <h5>Técnico Lisboa</h5>
-                        <p>Média Final de 18.47/20. Múltiplos Diplomas de Excelência Académica (Santander/Técnico).</p>
-                    </div>
-                    <span class="timeline-element-date">Setembro 2021 - Julho 2024</span>
-                </div>
-
-                <!-- Monitora FMUL -->
-                <div class="timeline-element">
-                    <div class="timeline-element-content">
-                        <span class="timeline-element-icon" style="background-color: #fff;">
-                            <img src="img/fmul.png" alt="FMUL Logo" class="timeline-element-logo-img">
-                        </span>
-                        <h4>Faculdade de Medicina (ULisboa)</h4>
-                        <h5>Monitora (Anatomia & Histologia)</h5>
-                        <p>Apoio a alunos do 1º ano de Engenharia Biomédica nas práticas de Histologia.</p>
-                    </div>
-                    <span class="timeline-element-date">Setembro 2022 - Dezembro 2022</span>
-                </div>
-
-                <!-- FISIOMAIS -->
-                <div class="timeline-element">
-                    <div class="timeline-element-content">
-                        <span class="timeline-element-icon" style="background-color: #fff;">
-                            <i class="fas fa-clinic-medical"
-                                style="color: #27ae60; font-size: 1.4em; line-height: 40px;"></i>
-                        </span>
-                        <h4>FISIOMAIS</h4>
-                        <h5>Rececionista</h5>
-                        <p>Atendimento ao público e apoio administrativo numa clínica (Verão 2020 & 2021).</p>
-                    </div>
-                    <span class="timeline-element-date">2021</span>
-                </div>
-
-                <!-- Karaté -->
-                <div class="timeline-element">
-                    <div class="timeline-element-content">
-                        <span class="timeline-element-icon" style="background-color: #fff;">
-                            <i class="fas fa-user-ninja"
-                                style="color: #c0392b; font-size: 1.4em; line-height: 40px;"></i>
-                        </span>
-                        <h4>Karaté Shotokan (AKS)</h4>
-                        <h5>4º Kyu</h5>
-                        <p>Prática de artes marciais focada em disciplina e foco físico.</p>
-                    </div>
-                    <span class="timeline-element-date">2016 - 2021</span>
-                </div>
-            </div>
-        </section>
-
-        <!-- CV Section -->
-        <section id="cv" class="cv-section">
-            <h2>Currículo</h2>
-            <div class="cv-container glass">
-                <div class="cv-content">
-                    <h3>Ana Alfaiate</h3>
-                    <p><strong>Estudante de Mestrado em Engenharia Informática e de Computadores</strong></p>
-                    <p>Estudante dedicada com experiência em desenvolvimento web, coordenação de equipas e representação
-                        estudantil.</p>
-                    <div class="cv-buttons">
-                        <a href="cv/AnaAlfaiate_CV_English.pdf" download class="btn-primary"><i
-                                class="fas fa-download"></i> Download CV</a>
-                        <a href="cv-view-pt.html" class="btn-secondary" target="_blank">Ver Detalhes</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Ideas Section -->
-        <section id="ideas" class="ideas-section">
-            <h2>As Minhas Ideias</h2>
-            <p class="section-subtitle">Uma coleção de projetos e conceitos que me entusiasma explorar.</p>
-
-            <div id="ideas-content" class="ideas-content visible">
-                <div class="idea-card glass">
-                    <h3>❄️ Globos de Neve de Ribamar</h3>
-                    <p>Design e produção de pisa-papéis/globos de neve com foco em Ribamar, Lourinhã, Zona Oeste e
-                        Geoparque Oeste.</p>
-                </div>
-                <div class="idea-card glass">
-                    <h3>👕 Equipamento Desportivo (CSCR)</h3>
-                    <p>Design e produção de kits desportivos para a Junta de Freguesia de Ribamar/CSCR. 10 kits
-                        principais e 10 secundários para uma equipa de Ultimate Frisbee.</p>
-                </div>
-                <div class="idea-card glass">
-                    <h3>📍 Apoio de Praia & Posto de Turismo</h3>
-                    <p>Ponto de apoio à praia servindo de posto de turismo em Ribamar (perto da <a
-                            href="https://maps.app.goo.gl/Nmd8MouDB6zgsVSe9" target="_blank"
-                            style="color: #009de0; text-decoration: underline;"><i class="fas fa-map-marked-alt"></i>
-                            Fonte das Avencas</a>). Venda de globos de neve e disponibilização de panfletos. Operação
-                        sazonal de verão com bolsas para estudantes.</p>
-                </div>
-                <div class="idea-card glass">
-                    <h3> Aplicação de Saúde Unificada</h3>
-                    <p>Desenvolvimento de uma aplicação móvel de saúde para unificar os dados de saúde de diferentes
-                        fontes -
-                        exames, prescrições, médicos, especialidades, agendamentos, sistema de saúde público e privado.
-                    </p>
-                    <p> SPMS (SNS) e sistemas de saúde privados.</p>
-                    <p> Sistema Regulatório -- muito alto na Europa vs EUA</p>
-                </div>
-
-                <div class="idea-card glass">
-                    <h3> Desenvolver um Curso / Workshop / Website / Conta Instagram / Clube Estudantil do IST de
-                        Finanças, Economia e Investimentos</h3>
-                    <p> - Desenvolver uma plataforma sobre Finanças, Economia e Investimentos </p>
-                    <p> -
-                        https://www.doutorfinancas.pt/investimentos/investimentos-15-conceitos-essenciais-que-deve-conhecer/
-                    </p>
-                    <p> - https://www.abanca.pt/radar/aprender-investir-com-confianca/</p>
-                    <p> - https://escoladasfinancas.com/</p>
-                </div>
-
-                <div class="idea-card glass">
-                    <h3> Desenvolver um Curso / Workshop / Website / Conta Instagram / Clube Estudantil do IST de
-                        Democracia e Direito</h3>
-                    <p> - Desenvolver uma plataforma sobre Democracia e Direito </p>
-                    <p> https://www.os230.pt/democracia-101/</p>
-                </div>
-
-            </div>
-        </section>
-
-
-        <!-- Mais itens da linha do tempo podem ser adicionados aqui -->
     </div>
 
-    <footer>
-        <p>&copy; 2026 Ana Alfaiate | Todos os direitos reservados</p>
-        <p>Desenvolvido com <span style="color: red;">&hearts;</span> por Ana Alfaiate | <a href="mailto:ana.alfaiate@tecnico.ulisboa.pt" style="color: inherit; text-decoration: underline;">ana.alfaiate@tecnico.ulisboa.pt</a> <a href="diadopai26.html" style="color: inherit; text-decoration: none; cursor: default;">🤍</a></p>
-    </footer>
-
-
-
-    <!-- Scripts -->
     <script>
-        function drawSportsGraph() {
-            const canvas = document.getElementById('sports-graph');
-            if (!canvas) return;
-            const ctx = canvas.getContext('2d');
-            const container = canvas.parentElement;
-            const W = container.offsetWidth - 40;
-            const H = 280;
-            canvas.width = W;
-            canvas.height = H;
+        function switchLang(lang) {
+            const ptElements = [document.getElementById('content-pt'), document.getElementById('contact-text-pt')];
+            const enElements = [document.getElementById('content-en'), document.getElementById('contact-text-en')];
+            const buttons = document.querySelectorAll('.lang-btn');
 
-            const sports = [
-                { name: "Ballet", date: "Infância", color: "#fd79a8", icon: "🩰", details: "Primeiros passos no movimento" },
-                { name: "Natação", date: "Infância", color: "#74b9ff", icon: "🏊", details: "Desenvolvimento de resistência" },
-                { name: "Basket", date: "5º Ano", color: "#e67e22", icon: "🏀", details: "Início nos desportos de equipa" },
-                { name: "Ténis", date: "5º-9º Ano", color: "#f1c40f", icon: "🎾", details: "3º lugar Nacional Braga (9º ano)" },
-                { name: "Voleibol", date: "Sec. & 1º Ano", color: "#3498db", icon: "🏐", details: "Secundário e 1º ano no Técnico" },
-                { name: "Ultimate", date: "2025-Pres.", color: "#9b59b6", icon: "🥏", details: "DTU (Set 25) & Discover (Jan 26)" }
-            ];
-
-            const padding = 60;
-            const step = (W - 2 * padding) / (sports.length - 1);
-            const centerY = H / 2;
-
-            // Draw connections
-            ctx.beginPath();
-            ctx.setLineDash([5, 5]);
-            ctx.moveTo(padding, centerY);
-            ctx.lineTo(W - padding, centerY);
-            ctx.strokeStyle = "#bdc3c7";
-            ctx.lineWidth = 2;
-            ctx.stroke();
-            ctx.setLineDash([]);
-
-            sports.forEach((s, i) => {
-                const x = padding + i * step;
-                const y = centerY;
-                s.x = x; s.y = y; s.r = 35;
-
-                // Draw arrow to next
-                if (i < sports.length - 1) {
-                    const nextX = padding + (i + 1) * step;
-                    ctx.beginPath();
-                    const headlen = 10;
-                    const angle = 0;
-                    ctx.moveTo(x + s.r, y);
-                    ctx.lineTo(nextX - s.r, y);
-                    ctx.strokeStyle = s.color;
-                    ctx.lineWidth = 3;
-                    ctx.stroke();
-
-                    // Arrow head
-                    ctx.beginPath();
-                    ctx.moveTo(nextX - s.r, y);
-                    ctx.lineTo(nextX - s.r - headlen, y - 5);
-                    ctx.lineTo(nextX - s.r - headlen, y + 5);
-                    ctx.fillStyle = s.color;
-                    ctx.fill();
-                }
-
-                // Draw node
-                ctx.beginPath();
-                ctx.arc(x, y, s.r, 0, Math.PI * 2);
-                ctx.fillStyle = "white";
-                ctx.fill();
-                ctx.strokeStyle = s.color;
-                ctx.lineWidth = 4;
-                ctx.stroke();
-
-                // Icon
-                ctx.font = "24px Arial";
-                ctx.textAlign = "center";
-                ctx.textBaseline = "middle";
-                ctx.fillText(s.icon, x, y - 5);
-
-                // Name
-                ctx.fillStyle = "#2c3e50";
-                ctx.font = "bold 12px Poppins, sans-serif";
-                ctx.fillText(s.name, x, y + 55);
-
-                // Date
-                ctx.fillStyle = "#7f8c8d";
-                ctx.font = "10px Poppins, sans-serif";
-                ctx.fillText(s.date, x, y + 70);
-            });
-
-            // Interactivity
-            canvas.onclick = function (e) {
-                const rect = canvas.getBoundingClientRect();
-                const mx = e.clientX - rect.left;
-                const my = e.clientY - rect.top;
-                sports.forEach(s => {
-                    const dx = mx - s.x;
-                    const dy = my - s.y;
-                    if (Math.sqrt(dx * dx + dy * dy) < s.r) {
-                        if (s.name === "Ultimate") {
-                            window.open('https://anajfalfa.github.io/discoverLisboa/', '_blank');
-                        } else {
-                            alert(`${s.icon} ${s.name}\n${s.date}\n${s.details}`);
-                        }
-                    }
-                });
-            };
-
-            canvas.onmousemove = function (e) {
-                const rect = canvas.getBoundingClientRect();
-                const mx = e.clientX - rect.left;
-                const my = e.clientY - rect.top;
-                let hover = false;
-                sports.forEach(s => {
-                    if (Math.sqrt((mx - s.x) ** 2 + (my - s.y) ** 2) < s.r) hover = true;
-                });
-                canvas.style.cursor = hover ? 'pointer' : 'default';
-            };
+            if (lang === 'pt') {
+                ptElements.forEach(el => el.style.display = 'block');
+                enElements.forEach(el => el.style.display = 'none');
+                buttons[0].classList.add('active');
+                buttons[1].classList.remove('active');
+            } else {
+                ptElements.forEach(el => el.style.display = 'none');
+                enElements.forEach(el => el.style.display = 'block');
+                buttons[0].classList.remove('active');
+                buttons[1].classList.add('active');
+            }
         }
 
-        document.addEventListener('DOMContentLoaded', () => {
-            drawSportsGraph();
-            // ... original scroll logic if any ...
-        });
-        window.addEventListener('resize', drawSportsGraph);
+        // Auto-detect browser language
+        const userLang = navigator.language || navigator.userLanguage;
+        if (userLang && !userLang.startsWith('pt')) {
+            switchLang('en');
+        }
     </script>
-    <script src="js/roles.js"></script>
 </body>
-
 </html>

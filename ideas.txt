@@ -8,7 +8,8 @@ Ideas
 
 
 -------------------------
-
+LIVROS:
+António Damásio: Erro de Descartes (sugerido pelo prof. Augusto)
 
 roles: // LISTA
 -student
